@@ -39,6 +39,23 @@
             font-size: clamp(0.9em, 3vw, 1.1em);
             line-height: 1.4;
         }
+        
+        .branding {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-size: clamp(0.95em, 3.2vw, 1.1em);
+            line-height: 1.8;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .branding strong {
+            font-weight: 700;
+            font-size: 1.1em;
+        }
         .question {
             background: #f8f9ff;
             border-left: 4px solid #667eea;
@@ -154,11 +171,58 @@
             color: #f57c00;
         }
         
+        .video-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 20px 15px;
+            margin: 20px 0;
+            color: white;
+        }
+        
+        .video-section h2 {
+            color: white;
+            text-align: center;
+            margin: 0 0 8px 0;
+            font-size: clamp(1.2em, 4.5vw, 1.5em);
+        }
+        
+        .video-subtitle {
+            text-align: center;
+            margin: 0 0 15px 0;
+            font-size: clamp(0.85em, 3vw, 0.95em);
+            opacity: 0.95;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+        
         @media (max-width: 600px) {
             body {
                 padding: 5px;
             }
             .container {
+                padding: 15px 10px;
+                border-radius: 10px;
+            }
+            .video-section {
                 padding: 15px 10px;
                 border-radius: 10px;
             }
@@ -200,9 +264,29 @@
     <div class="container">
         <h1>🧮 Long Division Exercise</h1>
         <p class="subtitle">Grade 6 Mathematics - Practice your division skills!</p>
+        
+        <div class="branding">
+            <strong>Sisonke Education</strong><br>
+            Created By <strong>Mawethu Mpande</strong><br>
+            From Ugie - <strong>Proudly Ugie</strong>
+        </div>
 
         <div class="tip">
-            <strong>📝 Instructions:</strong> Solve each problem on paper first, then click "Show Solution" to check your work and learn the step-by-step process!
+            <strong>📝 Instructions:</strong> Watch the video tutorial below, then solve each problem on paper first, and click "Show Solution" to check your work!
+        </div>
+
+        <div class="video-section">
+            <h2>📺 Long Division Tutorial Video</h2>
+            <p class="video-subtitle">Watch this helpful explanation before starting the exercises!</p>
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/HdU_rf7eMTI" 
+                    title="Long Division Tutorial" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
         </div>
 
         <!-- Question 1 -->
