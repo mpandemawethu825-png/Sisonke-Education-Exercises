@@ -11,7 +11,6 @@
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
         }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #0a0e27 0%, #1a237e 50%, #0a0e27 100%);
@@ -20,7 +19,6 @@
             min-height: 100vh;
             line-height: 1.6;
         }
-
         /* Header */
         header {
             background: rgba(24, 119, 242, 0.15);
@@ -32,7 +30,6 @@
             top: 0;
             z-index: 100;
         }
-
         .header-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -40,30 +37,25 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .logo h1 {
             font-size: 1.3rem;
             color: #1877F2;
             font-weight: 700;
         }
-
         .logo p {
             font-size: 0.7rem;
-            color: #64B5F6;
+            color: white;
         }
-
         nav {
             display: flex;
             gap: 1.5rem;
         }
-
         nav a {
-            color: #64B5F6;
+            color: white;
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
         }
-
         /* Hero */
         .hero {
             text-align: center;
@@ -71,7 +63,6 @@
             max-width: 900px;
             margin: 0 auto;
         }
-
         .hero-card {
             background: rgba(24, 119, 242, 0.15);
             backdrop-filter: blur(10px);
@@ -80,38 +71,35 @@
             border-radius: 20px;
             padding: 2rem 1.5rem;
         }
-
         .hero h2 {
             font-size: clamp(1.5rem, 5vw, 2.5rem);
             color: #1877F2;
             margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(24, 119, 242, 0.8);
         }
-
         .hero p {
             font-size: clamp(0.9rem, 3vw, 1.1rem);
-            color: #64B5F6;
+            color: white;
             margin-bottom: 0.3rem;
         }
-
         .creator {
             font-size: 0.85rem !important;
-            color: #90CAF9;
+            color: white !important;
+            text-shadow: 0 0 5px rgba(24, 119, 242, 0.5);
         }
-
         /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 1rem;
         }
-
         /* Section Title */
         .section-title {
             font-size: clamp(1.3rem, 4vw, 1.8rem);
             margin-bottom: 1.5rem;
             color: #1877F2;
+            text-shadow: 0 0 10px rgba(24, 119, 242, 0.8);
         }
-
         /* Grade Grid */
         .grade-grid {
             display: grid;
@@ -119,7 +107,6 @@
             gap: 0.8rem;
             margin-bottom: 2rem;
         }
-
         .grade-card {
             background: rgba(24, 119, 242, 0.15);
             backdrop-filter: blur(10px);
@@ -132,27 +119,23 @@
             transition: transform 0.2s, background 0.2s;
             touch-action: manipulation;
         }
-
         .grade-card:active {
             transform: scale(0.95);
         }
-
         .grade-card:hover {
             background: rgba(24, 119, 242, 0.25);
         }
-
         .grade-number {
             font-size: 2.5rem;
             font-weight: 700;
             color: #1877F2;
             margin-bottom: 0.3rem;
+            text-shadow: 0 0 5px rgba(24, 119, 242, 0.5);
         }
-
         .grade-label {
             font-size: 0.85rem;
-            color: #64B5F6;
+            color: white;
         }
-
         /* Topic Grid */
         .topic-grid {
             display: grid;
@@ -160,7 +143,6 @@
             gap: 1rem;
             margin-top: 1.5rem;
         }
-
         .topic-card {
             background: rgba(24, 119, 242, 0.15);
             backdrop-filter: blur(10px);
@@ -172,27 +154,23 @@
             transition: transform 0.2s, background 0.2s;
             touch-action: manipulation;
         }
-
         .topic-card:active {
             transform: scale(0.98);
         }
-
         .topic-card:hover {
             background: rgba(24, 119, 242, 0.25);
         }
-
         .topic-title {
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: white;
+            text-shadow: 0 0 5px rgba(24, 119, 242, 0.5);
         }
-
         .topic-desc {
             font-size: 0.85rem;
-            color: #64B5F6;
+            color: white;
         }
-
         /* Progress Card */
         .progress-card {
             background: rgba(76, 175, 80, 0.15);
@@ -203,19 +181,16 @@
             padding: 1.5rem;
             margin-bottom: 1.5rem;
         }
-
         .progress-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
         }
-
         .progress-header h3 {
             font-size: 1.2rem;
             color: white;
         }
-
         .progress-bar-bg {
             width: 100%;
             height: 10px;
@@ -224,7 +199,6 @@
             overflow: hidden;
             margin-bottom: 0.5rem;
         }
-
         .progress-bar-fill {
             height: 100%;
             background: linear-gradient(90deg, #4CAF50 0%, #1877F2 100%);
@@ -232,12 +206,10 @@
             transition: width 0.5s ease;
             width: 0;
         }
-
         .progress-text {
-            color: #64B5F6;
+            color: white;
             font-size: 0.85rem;
         }
-
         /* Glass Card */
         .glass-card {
             background: rgba(24, 119, 242, 0.1);
@@ -248,13 +220,26 @@
             padding: 1.5rem;
             margin-bottom: 1.5rem;
         }
-
         .glass-card h2 {
             font-size: 1.3rem;
             margin-bottom: 1rem;
             color: white;
+            text-shadow: 0 0 10px rgba(24, 119, 242, 0.8);
         }
-
+        /* Notes */
+        .notes-content {
+            color: white;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+        .notes-content ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        .notes-content li {
+            margin-bottom: 0.5rem;
+            color: white;
+        }
         /* Video Grid */
         .video-grid {
             display: grid;
@@ -262,21 +247,18 @@
             gap: 1rem;
             margin-top: 1rem;
         }
-
         .video-card {
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(24, 119, 242, 0.3);
             border-radius: 12px;
             overflow: hidden;
         }
-
         .video-thumbnail {
             position: relative;
             width: 100%;
             padding-bottom: 56.25%;
             background: #000;
         }
-
         .video-thumbnail iframe {
             position: absolute;
             top: 0;
@@ -285,22 +267,27 @@
             height: 100%;
             border: none;
         }
-
         .video-info {
             padding: 1rem;
         }
-
         .video-title {
             font-weight: 600;
             margin-bottom: 0.3rem;
             font-size: 0.95rem;
+            color: white;
         }
-
         .video-duration {
             font-size: 0.8rem;
-            color: #64B5F6;
+            color: white;
         }
-
+        .playlist-card {
+            margin-bottom: 1rem;
+        }
+        .playlist-card h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 5px rgba(24, 119, 242, 0.5);
+        }
         /* Exercise Card */
         .exercise-card {
             background: rgba(24, 119, 242, 0.1);
@@ -311,7 +298,6 @@
             padding: 1.2rem;
             margin-bottom: 1rem;
         }
-
         .exercise-header {
             display: flex;
             justify-content: space-between;
@@ -320,46 +306,37 @@
             flex-wrap: wrap;
             gap: 0.5rem;
         }
-
         .exercise-problem {
             font-size: 1.5rem;
             font-weight: 700;
             font-family: 'Courier New', monospace;
-            color: #64B5F6;
+            color: white;
         }
-
         .exercise-meta {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-
         .difficulty-badge {
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
             font-size: 0.75rem;
             font-weight: 600;
+            color: white;
         }
-
         .difficulty-easy {
             background: rgba(76, 175, 80, 0.3);
-            color: #81C784;
         }
-
         .difficulty-medium {
             background: rgba(255, 193, 7, 0.3);
-            color: #FFD54F;
         }
-
         .difficulty-hard {
             background: rgba(244, 67, 54, 0.3);
-            color: #E57373;
         }
-
         .complete-check {
             font-size: 1.5rem;
+            color: #4CAF50;
         }
-
         .btn {
             background: #1877F2;
             color: white;
@@ -374,23 +351,18 @@
             margin-top: 0.5rem;
             touch-action: manipulation;
         }
-
         .btn:active {
             transform: scale(0.95);
         }
-
         .btn:hover {
             background: #4267B2;
         }
-
         .btn-success {
             background: #4CAF50;
         }
-
         .btn-success:hover {
             background: #66BB6A;
         }
-
         .solution-card {
             background: rgba(76, 175, 80, 0.15);
             border: 1px solid rgba(76, 175, 80, 0.3);
@@ -398,18 +370,15 @@
             padding: 1rem;
             margin-top: 1rem;
         }
-
         .solution-card p:first-child {
             font-weight: 600;
-            color: #81C784;
+            color: white;
             margin-bottom: 0.5rem;
         }
-
         .solution-card p:last-child {
             font-size: 0.85rem;
-            color: #64B5F6;
+            color: white;
         }
-
         .back-btn {
             background: rgba(24, 119, 242, 0.15);
             backdrop-filter: blur(10px);
@@ -427,91 +396,75 @@
             transition: background 0.2s;
             touch-action: manipulation;
         }
-
         .back-btn:active {
             transform: scale(0.95);
         }
-
         .back-btn:hover {
             background: rgba(24, 119, 242, 0.25);
         }
-
         /* Footer */
         footer {
             margin-top: 3rem;
             padding: 2rem 1rem;
             text-align: center;
             border-top: 1px solid rgba(24, 119, 242, 0.3);
-            color: #64B5F6;
+            color: white;
         }
-
         footer p {
             margin: 0.3rem 0;
             font-size: 0.9rem;
+            color: white;
         }
-
         footer p:first-child {
             font-weight: 700;
             font-size: 1.1rem;
             color: #1877F2;
+            text-shadow: 0 0 5px rgba(24, 119, 242, 0.5);
         }
-
         /* Utilities */
         .hidden {
             display: none;
         }
-
         /* Mobile Optimizations */
         @media (max-width: 600px) {
             .hero {
                 padding: 1.5rem 1rem;
             }
-
             .hero-card {
                 padding: 1.5rem 1rem;
             }
-
             .grade-grid {
                 gap: 0.6rem;
             }
-
             .grade-card {
                 padding: 1.2rem 0.8rem;
             }
-
             .grade-number {
                 font-size: 2rem;
             }
-
             .topic-grid {
                 grid-template-columns: 1fr;
             }
-
             .video-grid {
                 grid-template-columns: 1fr;
             }
-
             nav {
                 display: none;
             }
-
             .exercise-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
-
             .btn {
                 width: 100%;
                 margin-right: 0;
             }
         }
-
         @media (min-width: 601px) and (max-width: 900px) {
             .grade-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
         }
-
         @media (min-width: 901px) {
             .grade-grid {
                 grid-template-columns: repeat(5, 1fr);
@@ -533,7 +486,6 @@
             </nav>
         </div>
     </header>
-
     <div class="container">
         <div id="heroSection" class="hero">
             <div class="hero-card">
@@ -542,7 +494,6 @@
                 <p class="creator">Created by Mawethu Mpande | Proudly Ugie</p>
             </div>
         </div>
-
         <div id="gradeSection">
             <h2 class="section-title">Select Your Grade</h2>
             <div class="grade-grid">
@@ -584,24 +535,22 @@
                 </div>
             </div>
         </div>
-
         <div id="topicsSection" class="hidden">
             <button class="back-btn" onclick="backToGrades()">← Back to Grades</button>
             <div class="glass-card">
                 <h2 id="topicsTitle"></h2>
-                <p style="color: #64B5F6; font-size: 0.9rem;">Choose a topic to start learning</p>
+                <p style="color: white; font-size: 0.9rem;">Choose a topic to start learning</p>
             </div>
             <div id="topicsGrid" class="topic-grid"></div>
         </div>
-
         <div id="contentSection" class="hidden">
             <button class="back-btn" onclick="backToTopics()">← Back to Topics</button>
-            
+           
             <div class="progress-card">
                 <div class="progress-header">
                     <div>
                         <h3>Your Progress</h3>
-                        <p id="currentTopic" style="color: #64B5F6; font-size: 0.85rem;"></p>
+                        <p id="currentTopic" style="color: white; font-size: 0.85rem;"></p>
                     </div>
                 </div>
                 <div class="progress-bar-bg">
@@ -609,10 +558,34 @@
                 </div>
                 <p id="progressText" class="progress-text">0% Complete</p>
             </div>
-
+            <div class="glass-card">
+                <h2>Quick Notes</h2>
+                <div id="notesContent" class="notes-content"></div>
+            </div>
+            <div id="grade12Playlists" class="glass-card hidden">
+                <h2>Recommended YouTube Playlists for Grade 12</h2>
+                <div class="playlist-card">
+                    <h3>Grade 12 Financial Maths</h3>
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyPZRWmE6MVzwuBlg2hfuvoT" loading="lazy" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="playlist-card">
+                    <h3>Series and Sequences Playlist Grade 12</h3>
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyPIXj7twby7-xtcs9hekRVn" loading="lazy" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="playlist-card">
+                    <h3>Factor and Remainder Theorem Grade 12</h3>
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyO5IkhNzfrA83ensZJ9eg1Y" loading="lazy" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
             <div class="glass-card">
                 <h2>Video Tutorials</h2>
-                <div class="video-grid">
+                <div id="videoGrid" class="video-grid">
                     <div class="video-card">
                         <div class="video-thumbnail">
                             <iframe src="https://www.youtube.com/embed/HdU_rf7eMTI" loading="lazy" allowfullscreen></iframe>
@@ -633,20 +606,17 @@
                     </div>
                 </div>
             </div>
-
             <div class="glass-card">
-                <h2>Practice Exercises</h2>
+                <h2>Practice Exercises & Workouts</h2>
                 <div id="exercisesContainer"></div>
             </div>
         </div>
     </div>
-
     <footer>
         <p>Sisonke EduTech - Education Division</p>
         <p>Created by Mawethu Mpande | Proudly Ugie</p>
         <p style="font-size: 0.8rem; opacity: 0.8;">Self-Paced Online Math Tutoring Hub | Grades 4-12</p>
     </footer>
-
     <script>
         const topics = {
             4: ['Addition & Subtraction', 'Multiplication Tables', 'Basic Division', 'Fractions Intro', 'Shapes & Geometry'],
@@ -660,7 +630,91 @@
             12: ['Integral Calculus', 'Complex Numbers', 'Matrices', 'Advanced Statistics', 'Optimization']
         };
 
-        const exercises = [
+        // Notes for Grade 12 topics
+        const notes = {
+            'Integral Calculus': `
+                <ul>
+                    <li>Integration is the inverse process of differentiation. The indefinite integral of f(x) is F(x) + C where F'(x) = f(x).</li>
+                    <li>Definite integral ∫ from a to b f(x) dx = F(b) - F(a), representing the net area under the curve.</li>
+                    <li>Common rules: ∫ x^n dx = (x^{n+1})/(n+1) + C for n ≠ -1; ∫ e^x dx = e^x + C.</li>
+                    <li>Applications: Finding areas, volumes, and solving differential equations.</li>
+                </ul>
+            `,
+            'Complex Numbers': `
+                <ul>
+                    <li>A complex number z = a + bi, where i = √(-1), a is real part, b is imaginary part.</li>
+                    <li>Addition: (a + bi) + (c + di) = (a+c) + (b+d)i.</li>
+                    <li>Modulus |z| = √(a² + b²); Argument arg(z) = tan⁻¹(b/a).</li>
+                    <li>De Moivre's theorem: (cos θ + i sin θ)^n = cos(nθ) + i sin(nθ).</li>
+                </ul>
+            `,
+            'Matrices': `
+                <ul>
+                    <li>A matrix is a rectangular array of numbers. Types: square, identity, zero.</li>
+                    <li>Operations: Addition (same size), Multiplication (AB if columns A = rows B).</li>
+                    <li>Determinant for 2x2: ad - bc; Inverse exists if det ≠ 0.</li>
+                    <li>Applications: Solving systems of equations, transformations.</li>
+                </ul>
+            `,
+            'Advanced Statistics': `
+                <ul>
+                    <li>Normal distribution: Bell curve, mean μ, std dev σ; 68-95-99.7 rule.</li>
+                    <li>Hypothesis testing: Null vs alternative, p-value, significance level α.</li>
+                    <li>Regression: Linear y = mx + c, correlation coefficient r (-1 to 1).</li>
+                    <li>Bayes' theorem: P(A|B) = [P(B|A) P(A)] / P(B).</li>
+                </ul>
+            `,
+            'Optimization': `
+                <ul>
+                    <li>Find max/min of f(x) using f'(x) = 0 and second derivative test.</li>
+                    <li>Constrained optimization: Lagrange multipliers ∇f = λ ∇g.</li>
+                    <li>Linear programming: Maximize cx subject to Ax ≤ b, graphical method for 2 vars.</li>
+                    <li>Applications: Resource allocation, cost minimization.</li>
+                </ul>
+            `
+        };
+
+        // Topic-specific exercises for Grade 12 (workouts with problems and answers)
+        const exercisesByTopic = {
+            'Integral Calculus': [
+                { id: 1, problem: '∫ (3x² + 2x) dx', answer: '(x³ + x²) + C', difficulty: 'easy' },
+                { id: 2, problem: '∫ from 0 to 1 x dx', answer: '0.5', difficulty: 'medium' },
+                { id: 3, problem: '∫ e^x dx', answer: 'e^x + C', difficulty: 'easy' },
+                { id: 4, problem: '∫ sin(x) dx', answer: '-cos(x) + C', difficulty: 'medium' },
+                { id: 5, problem: '∫ from 1 to 2 (1/x) dx', answer: 'ln(2)', difficulty: 'hard' }
+            ],
+            'Complex Numbers': [
+                { id: 1, problem: '(3 + 2i) + (1 - 4i)', answer: '4 - 2i', difficulty: 'easy' },
+                { id: 2, problem: 'Modulus of 3 + 4i', answer: '5', difficulty: 'easy' },
+                { id: 3, problem: '(1 + i)^2', answer: '2i', difficulty: 'medium' },
+                { id: 4, problem: 'Arg of -1 + i', answer: '3π/4', difficulty: 'medium' },
+                { id: 5, problem: '(cos θ + i sin θ)^3', answer: 'cos(3θ) + i sin(3θ)', difficulty: 'hard' }
+            ],
+            'Matrices': [
+                { id: 1, problem: 'Determinant of [[1,2],[3,4]]', answer: '-2', difficulty: 'easy' },
+                { id: 2, problem: '[[1,0],[0,1]] * [[a,b],[c,d]]', answer: '[[a,b],[c,d]]', difficulty: 'easy' },
+                { id: 3, problem: 'Inverse of [[2,1],[1,1]]', answer: '[[1,-1],[-1,2]]', difficulty: 'medium' },
+                { id: 4, problem: 'A * B where A=[[1,2], [3,4]], B=[[5,6],[7,8]]', answer: '[[19,22],[43,50]]', difficulty: 'medium' },
+                { id: 5, problem: 'Trace of [[1,2,3],[4,5,6]]', answer: '6', difficulty: 'hard' }
+            ],
+            'Advanced Statistics': [
+                { id: 1, problem: 'Mean of 1,2,3,4,5', answer: '3', difficulty: 'easy' },
+                { id: 2, problem: 'Standard deviation of 1,3,5 (pop)', answer: '1.633', difficulty: 'medium' },
+                { id: 3, problem: 'P(Z < 1.96) for standard normal', answer: '0.975', difficulty: 'medium' },
+                { id: 4, problem: 'Correlation if perfect positive', answer: '1', difficulty: 'easy' },
+                { id: 5, problem: 'Bayes: P(A)=0.4, P(B|A)=0.8, P(B|¬A)=0.3, find P(A|B)', answer: '0.727', difficulty: 'hard' }
+            ],
+            'Optimization': [
+                { id: 1, problem: 'Critical points of f(x)=x² - 4x + 3', answer: 'x=2', difficulty: 'easy' },
+                { id: 2, problem: 'f''(x) for f(x)=x³ - 3x', answer: '6x', difficulty: 'easy' },
+                { id: 3, problem: 'Max of xy s.t. x+y=10', answer: '25 at x=5,y=5', difficulty: 'medium' },
+                { id: 4, problem: 'Min cost: 2x + 3y s.t. x+y≥5, x≥0,y≥0', answer: '10 at x=5,y=0', difficulty: 'medium' },
+                { id: 5, problem: 'Lagrange for f=x²+y² s.t. x+y=1', answer: 'λ=2, x=y=0.5', difficulty: 'hard' }
+            ]
+        };
+
+        // General exercises for other grades
+        const generalExercises = [
             { id: 1, problem: '456 ÷ 8', answer: '57', difficulty: 'easy' },
             { id: 2, problem: '735 ÷ 5', answer: '147', difficulty: 'easy' },
             { id: 3, problem: '892 ÷ 4', answer: '223', difficulty: 'medium' },
@@ -671,63 +725,78 @@
         let currentGrade = null;
         let currentTopic = null;
         let completedExercises = {};
-
         function selectGrade(grade) {
             currentGrade = grade;
             document.getElementById('heroSection').classList.add('hidden');
             document.getElementById('gradeSection').classList.add('hidden');
             document.getElementById('topicsSection').classList.remove('hidden');
             document.getElementById('topicsTitle').textContent = `Grade ${grade} - Mathematics Topics`;
-            
+           
             const topicsGrid = document.getElementById('topicsGrid');
             topicsGrid.innerHTML = '';
-            
+           
             topics[grade].forEach(topic => {
                 const card = document.createElement('div');
                 card.className = 'topic-card';
                 card.onclick = () => selectTopic(topic);
                 card.innerHTML = `
                     <div class="topic-title">${topic}</div>
-                    <div class="topic-desc">Click to explore exercises & videos</div>
+                    <div class="topic-desc">Click to explore notes, exercises & videos</div>
                 `;
                 topicsGrid.appendChild(card);
             });
         }
-
         function selectTopic(topic) {
             currentTopic = topic;
             document.getElementById('topicsSection').classList.add('hidden');
             document.getElementById('contentSection').classList.remove('hidden');
             document.getElementById('currentTopic').textContent = topic;
-            
+           
+            // Show playlists for Grade 12
+            const playlistsDiv = document.getElementById('grade12Playlists');
+            if (currentGrade === 12) {
+                playlistsDiv.classList.remove('hidden');
+            } else {
+                playlistsDiv.classList.add('hidden');
+            }
+
+            // Set notes
+            const notesDiv = document.getElementById('notesContent');
+            if (currentGrade === 12 && notes[topic]) {
+                notesDiv.innerHTML = notes[topic];
+            } else {
+                notesDiv.innerHTML = '<p>Notes coming soon! Review the video tutorials for key concepts.</p>';
+            }
+           
             renderExercises();
             updateProgress();
         }
-
         function backToGrades() {
             currentGrade = null;
             document.getElementById('heroSection').classList.remove('hidden');
             document.getElementById('gradeSection').classList.remove('hidden');
             document.getElementById('topicsSection').classList.add('hidden');
         }
-
         function backToTopics() {
             currentTopic = null;
             document.getElementById('topicsSection').classList.remove('hidden');
             document.getElementById('contentSection').classList.add('hidden');
         }
-
         function renderExercises() {
             const container = document.getElementById('exercisesContainer');
             container.innerHTML = '';
-            
-            exercises.forEach(exercise => {
+            let exList = generalExercises;
+            if (currentGrade === 12 && exercisesByTopic[currentTopic]) {
+                exList = exercisesByTopic[currentTopic];
+            }
+           
+            exList.forEach(exercise => {
                 const card = document.createElement('div');
                 card.className = 'exercise-card';
-                
+               
                 const difficultyClass = `difficulty-${exercise.difficulty}`;
                 const isComplete = completedExercises[exercise.id];
-                
+               
                 card.innerHTML = `
                     <div class="exercise-header">
                         <div class="exercise-problem">${exercise.problem}</div>
@@ -737,43 +806,40 @@
                         </div>
                     </div>
                     <button class="btn" onclick="toggleSolution(${exercise.id})">
-                        <span id="solutionBtn${exercise.id}">Show Solution</span>
+                        <span id="solutionBtn${exercise.id}">Show Answer</span>
                     </button>
                     ${!isComplete ? `<button class="btn btn-success" onclick="markComplete(${exercise.id})">Mark Complete</button>` : ''}
                     <div id="solution${exercise.id}" class="solution-card hidden">
-                        <p>Answer: ${exercise.answer}</p>
-                        <p>Practice this problem on paper and check your work!</p>
+                        <p>Solution: ${exercise.answer}</p>
+                        <p>Work this out on paper to build your skills!</p>
                     </div>
                 `;
-                
+               
                 container.appendChild(card);
             });
         }
-
         function toggleSolution(id) {
             const solution = document.getElementById(`solution${id}`);
             const btn = document.getElementById(`solutionBtn${id}`);
-            
+           
             if (solution.classList.contains('hidden')) {
                 solution.classList.remove('hidden');
-                btn.textContent = 'Hide Solution';
+                btn.textContent = 'Hide Answer';
             } else {
                 solution.classList.add('hidden');
-                btn.textContent = 'Show Solution';
+                btn.textContent = 'Show Answer';
             }
         }
-
         function markComplete(id) {
             completedExercises[id] = true;
             renderExercises();
             updateProgress();
         }
-
         function updateProgress() {
             const completed = Object.keys(completedExercises).length;
-            const total = exercises.length;
+            const total = Object.keys(exercisesByTopic[currentTopic] || generalExercises).length;
             const percentage = Math.round((completed / total) * 100);
-            
+           
             document.getElementById('progressBar').style.width = percentage + '%';
             document.getElementById('progressText').textContent = percentage + '% Complete';
         }
