@@ -3,651 +3,779 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Long Division Exercise - Grade 6</title>
+    <title>Sisonke EduTech - Math Learning Hub</title>
     <style>
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
         }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a237e 50%, #0a0e27 100%);
+            background-attachment: fixed;
+            color: white;
             min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        .container {
-            background: white;
-            border-radius: 15px;
-            padding: 20px 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        h1 {
-            color: #764ba2;
-            text-align: center;
-            font-size: clamp(1.5em, 6vw, 2.5em);
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
-        .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 20px;
-            font-size: clamp(0.9em, 3vw, 1.1em);
-            line-height: 1.4;
-        }
-        
-        .branding {
-            text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px;
-            border-radius: 12px;
-            margin: 20px 0;
-            font-size: clamp(0.95em, 3.2vw, 1.1em);
-            line-height: 1.8;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
-        
-        .branding strong {
-            font-weight: 700;
-            font-size: 1.1em;
-        }
-        .question {
-            background: #f8f9ff;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        .question h3 {
-            color: #667eea;
-            margin-top: 0;
-            font-size: clamp(1.1em, 4vw, 1.3em);
-        }
-        .division-problem {
-            font-family: 'Courier New', monospace;
-            font-size: clamp(1.1em, 4vw, 1.3em);
-            background: white;
-            padding: 12px 15px;
-            border-radius: 8px;
-            display: inline-block;
-            margin: 10px 0;
-            border: 2px solid #667eea;
-            word-break: break-word;
-        }
-        .solution {
-            background: #e8f5e9;
-            border-left: 4px solid #4caf50;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 10px;
-            display: none;
-        }
-        .solution h4 {
-            color: #2e7d32;
-            margin-top: 0;
-            font-size: clamp(1em, 3.5vw, 1.2em);
-        }
-        .step {
-            margin: 12px 0;
-            padding: 10px;
-            background: white;
-            border-radius: 5px;
-            font-size: clamp(0.9em, 3vw, 1em);
-            line-height: 1.5;
-        }
-        .step-number {
-            background: #667eea;
-            color: white;
-            border-radius: 50%;
-            min-width: 28px;
-            height: 28px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-right: 8px;
-            flex-shrink: 0;
-            font-size: 0.9em;
-        }
-        .diagram {
-            font-family: 'Courier New', monospace;
-            background: #f5f5f5;
-            padding: 12px;
-            border-radius: 5px;
-            overflow-x: auto;
-            white-space: pre;
-            margin: 10px 0;
-            font-size: clamp(0.75em, 2.8vw, 0.95em);
-            -webkit-overflow-scrolling: touch;
-            line-height: 1.4;
-        }
-        button {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: clamp(0.9em, 3.5vw, 1em);
-            font-weight: bold;
-            margin: 10px 5px 10px 0;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            touch-action: manipulation;
-            -webkit-appearance: none;
-            width: auto;
-        }
-        button:active {
-            transform: scale(0.95);
-        }
-        button:hover {
-            background: #764ba2;
-            box-shadow: 0 6px 20px rgba(118, 75, 162, 0.4);
-        }
-        .show-all-btn {
-            display: block;
-            margin: 25px auto;
-            padding: 14px 30px;
-            font-size: clamp(1em, 3.8vw, 1.1em);
-            width: fit-content;
-            max-width: 90%;
-        }
-        .tip {
-            background: #fff9c4;
-            border-left: 4px solid #fbc02d;
-            padding: 12px;
-            margin: 15px 0;
-            border-radius: 5px;
-            font-size: clamp(0.85em, 3vw, 0.95em);
             line-height: 1.6;
         }
-        .tip strong {
-            color: #f57c00;
+
+        /* Header */
+        header {
+            background: rgba(24, 119, 242, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(24, 119, 242, 0.3);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        
-        .video-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 12px;
-            padding: 20px 15px;
-            margin: 20px 0;
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.3rem;
+            color: #1877F2;
+            font-weight: 700;
+        }
+
+        .logo p {
+            font-size: 0.7rem;
+            color: #64B5F6;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: #64B5F6;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 2rem 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-card {
+            background: rgba(24, 119, 242, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(24, 119, 242, 0.3);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            color: #1877F2;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            color: #64B5F6;
+            margin-bottom: 0.3rem;
+        }
+
+        .creator {
+            font-size: 0.85rem !important;
+            color: #90CAF9;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            margin-bottom: 1.5rem;
+            color: #1877F2;
+        }
+
+        /* Grade Grid */
+        .grade-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .grade-card {
+            background: rgba(24, 119, 242, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(24, 119, 242, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            touch-action: manipulation;
+        }
+
+        .grade-card:active {
+            transform: scale(0.95);
+        }
+
+        .grade-card:hover {
+            background: rgba(24, 119, 242, 0.25);
+        }
+
+        .grade-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1877F2;
+            margin-bottom: 0.3rem;
+        }
+
+        .grade-label {
+            font-size: 0.85rem;
+            color: #64B5F6;
+        }
+
+        /* Topic Grid */
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .topic-card {
+            background: rgba(24, 119, 242, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(24, 119, 242, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            touch-action: manipulation;
+        }
+
+        .topic-card:active {
+            transform: scale(0.98);
+        }
+
+        .topic-card:hover {
+            background: rgba(24, 119, 242, 0.25);
+        }
+
+        .topic-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
             color: white;
         }
-        
-        .video-section h2 {
+
+        .topic-desc {
+            font-size: 0.85rem;
+            color: #64B5F6;
+        }
+
+        /* Progress Card */
+        .progress-card {
+            background: rgba(76, 175, 80, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .progress-header h3 {
+            font-size: 1.2rem;
             color: white;
-            text-align: center;
-            margin: 0 0 8px 0;
-            font-size: clamp(1.2em, 4.5vw, 1.5em);
         }
-        
-        .video-subtitle {
-            text-align: center;
-            margin: 0 0 15px 0;
-            font-size: clamp(0.85em, 3vw, 0.95em);
-            opacity: 0.95;
-        }
-        
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            background: #000;
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            overflow: hidden;
+            margin-bottom: 0.5rem;
         }
-        
-        .video-container iframe {
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50 0%, #1877F2 100%);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            width: 0;
+        }
+
+        .progress-text {
+            color: #64B5F6;
+            font-size: 0.85rem;
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: rgba(24, 119, 242, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(24, 119, 242, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .glass-card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        /* Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .video-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(24, 119, 242, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #000;
+        }
+
+        .video-thumbnail iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             border: none;
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .video-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        .video-duration {
+            font-size: 0.8rem;
+            color: #64B5F6;
+        }
+
+        /* Exercise Card */
+        .exercise-card {
+            background: rgba(24, 119, 242, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(24, 119, 242, 0.3);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .exercise-problem {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            color: #64B5F6;
+        }
+
+        .exercise-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .difficulty-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .difficulty-easy {
+            background: rgba(76, 175, 80, 0.3);
+            color: #81C784;
+        }
+
+        .difficulty-medium {
+            background: rgba(255, 193, 7, 0.3);
+            color: #FFD54F;
+        }
+
+        .difficulty-hard {
+            background: rgba(244, 67, 54, 0.3);
+            color: #E57373;
+        }
+
+        .complete-check {
+            font-size: 1.5rem;
+        }
+
+        .btn {
+            background: #1877F2;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.3rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s, transform 0.1s;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+            touch-action: manipulation;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn:hover {
+            background: #4267B2;
+        }
+
+        .btn-success {
+            background: #4CAF50;
+        }
+
+        .btn-success:hover {
+            background: #66BB6A;
+        }
+
+        .solution-card {
+            background: rgba(76, 175, 80, 0.15);
+            border: 1px solid rgba(76, 175, 80, 0.3);
             border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
         }
-        
+
+        .solution-card p:first-child {
+            font-weight: 600;
+            color: #81C784;
+            margin-bottom: 0.5rem;
+        }
+
+        .solution-card p:last-child {
+            font-size: 0.85rem;
+            color: #64B5F6;
+        }
+
+        .back-btn {
+            background: rgba(24, 119, 242, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(24, 119, 242, 0.3);
+            padding: 0.7rem 1.3rem;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+            touch-action: manipulation;
+        }
+
+        .back-btn:active {
+            transform: scale(0.95);
+        }
+
+        .back-btn:hover {
+            background: rgba(24, 119, 242, 0.25);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 3rem;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-top: 1px solid rgba(24, 119, 242, 0.3);
+            color: #64B5F6;
+        }
+
+        footer p {
+            margin: 0.3rem 0;
+            font-size: 0.9rem;
+        }
+
+        footer p:first-child {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1877F2;
+        }
+
+        /* Utilities */
+        .hidden {
+            display: none;
+        }
+
+        /* Mobile Optimizations */
         @media (max-width: 600px) {
-            body {
-                padding: 5px;
+            .hero {
+                padding: 1.5rem 1rem;
             }
-            .container {
-                padding: 15px 10px;
-                border-radius: 10px;
+
+            .hero-card {
+                padding: 1.5rem 1rem;
             }
-            .video-section {
-                padding: 15px 10px;
-                border-radius: 10px;
+
+            .grade-grid {
+                gap: 0.6rem;
             }
-            .question {
-                padding: 12px;
-                margin: 15px 0;
+
+            .grade-card {
+                padding: 1.2rem 0.8rem;
             }
-            .solution {
-                padding: 12px;
+
+            .grade-number {
+                font-size: 2rem;
             }
-            .step {
-                padding: 8px;
-                margin: 10px 0;
+
+            .topic-grid {
+                grid-template-columns: 1fr;
             }
-            .diagram {
-                padding: 10px;
-                font-size: 0.7em;
+
+            .video-grid {
+                grid-template-columns: 1fr;
             }
-            button {
-                padding: 10px 16px;
+
+            nav {
+                display: none;
             }
-            .show-all-btn {
-                padding: 12px 25px;
+
+            .exercise-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btn {
+                width: 100%;
+                margin-right: 0;
             }
         }
-        
-        @media (max-width: 400px) {
-            .diagram {
-                font-size: 0.65em;
-                padding: 8px;
+
+        @media (min-width: 601px) and (max-width: 900px) {
+            .grade-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
-            h1 {
-                font-size: 1.5em;
+        }
+
+        @media (min-width: 901px) {
+            .grade-grid {
+                grid-template-columns: repeat(5, 1fr);
             }
         }
     </style>
 </head>
 <body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1>Sisonke EduTech</h1>
+                <p>Education Division</p>
+            </div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#progress">Progress</a>
+                <a href="#resources">Resources</a>
+            </nav>
+        </div>
+    </header>
+
     <div class="container">
-        <h1>🧮 Long Division Exercise</h1>
-        <p class="subtitle">Grade 6 Mathematics - Practice your division skills!</p>
-        
-        <div class="branding">
-            <strong>Sisonke Education</strong><br>
-            Created By <strong>Mawethu Mpande</strong><br>
-            From Ugie - <strong>Proudly Ugie</strong>
-        </div>
-
-        <div class="tip">
-            <strong>📝 Instructions:</strong> Watch the video tutorial below, then solve each problem on paper first, and click "Show Solution" to check your work!
-        </div>
-
-        <div class="video-section">
-            <h2>📺 Long Division Tutorial Video</h2>
-            <p class="video-subtitle">Watch this helpful explanation before starting the exercises!</p>
-            <div class="video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/HdU_rf7eMTI" 
-                    title="Long Division Tutorial" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen>
-                </iframe>
+        <div id="heroSection" class="hero">
+            <div class="hero-card">
+                <h2>Self-Paced Math Learning Hub</h2>
+                <p>Grades 4 - 12 | Master Mathematics at Your Own Pace</p>
+                <p class="creator">Created by Mawethu Mpande | Proudly Ugie</p>
             </div>
         </div>
 
-        <!-- Question 1 -->
-        <div class="question">
-            <h3>Question 1</h3>
-            <div class="division-problem">456 ÷ 8 = ?</div>
-            <button onclick="toggleSolution('sol1')">Show Solution</button>
-            <div class="solution" id="sol1">
-                <h4>✅ Solution: 456 ÷ 8 = 57</h4>
-                
-                <div class="step">
-                    <span class="step-number">1</span>
-                    <strong>Divide the first digit(s):</strong> How many times does 8 go into 4? Zero times (4 is smaller than 8), so we look at the first two digits: 45.
+        <div id="gradeSection">
+            <h2 class="section-title">Select Your Grade</h2>
+            <div class="grade-grid">
+                <div class="grade-card" onclick="selectGrade(4)">
+                    <div class="grade-number">4</div>
+                    <div class="grade-label">Grade 4</div>
                 </div>
-
-                <div class="step">
-                    <span class="step-number">2</span>
-                    <strong>8 goes into 45:</strong> 8 × 5 = 40. So 8 goes into 45 five times with a remainder.
+                <div class="grade-card" onclick="selectGrade(5)">
+                    <div class="grade-number">5</div>
+                    <div class="grade-label">Grade 5</div>
                 </div>
-
-                <div class="diagram">      5
-    -----
-8 | 456
-   -40  ← (8 × 5 = 40)
-    ---
-     56</div>
-
-                <div class="step">
-                    <span class="step-number">3</span>
-                    <strong>Subtract and bring down:</strong> 45 - 40 = 5. Bring down the next digit (6) to make 56.
+                <div class="grade-card" onclick="selectGrade(6)">
+                    <div class="grade-number">6</div>
+                    <div class="grade-label">Grade 6</div>
                 </div>
-
-                <div class="step">
-                    <span class="step-number">4</span>
-                    <strong>8 goes into 56:</strong> 8 × 7 = 56. So 8 goes into 56 exactly 7 times.
+                <div class="grade-card" onclick="selectGrade(7)">
+                    <div class="grade-number">7</div>
+                    <div class="grade-label">Grade 7</div>
                 </div>
-
-                <div class="diagram">      57
-    -----
-8 | 456
-   -40
-    ---
-     56
-    -56  ← (8 × 7 = 56)
-    ---
-      0  ← No remainder!</div>
-
-                <div class="step">
-                    <span class="step-number">5</span>
-                    <strong>Final Answer:</strong> 456 ÷ 8 = <strong>57</strong> with no remainder.
+                <div class="grade-card" onclick="selectGrade(8)">
+                    <div class="grade-number">8</div>
+                    <div class="grade-label">Grade 8</div>
+                </div>
+                <div class="grade-card" onclick="selectGrade(9)">
+                    <div class="grade-number">9</div>
+                    <div class="grade-label">Grade 9</div>
+                </div>
+                <div class="grade-card" onclick="selectGrade(10)">
+                    <div class="grade-number">10</div>
+                    <div class="grade-label">Grade 10</div>
+                </div>
+                <div class="grade-card" onclick="selectGrade(11)">
+                    <div class="grade-number">11</div>
+                    <div class="grade-label">Grade 11</div>
+                </div>
+                <div class="grade-card" onclick="selectGrade(12)">
+                    <div class="grade-number">12</div>
+                    <div class="grade-label">Grade 12</div>
                 </div>
             </div>
         </div>
 
-        <!-- Question 2 -->
-        <div class="question">
-            <h3>Question 2</h3>
-            <div class="division-problem">735 ÷ 5 = ?</div>
-            <button onclick="toggleSolution('sol2')">Show Solution</button>
-            <div class="solution" id="sol2">
-                <h4>✅ Solution: 735 ÷ 5 = 147</h4>
-                
-                <div class="step">
-                    <span class="step-number">1</span>
-                    <strong>Divide the first digit:</strong> How many times does 5 go into 7? 5 × 1 = 5.
-                </div>
-
-                <div class="diagram">      1
-    -----
-5 | 735
-   -5    ← (5 × 1 = 5)
-    ---
-     23</div>
-
-                <div class="step">
-                    <span class="step-number">2</span>
-                    <strong>Subtract and bring down:</strong> 7 - 5 = 2. Bring down the 3 to make 23.
-                </div>
-
-                <div class="step">
-                    <span class="step-number">3</span>
-                    <strong>5 goes into 23:</strong> 5 × 4 = 20. So 5 goes into 23 four times.
-                </div>
-
-                <div class="diagram">      14
-    -----
-5 | 735
-   -5
-    ---
-     23
-    -20  ← (5 × 4 = 20)
-    ---
-      35</div>
-
-                <div class="step">
-                    <span class="step-number">4</span>
-                    <strong>Subtract and bring down:</strong> 23 - 20 = 3. Bring down the 5 to make 35.
-                </div>
-
-                <div class="step">
-                    <span class="step-number">5</span>
-                    <strong>5 goes into 35:</strong> 5 × 7 = 35. Perfect!
-                </div>
-
-                <div class="diagram">      147
-    -----
-5 | 735
-   -5
-    ---
-     23
-    -20
-    ---
-      35
-     -35  ← (5 × 7 = 35)
-     ---
-       0</div>
-
-                <div class="step">
-                    <span class="step-number">6</span>
-                    <strong>Final Answer:</strong> 735 ÷ 5 = <strong>147</strong> with no remainder.
-                </div>
+        <div id="topicsSection" class="hidden">
+            <button class="back-btn" onclick="backToGrades()">← Back to Grades</button>
+            <div class="glass-card">
+                <h2 id="topicsTitle"></h2>
+                <p style="color: #64B5F6; font-size: 0.9rem;">Choose a topic to start learning</p>
             </div>
+            <div id="topicsGrid" class="topic-grid"></div>
         </div>
 
-        <!-- Question 3 -->
-        <div class="question">
-            <h3>Question 3</h3>
-            <div class="division-problem">892 ÷ 4 = ?</div>
-            <button onclick="toggleSolution('sol3')">Show Solution</button>
-            <div class="solution" id="sol3">
-                <h4>✅ Solution: 892 ÷ 4 = 223</h4>
-                
-                <div class="step">
-                    <span class="step-number">1</span>
-                    <strong>Divide the first digit:</strong> 4 goes into 8 exactly 2 times (4 × 2 = 8).
+        <div id="contentSection" class="hidden">
+            <button class="back-btn" onclick="backToTopics()">← Back to Topics</button>
+            
+            <div class="progress-card">
+                <div class="progress-header">
+                    <div>
+                        <h3>Your Progress</h3>
+                        <p id="currentTopic" style="color: #64B5F6; font-size: 0.85rem;"></p>
+                    </div>
                 </div>
-
-                <div class="diagram">      2
-    -----
-4 | 892
-   -8    ← (4 × 2 = 8)
-    ---
-     09</div>
-
-                <div class="step">
-                    <span class="step-number">2</span>
-                    <strong>Subtract and bring down:</strong> 8 - 8 = 0. Bring down the 9 to make 09 (which is just 9).
+                <div class="progress-bar-bg">
+                    <div id="progressBar" class="progress-bar-fill"></div>
                 </div>
+                <p id="progressText" class="progress-text">0% Complete</p>
+            </div>
 
-                <div class="step">
-                    <span class="step-number">3</span>
-                    <strong>4 goes into 9:</strong> 4 × 2 = 8. So 4 goes into 9 two times.
-                </div>
-
-                <div class="diagram">      22
-    -----
-4 | 892
-   -8
-    ---
-     09
-    -8   ← (4 × 2 = 8)
-    ---
-     12</div>
-
-                <div class="step">
-                    <span class="step-number">4</span>
-                    <strong>Subtract and bring down:</strong> 9 - 8 = 1. Bring down the 2 to make 12.
-                </div>
-
-                <div class="step">
-                    <span class="step-number">5</span>
-                    <strong>4 goes into 12:</strong> 4 × 3 = 12. Perfect fit!
-                </div>
-
-                <div class="diagram">      223
-    -----
-4 | 892
-   -8
-    ---
-     09
-    -8
-    ---
-     12
-    -12  ← (4 × 3 = 12)
-    ---
-      0</div>
-
-                <div class="step">
-                    <span class="step-number">6</span>
-                    <strong>Final Answer:</strong> 892 ÷ 4 = <strong>223</strong> with no remainder.
+            <div class="glass-card">
+                <h2>Video Tutorials</h2>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <iframe src="https://www.youtube.com/embed/HdU_rf7eMTI" loading="lazy" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">Long Division Tutorial - Complete Guide</div>
+                            <div class="video-duration">12:45</div>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" loading="lazy" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">Long Division with Remainders</div>
+                            <div class="video-duration">8:30</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Question 4 -->
-        <div class="question">
-            <h3>Question 4</h3>
-            <div class="division-problem">1,248 ÷ 12 = ?</div>
-            <button onclick="toggleSolution('sol4')">Show Solution</button>
-            <div class="solution" id="sol4">
-                <h4>✅ Solution: 1,248 ÷ 12 = 104</h4>
-                
-                <div class="step">
-                    <span class="step-number">1</span>
-                    <strong>Divide by two digits:</strong> How many times does 12 go into 1? Zero times. How about 12? Once! (12 × 1 = 12)
-                </div>
-
-                <div class="diagram">       1
-     -----
-12 | 1248
-    -12   ← (12 × 1 = 12)
-     ---
-      04</div>
-
-                <div class="step">
-                    <span class="step-number">2</span>
-                    <strong>Subtract and bring down:</strong> 12 - 12 = 0. Bring down the 4 to make 04 (which is 4).
-                </div>
-
-                <div class="step">
-                    <span class="step-number">3</span>
-                    <strong>12 goes into 4:</strong> It doesn't! 4 is smaller than 12, so we put a 0 in the quotient and bring down the next digit.
-                </div>
-
-                <div class="diagram">       10
-     -----
-12 | 1248
-    -12
-     ---
-      04
-     -0   ← (12 × 0 = 0)
-     ---
-      48</div>
-
-                <div class="step">
-                    <span class="step-number">4</span>
-                    <strong>Bring down the 8:</strong> Now we have 48.
-                </div>
-
-                <div class="step">
-                    <span class="step-number">5</span>
-                    <strong>12 goes into 48:</strong> 12 × 4 = 48. Perfect!
-                </div>
-
-                <div class="diagram">       104
-     -----
-12 | 1248
-    -12
-     ---
-      04
-     -0
-     ---
-      48
-     -48  ← (12 × 4 = 48)
-     ---
-       0</div>
-
-                <div class="step">
-                    <span class="step-number">6</span>
-                    <strong>Final Answer:</strong> 1,248 ÷ 12 = <strong>104</strong> with no remainder.
-                </div>
+            <div class="glass-card">
+                <h2>Practice Exercises</h2>
+                <div id="exercisesContainer"></div>
             </div>
-        </div>
-
-        <!-- Question 5 -->
-        <div class="question">
-            <h3>Question 5</h3>
-            <div class="division-problem">2,835 ÷ 15 = ?</div>
-            <button onclick="toggleSolution('sol5')">Show Solution</button>
-            <div class="solution" id="sol5">
-                <h4>✅ Solution: 2,835 ÷ 15 = 189</h4>
-                
-                <div class="step">
-                    <span class="step-number">1</span>
-                    <strong>Start dividing:</strong> 15 doesn't go into 2. Does it go into 28? Yes! 15 × 1 = 15.
-                </div>
-
-                <div class="diagram">       1
-     -----
-15 | 2835
-    -15   ← (15 × 1 = 15)
-     ---
-     133</div>
-
-                <div class="step">
-                    <span class="step-number">2</span>
-                    <strong>Subtract and bring down:</strong> 28 - 15 = 13. Bring down the 3 to make 133.
-                </div>
-
-                <div class="step">
-                    <span class="step-number">3</span>
-                    <strong>15 goes into 133:</strong> Let's see... 15 × 8 = 120, and 15 × 9 = 135 (too big). So it's 8 times.
-                </div>
-
-                <div class="diagram">       18
-     -----
-15 | 2835
-    -15
-     ---
-     133
-    -120  ← (15 × 8 = 120)
-     ---
-      135</div>
-
-                <div class="step">
-                    <span class="step-number">4</span>
-                    <strong>Subtract and bring down:</strong> 133 - 120 = 13. Bring down the 5 to make 135.
-                </div>
-
-                <div class="step">
-                    <span class="step-number">5</span>
-                    <strong>15 goes into 135:</strong> 15 × 9 = 135. Perfect match!
-                </div>
-
-                <div class="diagram">       189
-     -----
-15 | 2835
-    -15
-     ---
-     133
-    -120
-     ---
-      135
-     -135  ← (15 × 9 = 135)
-     ----
-        0</div>
-
-                <div class="step">
-                    <span class="step-number">6</span>
-                    <strong>Final Answer:</strong> 2,835 ÷ 15 = <strong>189</strong> with no remainder.
-                </div>
-            </div>
-        </div>
-
-        <button class="show-all-btn" onclick="showAllSolutions()">Show All Solutions</button>
-
-        <div class="tip">
-            <strong>💡 Remember:</strong> The key steps in long division are:
-            <br>1. <strong>Divide</strong> - How many times does the divisor go into the current number?
-            <br>2. <strong>Multiply</strong> - Multiply the divisor by your answer
-            <br>3. <strong>Subtract</strong> - Subtract to find the remainder
-            <br>4. <strong>Bring Down</strong> - Bring down the next digit
-            <br>5. <strong>Repeat</strong> - Keep going until there are no more digits!
         </div>
     </div>
 
+    <footer>
+        <p>Sisonke EduTech - Education Division</p>
+        <p>Created by Mawethu Mpande | Proudly Ugie</p>
+        <p style="font-size: 0.8rem; opacity: 0.8;">Self-Paced Online Math Tutoring Hub | Grades 4-12</p>
+    </footer>
+
     <script>
+        const topics = {
+            4: ['Addition & Subtraction', 'Multiplication Tables', 'Basic Division', 'Fractions Intro', 'Shapes & Geometry'],
+            5: ['Long Multiplication', 'Long Division', 'Decimals', 'Fractions Operations', 'Perimeter & Area'],
+            6: ['Ratios & Proportions', 'Percentages', 'Integers', 'Algebraic Expressions', 'Volume & Surface Area'],
+            7: ['Equations', 'Inequalities', 'Exponents', 'Geometry Theorems', 'Statistics'],
+            8: ['Linear Functions', 'Pythagorean Theorem', 'Probability', 'Systems of Equations', 'Polynomials'],
+            9: ['Quadratic Equations', 'Trigonometry Basics', 'Circle Geometry', 'Data Analysis', 'Financial Math'],
+            10: ['Advanced Algebra', 'Trigonometric Functions', 'Analytical Geometry', 'Sequences & Series', 'Calculus Intro'],
+            11: ['Differential Calculus', 'Functions & Graphs', 'Trigonometry Advanced', 'Statistics & Probability', 'Finance Growth'],
+            12: ['Integral Calculus', 'Complex Numbers', 'Matrices', 'Advanced Statistics', 'Optimization']
+        };
+
+        const exercises = [
+            { id: 1, problem: '456 ÷ 8', answer: '57', difficulty: 'easy' },
+            { id: 2, problem: '735 ÷ 5', answer: '147', difficulty: 'easy' },
+            { id: 3, problem: '892 ÷ 4', answer: '223', difficulty: 'medium' },
+            { id: 4, problem: '1,248 ÷ 12', answer: '104', difficulty: 'medium' },
+            { id: 5, problem: '2,835 ÷ 15', answer: '189', difficulty: 'hard' }
+        ];
+
+        let currentGrade = null;
+        let currentTopic = null;
+        let completedExercises = {};
+
+        function selectGrade(grade) {
+            currentGrade = grade;
+            document.getElementById('heroSection').classList.add('hidden');
+            document.getElementById('gradeSection').classList.add('hidden');
+            document.getElementById('topicsSection').classList.remove('hidden');
+            document.getElementById('topicsTitle').textContent = `Grade ${grade} - Mathematics Topics`;
+            
+            const topicsGrid = document.getElementById('topicsGrid');
+            topicsGrid.innerHTML = '';
+            
+            topics[grade].forEach(topic => {
+                const card = document.createElement('div');
+                card.className = 'topic-card';
+                card.onclick = () => selectTopic(topic);
+                card.innerHTML = `
+                    <div class="topic-title">${topic}</div>
+                    <div class="topic-desc">Click to explore exercises & videos</div>
+                `;
+                topicsGrid.appendChild(card);
+            });
+        }
+
+        function selectTopic(topic) {
+            currentTopic = topic;
+            document.getElementById('topicsSection').classList.add('hidden');
+            document.getElementById('contentSection').classList.remove('hidden');
+            document.getElementById('currentTopic').textContent = topic;
+            
+            renderExercises();
+            updateProgress();
+        }
+
+        function backToGrades() {
+            currentGrade = null;
+            document.getElementById('heroSection').classList.remove('hidden');
+            document.getElementById('gradeSection').classList.remove('hidden');
+            document.getElementById('topicsSection').classList.add('hidden');
+        }
+
+        function backToTopics() {
+            currentTopic = null;
+            document.getElementById('topicsSection').classList.remove('hidden');
+            document.getElementById('contentSection').classList.add('hidden');
+        }
+
+        function renderExercises() {
+            const container = document.getElementById('exercisesContainer');
+            container.innerHTML = '';
+            
+            exercises.forEach(exercise => {
+                const card = document.createElement('div');
+                card.className = 'exercise-card';
+                
+                const difficultyClass = `difficulty-${exercise.difficulty}`;
+                const isComplete = completedExercises[exercise.id];
+                
+                card.innerHTML = `
+                    <div class="exercise-header">
+                        <div class="exercise-problem">${exercise.problem}</div>
+                        <div class="exercise-meta">
+                            <span class="difficulty-badge ${difficultyClass}">${exercise.difficulty.toUpperCase()}</span>
+                            ${isComplete ? '<span class="complete-check">✓</span>' : ''}
+                        </div>
+                    </div>
+                    <button class="btn" onclick="toggleSolution(${exercise.id})">
+                        <span id="solutionBtn${exercise.id}">Show Solution</span>
+                    </button>
+                    ${!isComplete ? `<button class="btn btn-success" onclick="markComplete(${exercise.id})">Mark Complete</button>` : ''}
+                    <div id="solution${exercise.id}" class="solution-card hidden">
+                        <p>Answer: ${exercise.answer}</p>
+                        <p>Practice this problem on paper and check your work!</p>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
         function toggleSolution(id) {
-            const sol = document.getElementById(id);
-            if (sol.style.display === 'none' || sol.style.display === '') {
-                sol.style.display = 'block';
+            const solution = document.getElementById(`solution${id}`);
+            const btn = document.getElementById(`solutionBtn${id}`);
+            
+            if (solution.classList.contains('hidden')) {
+                solution.classList.remove('hidden');
+                btn.textContent = 'Hide Solution';
             } else {
-                sol.style.display = 'none';
+                solution.classList.add('hidden');
+                btn.textContent = 'Show Solution';
             }
         }
 
-        function showAllSolutions() {
-            const solutions = document.querySelectorAll('.solution');
-            solutions.forEach(sol => {
-                sol.style.display = 'block';
-            });
+        function markComplete(id) {
+            completedExercises[id] = true;
+            renderExercises();
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const completed = Object.keys(completedExercises).length;
+            const total = exercises.length;
+            const percentage = Math.round((completed / total) * 100);
+            
+            document.getElementById('progressBar').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = percentage + '% Complete';
         }
     </script>
 </body>
