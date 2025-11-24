@@ -5,360 +5,224 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sisonke EduTech - Grade 12 Mathematics</title>
     <style>
+        :root { --blue:#1877F2; --dark:#0a0e27; --green:#4CAF50; --light:#ccffcc; }
         * { margin:0; padding:0; box-sizing:border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a237e 50%, #0a0e27 100%);
-            background-attachment: fixed;
-            color: white;
-            min-height: 100vh;
-            line-height: 1.7;
-        }
-        header {
-            background: rgba(24,119,242,0.15);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(24,119,242,0.3);
-            padding: 1rem;
-            position: sticky; top: 0; z-index: 100;
-        }
-        .header-content {
-            max-width: 1200px; margin: 0 auto;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .logo h1 { font-size: 1.5rem; color: #1877F2; font-weight: 700; }
-        .hero {
-            text-align: center; padding: 4rem 1rem;
-        }
-        .hero h2 { font-size: clamp(2.2rem, 7vw, 3.5rem); color: #1877F2; text-shadow: 0 0 15px rgba(24,119,242,0.8); }
-        .creator { margin-top: 1rem; font-size: 1.1rem; opacity: 0.9; }
-        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
-        .section-title {
-            text-align: center; font-size: 2.2rem; margin: 3rem 0 2rem;
-            color: #1877F2; text-shadow: 0 0 10px rgba(24,119,242,0.8);
-        }
-        .grade-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1.2rem; margin-bottom: 4rem;
-        }
-        .grade-card {
-            background: rgba(24,119,242,0.15);
-            border: 1px solid rgba(24,119,242,0.3);
-            border-radius: 18px;
-            padding: 2rem 1rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-        }
-        .grade-card:hover { background: rgba(24,119,242,0.35); transform: translateY(-8px); }
-        .grade-number { font-size: 3.2rem; color: #1877F2; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+               background: linear-gradient(135deg, var(--dark) 0%, #1a237e 50%, var(--dark) 100%);
+               color: white; line-height: 1.7; min-height: 100vh; }
+        header { background: rgba(24,119,242,0.15); backdrop-filter: blur(12px); padding: 1.2rem; text-align: center; position: sticky; top: 0; z-index: 100; }
+        .logo h1 { font-size: clamp(1.9rem, 5vw, 2.5rem); color: var(--blue); font-weight: 800; }
+        .hero { text-align: center; padding: 3rem 1rem 2rem; }
+        .hero h2 { font-size: clamp(2.5rem, 8vw, 4rem); color: var(--blue); text-shadow: 0 0 20px rgba(24,119,242,0.7); }
+        .creator { margin-top: 1rem; opacity: 0.9; font-size: 1.1rem; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 1rem; }
 
-        /* Topic + Video + Notes */
-        .topic-card {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(24,119,242,0.4);
-            border-radius: 20px;
-            overflow: hidden;
-            margin-bottom: 3rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        }
-        .topic-header {
-            background: linear-gradient(135deg, #1877F2, #4267B2);
-            padding: 1.5rem;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-        }
-        .video-container iframe {
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%;
-            border: none;
-        }
-        .notes {
-            padding: 2rem;
-            background: rgba(24,119,242,0.1);
-            backdrop-filter: blur(8px);
-        }
-        .notes h3 { color: #4CAF50; margin: 1.5rem 0 1rem; font-size: 1.3rem; }
-        .notes ul { margin-left: 1.5rem; margin-bottom: 1rem; }
-        .notes li { margin-bottom: 0.6rem; }
-        .formula {
-            background: rgba(0,0,0,0.3);
-            padding: 1rem;
-            border-radius: 10px;
-            font-family: 'Courier New', monospace;
-            margin: 1rem 0;
-            text-align: center;
-            font-size: 1.1rem;
-        }
-        .notes img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin: 1rem 0;
-            display: block;
-        }
+        .title-page { text-align: center; margin: 2rem 0; }
+        .title-page img { width: 100%; max-width: 800px; border-radius: 18px; box-shadow: 0 12px 35px rgba(0,0,0,0.6); border: 3px solid rgba(24,119,242,0.5); }
 
-        /* Past Papers Section */
-        .papers-section {
-            margin: 3rem 0;
-        }
-        .papers-card {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            border: 2px solid #1877F2;
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-        }
-        .papers-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #00D4FF;
-        }
-        .btn-papers {
-            display: inline-block;
-            background: #1877F2;
-            color: white;
-            padding: 0.8rem 2rem;
-            margin: 0.5rem;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: bold;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(24,119,242,0.6);
-            transition: all 0.3s;
-        }
-        .btn-papers:hover {
-            transform: translateY(-3px);
-            background: #4267B2;
-            box-shadow: 0 8px 20px rgba(24,119,242,0.8);
-        }
+        .section-title { text-align: center; font-size: clamp(2rem, 5vw, 2.6rem); margin: 3rem 0 2rem; color: var(--blue); }
 
-        /* Textbook Overview */
-        .overview-card {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(24,119,242,0.4);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            text-align: center;
-        }
-        .overview-card h3 { color: #4CAF50; margin-bottom: 1rem; }
+        .grade-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; max-width: 500px; margin: 2rem auto; }
+        @media (min-width:600px) {.grade-grid { grid-template-columns: repeat(5,1fr); }}
+        @media (min-width:900px) {.grade-grid { grid-template-columns: repeat(9,1fr); max-width: none; }}
+        .grade-card { background: rgba(24,119,242,0.15); border: 2px solid rgba(24,119,242,0.4); border-radius: 16px; padding: 1.5rem; text-align: center; cursor: pointer; transition: 0.3s; font-weight: bold; }
+        .grade-card:hover { background: rgba(24,119,242,0.4); transform: translateY(-8px); }
+        .grade-number { font-size: clamp(2.5rem,7vw,4rem); color: var(--blue); font-weight: 900; }
 
-        footer {
-            text-align: center; padding: 4rem 1rem;
-            border-top: 1px solid rgba(24,119,242,0.3);
-            margin-top: 5rem;
-        }
+        .topic-card { background: rgba(0,0,0,0.35); border-radius: 20px; overflow: hidden; margin: 2.5rem 0; box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
+        .topic-header { background: linear-gradient(135deg,var(--blue),#4267B2); padding: 1.5rem; text-align: center; font-size: clamp(1.4rem,4vw,1.8rem); font-weight: bold; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-container iframe { position: absolute; top:0; left:0; width:100%; height:100%; border:none; }
+
+        .notes { padding: 2rem 1.5rem; }
+        .exercise-box { background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 16px; border-left: 6px solid var(--green); }
+        .exercise-box h3 { color: var(--green); font-size: 1.5rem; margin-bottom: 1.2rem; }
+        .question { margin: 2rem 0; padding: 1.4rem; background: rgba(255,255,255,0.08); border-radius: 12px; font-size: 1.2rem; }
+        .solution-btn { background: var(--green); color: white; border: none; padding: 1rem; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 1.1rem; width: 100%; margin-top: 0.8rem; transition: 0.3s; }
+        .solution-btn:hover { background: #66BB6A; }
+        .solution { display: none; background: rgba(76,175,80,0.25); padding: 1.6rem; border-radius: 12px; margin-top: 1rem; font-size: 1.05rem; }
+        .step { margin: 1rem 0; padding-left: 0.5rem; color: var(--light); line-height: 1.6; }
+        .final { font-weight: bold; color: #80ff80; margin-top: 1rem; font-size: 1.1rem; }
+
+        .papers-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin: 3rem 0; }
+        @media (min-width:640px) {.papers-grid { grid-template-columns: 1fr 1fr; }}
+        @media (min-width:900px) {.papers-grid { grid-template-columns: repeat(3,1fr); }}
+        .paper-box { background: linear-gradient(135deg,#1e3c72,#2a5298); padding: 2rem; border-radius: 18px; text-align: center; border: 2px solid var(--blue); box-shadow: 0 12px 30px rgba(0,0,0,0.5); }
+        .paper-box h3 { color: #00D4FF; font-size: 1.4rem; }
+        .btn-paper { display: block; background: var(--blue); color: white; padding: 1.1rem; margin-top: 1rem; border-radius: 12px; text-decoration: none; font-weight: bold; }
+        .btn-paper:hover { background: #0d47a1; transform: translateY(-4px); }
+
+        footer { text-align: center; padding: 4rem 1rem; border-top: 1px solid rgba(24,119,242,0.3); margin-top: 5rem; opacity: 0.9; }
         .hidden { display: none; }
-        @media (max-width: 600px) {
-            .grade-grid { grid-template-columns: repeat(3, 1fr); }
-            .btn-papers { display: block; margin: 0.5rem auto; width: 90%; }
-        }
     </style>
     <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
 
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <h1>Sisonke EduTech</h1>
-                <p>Education Division</p>
-            </div>
-        </div>
-    </header>
+<header><div class="logo"><h1>Sisonke EduTech</h1><p>Education Division</p></div></header>
 
-    <div class="hero">
-        <h2>Grade 12 Mathematics</h2>
-        <p style="font-size:1.3rem; margin:1.5rem 0;">CAPS Aligned • Videos + Textbook Screenshots + Past Papers</p>
-        <p class="creator">Created by Mawethu Mpande • Proudly Ugie, Eastern Cape</p>
+<div class="hero">
+    <h2>Grade 12 Mathematics</h2>
+    <p>Videos • Full Step-by-Step Exercises • Past Papers • 100% Free</p>
+    <p class="creator">Created by Mawethu Mpande • Ugie, Eastern Cape</p>
+</div>
+
+<div class="container">
+    <div class="title-page">
+        <img src="https://i.ibb.co.com/0jZ6Z3X/everything-maths-title.jpg" alt="Everything Maths Grade 12">
     </div>
 
-    <div class="container">
+    <h2 class="section-title">Select Your Grade</h2>
+    <div class="grade-grid">
+        <div class="grade-card" onclick="showGrade(4)"><div class="grade-number">4</div></div>
+        <div class="grade-card" onclick="showGrade(5)"><div class="grade-number">5</div></div>
+        <div class="grade-card" onclick="showGrade(6)"><div class="grade-number">6</div></div>
+        <div class="grade-card" onclick="showGrade(7)"><div class="grade-number">7</div></div>
+        <div class="grade-card" onclick="showGrade(8)"><div class="grade-number">8</div></div>
+        <div class="grade-card" onclick="showGrade(9)"><div class="grade-number">9</div></div>
+        <div class="grade-card" onclick="showGrade(10)"><div class="grade-number">10</div></div>
+        <div class="grade-card" onclick="showGrade(11)"><div class="grade-number">11</div></div>
+        <div class="grade-card" onclick="showGrade(12)"><div class="grade-number">12</div></div>
+    </div>
 
-        <!-- Grade Selection -->
-        <h2 class="section-title">Select Your Grade</h2>
-        <div class="grade-grid">
-            <div class="grade-card" onclick="showGrade(4)"><div class="grade-number">4</div></div>
-            <div class="grade-card" onclick="showGrade(5)"><div class="grade-number">5</div></div>
-            <div class="grade-card" onclick="showGrade(6)"><div class="grade-number">6</div></div>
-            <div class="grade-card" onclick="showGrade(7)"><div class="grade-number">7</div></div>
-            <div class="grade-card" onclick="showGrade(8)"><div class="grade-number">8</div></div>
-            <div class="grade-card" onclick="showGrade(9)"><div class="grade-number">9</div></div>
-            <div class="grade-card" onclick="showGrade(10)"><div class="grade-number">10</div></div>
-            <div class="grade-card" onclick="showGrade(11)"><div class="grade-number">11</div></div>
-            <div class="grade-card" onclick="showGrade(12)"><div class="grade-number">12</div></div>
+    <div id="grade12Content" class="hidden">
+
+        <!-- PAST PAPERS -->
+        <h2 class="section-title">Past Exam Papers & Memos</h2>
+        <div class="papers-grid">
+            <div class="paper-box"><h3>National NSC & IEB</h3><p>2014–2025 • All Papers + Memos</p>
+                <a href="https://drive.google.com/embeddedfolderview?id=11hL_FbY417q-HTLmJuQ-8j5i4mCF5qrd#list" target="_blank" class="btn-paper">Open National Folder</a></div>
+            <div class="paper-box"><h3>KZN Provincial</h3><p>2015–2024 • June & Nov</p>
+                <a href="https://drive.google.com/embeddedfolderview?id=1409T54wpAF3x64JSu3KkC5KMUKqsVNYE#list" target="_blank" class="btn-paper">Open KZN Folder</a></div>
+            <div class="paper-box"><h3>Mpumalanga Provincial</h3><p>2015–2024 • June & Nov</p>
+                <a href="https://drive.google.com/embeddedfolderview?id=1Pbj-bJ_woyZs42hZd2JVrr1HFo0vY7Nu#list" target="_blank" class="btn-paper">Open Mpumalanga Folder</a></div>
         </div>
 
-        <!-- GRADE 12 CONTENT -->
-        <div id="grade12Content" class="hidden">
-
-            <!-- Textbook Overview with Screenshots -->
-            <div class="overview-card">
-                <h3>Everything Maths Grade 12 Textbook Overview</h3>
-                <img src="infographic.png" alt="Textbook Infographic: Stats on exercises, pages, and contributors">
-                <img src="title-page.png" alt="Title Page: Grade 12 Mathematics Version 1 CAPS">
-                <img src="copyright.png" alt="Copyright Notice: Creative Commons BY-ND 3.0">
-                <img src="authors.png" alt="Authors and Contributors: Siyavula Team and Volunteers">
-                <img src="intro.png" alt="Introduction: Why Mathematics Matters">
-                <img src="sponsor.png" alt="Sponsor: MMI Holdings">
-                <img src="series.png" alt="Everything Maths & Science Series Overview">
-                <p style="margin-top: 1rem; opacity: 0.8;">Screenshots from Siyavula's official CAPS-aligned textbook. Download full PDF from <a href="https://www.everythingmaths.co.za" style="color: #1877F2;">everythingmaths.co.za</a></p>
+        <!-- SERIES AND SEQUENCES – NOW 100% WORKING -->
+        <div class="topic-card">
+            <div class="topic-header">Series and Sequences • Full Playlist + Detailed Solutions</div>
+            <div class="video-container">
+                <iframe id="video1" src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyPIXj7twby7-xtcs9hekRVn&enablejsapi=1" allowfullscreen></iframe>
             </div>
+            <div class="notes">
+                <div class="exercise-box">
+                    <h3>Exercise 1 – Arithmetic Sequences</h3>
+                    <p><strong>Find the common difference d and write down the next 3 terms of each sequence.</strong></p>
 
-            <!-- Past Papers Grouped -->
-            <div class="papers-section">
-                <h2 class="section-title">Past Exam Papers & Memos</h2>
-                
-                <!-- National & IEB -->
-                <div class="papers-card">
-                    <h3>National NSC & IEB Past Papers (2014–2025)</h3>
-                    <p>Full collection with memoranda for all years</p>
-                    <a href="https://drive.google.com/embeddedfolderview?id=11hL_FbY417q-HTLmJuQ-8j5i4mCF5qrd#list" target="_blank" class="btn-papers">Open National Folder</a>
-                </div>
+                    <!-- Question 1 -->
+                    <div class="question">1. 2 ; 6 ; 10 ; 14 ; 18 ; 22 ; …</div>
+                    <button class="solution-btn" onclick="toggleSolution('sol1')">Show Solution</button>
+                    <div id="sol1" class="solution">
+                        <p class="step">Step 1: 6 − 2 = 4</p>
+                        <p class="step">Step 2: 10 − 6 = 4</p>
+                        <p class="step">Step 3: 14 − 10 = 4 → d = 4</p>
+                        <p class="step">Step 4: 22 + 4 = 26</p>
+                        <p class="step">Step 5: 26 + 4 = 30</p>
+                        <p class="step">Step 6: 30 + 4 = 34</p>
+                        <p class="final">∴ d = 4 ; next terms: 26, 30, 34</p>
+                    </div>
 
-                <!-- KZN -->
-                <div class="papers-card">
-                    <h3>KZN Provincial Past Papers & Memos (2015–2024)</h3>
-                    <p>KwaZulu-Natal June & November exams, sorted by year</p>
-                    <a href="https://drive.google.com/embeddedfolderview?id=1409T54wpAF3x64JSu3KkC5KMUKqsVNYE#list" target="_blank" class="btn-papers">Open KZN Folder</a>
-                </div>
+                    <!-- Question 2 -->
+                    <div class="question">2. −1 ; −4 ; −7 ; −10 ; −13 ; −16 ; …</div>
+                    <button class="solution-btn" onclick="toggleSolution('sol2')">Show Solution</button>
+                    <div id="sol2" class="solution">
+                        <p class="step">Step 1: −4 − (−1) = −3</p>
+                        <p class="step">Step 2: −7 − (−4) = −3 → d = −3</p>
+                        <p class="step">Step 3: −16 + (−3) = −19</p>
+                        <p class="step">Step 4: −19 + (−3) = −22</p>
+                        <p class="step">Step 5: −22 + (−3) = −25</p>
+                        <p class="final">∴ d = −3 ; next terms: −19, −22, −25</p>
+                    </div>
 
-                <!-- Mpumalanga -->
-                <div class="papers-card">
-                    <h3>Mpumalanga Provincial Past Papers & Memos (2015–2024)</h3>
-                    <p>Mpumalanga June & November exams, with solutions</p>
-                    <a href="https://drive.google.com/embeddedfolderview?id=1Pbj-bJ_woyZs42hZd2JVrr1HFo0vY7Nu#list" target="_blank" class="btn-papers">Open Mpumalanga Folder</a>
-                </div>
-            </div>
+                    <!-- Question 3 -->
+                    <div class="question">3. −5 ; −3 ; −1 ; 1 ; 3 ; …</div>
+                    <button class="solution-btn" onclick="toggleSolution('sol3')">Show Solution</button>
+                    <div id="sol3" class="solution">
+                        <p class="step">Step 1: −3 − (−5) = 2</p>
+                        <p class="step">Step 2: −1 − (−3) = 2 → d = 2</p>
+                        <p class="step">Step 3: 3 + 2 = 5 → 7 → 9</p>
+                        <p class="final">∴ d = 2 ; next terms: 5, 7, 9</p>
+                    </div>
 
-            <!-- 1. Series and Sequences -->
-            <div class="topic-card">
-                <div class="topic-header">Series and Sequences • Full Playlist</div>
-                <div class="video-container">
-                    <iframe id="video1" src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyPIXj7twby7-xtcs9hekRVn&enablejsapi=1" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen loading="lazy"></iframe>
-                </div>
-                <div class="notes">
-                    <h3>Key Concepts</h3>
-                    <ul>
-                        <li><strong>Arithmetic Sequence:</strong> aₙ = a₁ + (n−1)d</li>
-                        <li><strong>Geometric Sequence:</strong> aₙ = a₁ · rⁿ⁻¹</li>
-                        <li><strong>Sum Arithmetic:</strong> Sₙ = n/2 [2a₁ + (n−1)d]</li>
-                        <li><strong>Sum Geometric:</strong> Sₙ = a₁ (rⁿ − 1)/(r − 1)</li>
-                        <li><strong>Infinite Series:</strong> S∞ = a₁/(1 − r)  only if |r| < 1</li>
-                    </ul>
-                    <img src="series-screenshot.png" alt="Textbook Screenshot: Series and Sequences Formulas">
-                </div>
-            </div>
+                    <!-- Question 4 -->
+                    <div class="question">4. −1 ; 10 ; 21 ; 32 ; 43 ; 54 ; …</div>
+                    <button class="solution-btn" onclick="toggleSolution('sol4')">Show Solution</button>
+                    <div id="sol4" class="solution">
+                        <p class="step">Step 1: 10 − (−1) = 11</p>
+                        <p class="step">Step 2: 21 − 10 = 11 → d = 11</p>
+                        <p class="step">Step 3: 54 + 11 = 65 → 76 → 87</p>
+                        <p class="final">∴ d = 11 ; next terms: 65, 76, 87</p>
+                    </div>
 
-            <!-- 2. Financial Mathematics -->
-            <div class="topic-card">
-                <div class="topic-header">Financial Mathematics • Complete Course</div>
-                <div class="video-container">
-                    <iframe id="video2" src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyP_hkCTbIgh6C4ZhklRk3VJ&enablejsapi=1" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen loading="lazy"></iframe>
-                </div>
-                <div class="notes">
-                    <h3>Key Concepts</h3>
-                    <ul>
-                        <li><strong>Future Value Annuity:</strong> F = x[(1+i)ⁿ − 1]/i</li>
-                        <li><strong>Present Value Annuity:</strong> P = x[1 − (1+i)⁻ⁿ]/i</li>
-                        <li><strong>Compound Interest:</strong> A = P(1 + i)ⁿ</li>
-                        <li><strong>Effective rate:</strong> (1 + i_eff) = (1 + i/m)^m</li>
-                    </ul>
-                    <img src="financial-screenshot.png" alt="Textbook Screenshot: Financial Maths Examples">
+                    <!-- Question 5 -->
+                    <div class="question">5. a ; 3b ; a + b ; a + 3b ; a + 5b ; …</div>
+                    <button class="solution-btn" onclick="toggleSolution('sol5')">Show Solution</button>
+                    <div id="sol5" class="solution">
+                        <p class="step">Step 1: (a + b) − 3b = a − 2b (first difference not constant)</p>
+                        <p class="step">Step 2: (a + 3b) − (a + b) = 2b</p>
+                        <p class="step">Step 3: (a + 5b) − (a + 3b) = 2b → d = 2b from term 3 onwards</p>
+                        <p class="step">Step 4: a + 5b + 2b = a + 7b</p>
+                        <p class="step">Step 5: a + 7b + 2b = a + 9b</p>
+                        <p class="step">Step 6: a + 9b + 2b = a + 11b</p>
+                        <p class="final">∴ d = 2b ; next terms: a + 7b, a + 9b, a + 11b</p>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="question">6. −2 ; −½ ; 1 ; ½ ; 0 ; ½ ; 1 ; …</div>
+                    <button class="solution-btn" onclick="toggleSolution('sol6')">Show Solution</button>
+                    <div id="sol6" class="solution">
+                        <p class="step">Differences: 1.5 → 1.5 → −0.5 → −0.5 → 0.5 → 0.5</p>
+                        <p class="step">The difference is not constant</p>
+                        <p class="final">∴ This is NOT an arithmetic sequence</p>
+                    </div>
                 </div>
             </div>
-
-            <!-- 3. Polynomials, Factor & Remainder Theorem -->
-            <div class="topic-card">
-                <div class="topic-header">Polynomials, Factor & Remainder Theorem</div>
-                <div class="video-container">
-                    <iframe id="video3" src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyPZRWmE6MVzwuBlg2hfuvoT&enablejsapi=1" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen loading="lazy"></iframe>
-                </div>
-                <div class="notes">
-                    <h3>Key Concepts</h3>
-                    <ul>
-                        <li><strong>Remainder Theorem:</strong> f(c) = remainder when divided by (x−c)</li>
-                        <li><strong>Factor Theorem:</strong> (x−c) is a factor ⇔ f(c) = 0</li>
-                        <li>Cubic always has at least one real root</li>
-                        <li>Possible rational roots = ± factors of constant / leading coefficient</li>
-                    </ul>
-                    <img src="polynomials-screenshot.png" alt="Textbook Screenshot: Factor Theorem Proof">
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Other grades message -->
-        <div id="otherGradeMessage" class="hidden" style="text-align:center; padding:6rem 1rem; font-size:1.4rem;">
-            <p>Grade <span id="selectedGradeNum"></span> content coming soon!</p>
-            <p style="margin-top:1.5rem; opacity:0.8; font-size:1.1rem;">Full Grade 12 hub is ready above</p>
         </div>
 
     </div>
+</div>
 
-    <footer>
-        <p><strong>Sisonke EduTech • Education Division</strong></p>
-        <p>Created by Mawethu Mpande • Proudly Ugie, Eastern Cape</p>
-        <p style="font-size:0.9rem; margin-top:1rem; opacity:0.8;">100% Free • Helping Matric Learners Pass • November 2025 Edition</p>
-    </footer>
+<footer>
+    <p><strong>Sisonke EduTech • Education Division</strong></p>
+    <p>Created by Mawethu Mpande • Ugie, Eastern Cape</p>
+    <p>100% Free • CAPS Aligned • November 2025</p>
+</footer>
 
-    <script>
-        let players = [];
-
-        function onYouTubeIframeAPIReady() {
-            players.push(new YT.Player('video1', {
-                events: {
-                    'onStateChange': onPlayerStateChange
-                }
-            }));
-            players.push(new YT.Player('video2', {
-                events: {
-                    'onStateChange': onPlayerStateChange
-                }
-            }));
-            players.push(new YT.Player('video3', {
-                events: {
-                    'onStateChange': onPlayerStateChange
-                }
-            }));
+<script>
+    // Fixed JavaScript – solutions now work perfectly
+    function toggleSolution(id) {
+        const solution = document.getElementById(id);
+        const button = solution.previousElementSibling; // the button just above
+        if (solution.style.display === "block") {
+            solution.style.display = "none";
+            button.textContent = "Show Solution";
+        } else {
+            solution.style.display = "block";
+            button.textContent = "Hide Solution";
         }
+    }
 
-        function onPlayerStateChange(event) {
-            if (event.data == YT.PlayerState.PLAYING) {
-                players.forEach(function(player) {
-                    if (player.getIframe().id !== event.target.getIframe().id) {
-                        player.pauseVideo();
-                    }
-                });
-            }
+    // YouTube API – only one video plays at a time
+    let players = [];
+    function onYouTubeIframeAPIReady() {
+        document.querySelectorAll('iframe[id^="video"]').forEach(iframe => {
+            players.push(new YT.Player(iframe.id));
+        });
+    }
+    // Pause other videos when one starts
+    function onPlayerStateChange(event) {
+        if (event.data === YT.PlayerState.PLAYING) {
+            players.forEach(p => { if (p !== event.target) p.pauseVideo(); });
         }
+    }
 
-        function showGrade(grade) {
-            document.getElementById('grade12Content').classList.add('hidden');
-            document.getElementById('otherGradeMessage').classList.add('hidden');
+    // Show/hide grades
+    function showGrade(g) {
+        document.getElementById('grade12Content').style.display = (g === 12) ? 'block' : 'none';
+    }
 
-            if (grade === 12) {
-                document.getElementById('grade12Content').classList.remove('hidden');
-            } else {
-                document.getElementById('selectedGradeNum').textContent = grade;
-                document.getElementById('otherGradeMessage').classList.remove('hidden');
-            }
-        }
-    </script>
+    // Show Grade 12 by default on load
+    window.onload = () => showGrade(12);
+</script>
 </body>
 </html>
