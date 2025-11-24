@@ -3,845 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sisonke EduTech - Math Learning Hub</title>
+    <title>Sisonke EduTech - Grade 12 Mathematics</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #0a0e27 0%, #1a237e 50%, #0a0e27 100%);
             background-attachment: fixed;
             color: white;
             min-height: 100vh;
-            line-height: 1.6;
+            line-height: 1.7;
         }
-        /* Header */
         header {
-            background: rgba(24, 119, 242, 0.15);
+            background: rgba(24,119,242,0.15);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(24, 119, 242, 0.3);
+            border-bottom: 1px solid rgba(24,119,242,0.3);
             padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            position: sticky; top: 0; z-index: 100;
         }
         .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
         }
-        .logo h1 {
-            font-size: 1.3rem;
-            color: #1877F2;
-            font-weight: 700;
-        }
-        .logo p {
-            font-size: 0.7rem;
-            color: white;
-        }
-        nav {
-            display: flex;
-            gap: 1.5rem;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        /* Hero */
+        .logo h1 { font-size: 1.5rem; color: #1877F2; font-weight: 700; }
         .hero {
-            text-align: center;
-            padding: 2rem 1rem;
-            max-width: 900px;
-            margin: 0 auto;
+            text-align: center; padding: 4rem 1rem;
         }
-        .hero-card {
-            background: rgba(24, 119, 242, 0.15);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(24, 119, 242, 0.3);
-            border-radius: 20px;
-            padding: 2rem 1.5rem;
-        }
-        .hero h2 {
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            color: #1877F2;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px rgba(24, 119, 242, 0.8);
-        }
-        .hero p {
-            font-size: clamp(0.9rem, 3vw, 1.1rem);
-            color: white;
-            margin-bottom: 0.3rem;
-        }
-        .creator {
-            font-size: 0.85rem !important;
-            color: white !important;
-            text-shadow: 0 0 5px rgba(24, 119, 242, 0.5);
-        }
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
-        /* Section Title */
+        .hero h2 { font-size: clamp(2.2rem, 7vw, 3.5rem); color: #1877F2; text-shadow: 0 0 15px rgba(24,119,242,0.8); }
+        .creator { margin-top: 1rem; font-size: 1.1rem; opacity: 0.9; }
+        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
         .section-title {
-            font-size: clamp(1.3rem, 4vw, 1.8rem);
-            margin-bottom: 1.5rem;
-            color: #1877F2;
-            text-shadow: 0 0 10px rgba(24, 119, 242, 0.8);
+            text-align: center; font-size: 2.2rem; margin: 3rem 0 2rem;
+            color: #1877F2; text-shadow: 0 0 10px rgba(24,119,242,0.8);
         }
-        /* Grade Grid */
         .grade-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.8rem;
-            margin-bottom: 2rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.2rem; margin-bottom: 4rem;
         }
         .grade-card {
-            background: rgba(24, 119, 242, 0.15);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(24, 119, 242, 0.3);
-            border-radius: 15px;
-            padding: 1.5rem 1rem;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
-            touch-action: manipulation;
-        }
-        .grade-card:active {
-            transform: scale(0.95);
-        }
-        .grade-card:hover {
-            background: rgba(24, 119, 242, 0.25);
-        }
-        .grade-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1877F2;
-            margin-bottom: 0.3rem;
-            text-shadow: 0 0 5px rgba(24, 119, 242, 0.5);
-        }
-        .grade-label {
-            font-size: 0.85rem;
-            color: white;
-        }
-        /* Topic Grid */
-        .topic-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        .topic-card {
-            background: rgba(24, 119, 242, 0.15);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(24, 119, 242, 0.3);
-            border-radius: 15px;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
-            touch-action: manipulation;
-        }
-        .topic-card:active {
-            transform: scale(0.98);
-        }
-        .topic-card:hover {
-            background: rgba(24, 119, 242, 0.25);
-        }
-        .topic-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: white;
-            text-shadow: 0 0 5px rgba(24, 119, 242, 0.5);
-        }
-        .topic-desc {
-            font-size: 0.85rem;
-            color: white;
-        }
-        /* Progress Card */
-        .progress-card {
-            background: rgba(76, 175, 80, 0.15);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(76, 175, 80, 0.3);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        .progress-header h3 {
-            font-size: 1.2rem;
-            color: white;
-        }
-        .progress-bar-bg {
-            width: 100%;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 0.5rem;
-        }
-        .progress-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #4CAF50 0%, #1877F2 100%);
-            border-radius: 10px;
-            transition: width 0.5s ease;
-            width: 0;
-        }
-        .progress-text {
-            color: white;
-            font-size: 0.85rem;
-        }
-        /* Glass Card */
-        .glass-card {
-            background: rgba(24, 119, 242, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(24, 119, 242, 0.3);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .glass-card h2 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: white;
-            text-shadow: 0 0 10px rgba(24, 119, 242, 0.8);
-        }
-        /* Notes */
-        .notes-content {
-            color: white;
-            line-height: 1.8;
-            font-size: 0.95rem;
-        }
-        .notes-content ul {
-            list-style-type: disc;
-            padding-left: 1.5rem;
-        }
-        .notes-content li {
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-        /* Video Grid */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .video-card {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(24, 119, 242, 0.3);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .video-thumbnail {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            background: #000;
-        }
-        .video-thumbnail iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .video-info {
-            padding: 1rem;
-        }
-        .video-title {
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-            font-size: 0.95rem;
-            color: white;
-        }
-        .video-duration {
-            font-size: 0.8rem;
-            color: white;
-        }
-        .playlist-card {
-            margin-bottom: 1rem;
-        }
-        .playlist-card h3 {
-            color: white;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 5px rgba(24, 119, 242, 0.5);
-        }
-        /* Exercise Card */
-        .exercise-card {
-            background: rgba(24, 119, 242, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(24, 119, 242, 0.3);
-            border-radius: 12px;
-            padding: 1.2rem;
-            margin-bottom: 1rem;
-        }
-        .exercise-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        .exercise-problem {
-            font-size: 1.5rem;
-            font-weight: 700;
-            font-family: 'Courier New', monospace;
-            color: white;
-        }
-        .exercise-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .difficulty-badge {
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: white;
-        }
-        .difficulty-easy {
-            background: rgba(76, 175, 80, 0.3);
-        }
-        .difficulty-medium {
-            background: rgba(255, 193, 7, 0.3);
-        }
-        .difficulty-hard {
-            background: rgba(244, 67, 54, 0.3);
-        }
-        .complete-check {
-            font-size: 1.5rem;
-            color: #4CAF50;
-        }
-        .btn {
-            background: #1877F2;
-            color: white;
-            border: none;
-            padding: 0.7rem 1.3rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background 0.2s, transform 0.1s;
-            margin-right: 0.5rem;
-            margin-top: 0.5rem;
-            touch-action: manipulation;
-        }
-        .btn:active {
-            transform: scale(0.95);
-        }
-        .btn:hover {
-            background: #4267B2;
-        }
-        .btn-success {
-            background: #4CAF50;
-        }
-        .btn-success:hover {
-            background: #66BB6A;
-        }
-        .solution-card {
-            background: rgba(76, 175, 80, 0.15);
-            border: 1px solid rgba(76, 175, 80, 0.3);
-            border-radius: 10px;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-        .solution-card p:first-child {
-            font-weight: 600;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-        .solution-card p:last-child {
-            font-size: 0.85rem;
-            color: white;
-        }
-        .back-btn {
-            background: rgba(24, 119, 242, 0.15);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(24, 119, 242, 0.3);
-            padding: 0.7rem 1.3rem;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-bottom: 1.5rem;
-            display: inline-block;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background 0.2s;
-            touch-action: manipulation;
-        }
-        .back-btn:active {
-            transform: scale(0.95);
-        }
-        .back-btn:hover {
-            background: rgba(24, 119, 242, 0.25);
-        }
-        /* Footer */
-        footer {
-            margin-top: 3rem;
+            background: rgba(24,119,242,0.15);
+            border: 1px solid rgba(24,119,242,0.3);
+            border-radius: 18px;
             padding: 2rem 1rem;
             text-align: center;
-            border-top: 1px solid rgba(24, 119, 242, 0.3);
-            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
         }
-        footer p {
-            margin: 0.3rem 0;
-            font-size: 0.9rem;
-            color: white;
+        .grade-card:hover { background: rgba(24,119,242,0.35); transform: translateY(-8px); }
+        .grade-number { font-size: 3.2rem; color: #1877F2; }
+
+        /* Topic + Video + Notes */
+        .topic-card {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(24,119,242,0.4);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
-        footer p:first-child {
-            font-weight: 700;
+        .topic-header {
+            background: linear-gradient(135deg, #1877F2, #4267B2);
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        .video-container iframe {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+        .notes {
+            padding: 2rem;
+            background: rgba(24,119,242,0.1);
+            backdrop-filter: blur(8px);
+        }
+        .notes h3 { color: #4CAF50; margin: 1.5rem 0 1rem; font-size: 1.3rem; }
+        .notes ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        .notes li { margin-bottom: 0.6rem; }
+        .formula {
+            background: rgba(0,0,0,0.3);
+            padding: 1rem;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            text-align: center;
             font-size: 1.1rem;
-            color: #1877F2;
-            text-shadow: 0 0 5px rgba(24, 119, 242, 0.5);
         }
-        /* Utilities */
-        .hidden {
-            display: none;
+
+        /* Past Papers Section */
+        .papers-card {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border: 2px solid #1877F2;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            margin: 4rem 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         }
-        /* Mobile Optimizations */
+        .papers-card h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #00D4FF;
+        }
+        .btn-papers {
+            display: inline-block;
+            background: #1877F2;
+            color: white;
+            padding: 1rem 2.5rem;
+            margin-top: 1.5rem;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(24,119,242,0.6);
+            transition: all 0.3s;
+        }
+        .btn-papers:hover {
+            transform: translateY(-5px);
+            background: #4267B2;
+            box-shadow: 0 12px 30px rgba(24,119,242,0.8);
+        }
+
+        footer {
+            text-align: center; padding: 4rem 1rem;
+            border-top: 1px solid rgba(24,119,242,0.3);
+            margin-top: 5rem;
+        }
+        .hidden { display: none; }
         @media (max-width: 600px) {
-            .hero {
-                padding: 1.5rem 1rem;
-            }
-            .hero-card {
-                padding: 1.5rem 1rem;
-            }
-            .grade-grid {
-                gap: 0.6rem;
-            }
-            .grade-card {
-                padding: 1.2rem 0.8rem;
-            }
-            .grade-number {
-                font-size: 2rem;
-            }
-            .topic-grid {
-                grid-template-columns: 1fr;
-            }
-            .video-grid {
-                grid-template-columns: 1fr;
-            }
-            nav {
-                display: none;
-            }
-            .exercise-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .btn {
-                width: 100%;
-                margin-right: 0;
-            }
-        }
-        @media (min-width: 601px) and (max-width: 900px) {
-            .grade-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-        @media (min-width: 901px) {
-            .grade-grid {
-                grid-template-columns: repeat(5, 1fr);
-            }
+            .grade-grid { grid-template-columns: repeat(3, 1fr); }
         }
     </style>
 </head>
 <body>
+
     <header>
         <div class="header-content">
             <div class="logo">
                 <h1>Sisonke EduTech</h1>
                 <p>Education Division</p>
             </div>
-            <nav>
-                <a href="#home">Home</a>
-                <a href="#progress">Progress</a>
-                <a href="#resources">Resources</a>
-            </nav>
         </div>
     </header>
-    <div class="container">
-        <div id="heroSection" class="hero">
-            <div class="hero-card">
-                <h2>Self-Paced Math Learning Hub</h2>
-                <p>Grades 4 - 12 | Master Mathematics at Your Own Pace</p>
-                <p class="creator">Created by Mawethu Mpande | Proudly Ugie</p>
-            </div>
-        </div>
-        <div id="gradeSection">
-            <h2 class="section-title">Select Your Grade</h2>
-            <div class="grade-grid">
-                <div class="grade-card" onclick="selectGrade(4)">
-                    <div class="grade-number">4</div>
-                    <div class="grade-label">Grade 4</div>
-                </div>
-                <div class="grade-card" onclick="selectGrade(5)">
-                    <div class="grade-number">5</div>
-                    <div class="grade-label">Grade 5</div>
-                </div>
-                <div class="grade-card" onclick="selectGrade(6)">
-                    <div class="grade-number">6</div>
-                    <div class="grade-label">Grade 6</div>
-                </div>
-                <div class="grade-card" onclick="selectGrade(7)">
-                    <div class="grade-number">7</div>
-                    <div class="grade-label">Grade 7</div>
-                </div>
-                <div class="grade-card" onclick="selectGrade(8)">
-                    <div class="grade-number">8</div>
-                    <div class="grade-label">Grade 8</div>
-                </div>
-                <div class="grade-card" onclick="selectGrade(9)">
-                    <div class="grade-number">9</div>
-                    <div class="grade-label">Grade 9</div>
-                </div>
-                <div class="grade-card" onclick="selectGrade(10)">
-                    <div class="grade-number">10</div>
-                    <div class="grade-label">Grade 10</div>
-                </div>
-                <div class="grade-card" onclick="selectGrade(11)">
-                    <div class="grade-number">11</div>
-                    <div class="grade-label">Grade 11</div>
-                </div>
-                <div class="grade-card" onclick="selectGrade(12)">
-                    <div class="grade-number">12</div>
-                    <div class="grade-label">Grade 12</div>
-                </div>
-            </div>
-        </div>
-        <div id="topicsSection" class="hidden">
-            <button class="back-btn" onclick="backToGrades()">← Back to Grades</button>
-            <div class="glass-card">
-                <h2 id="topicsTitle"></h2>
-                <p style="color: white; font-size: 0.9rem;">Choose a topic to start learning</p>
-            </div>
-            <div id="topicsGrid" class="topic-grid"></div>
-        </div>
-        <div id="contentSection" class="hidden">
-            <button class="back-btn" onclick="backToTopics()">← Back to Topics</button>
-           
-            <div class="progress-card">
-                <div class="progress-header">
-                    <div>
-                        <h3>Your Progress</h3>
-                        <p id="currentTopic" style="color: white; font-size: 0.85rem;"></p>
-                    </div>
-                </div>
-                <div class="progress-bar-bg">
-                    <div id="progressBar" class="progress-bar-fill"></div>
-                </div>
-                <p id="progressText" class="progress-text">0% Complete</p>
-            </div>
-            <div class="glass-card">
-                <h2>Quick Notes</h2>
-                <div id="notesContent" class="notes-content"></div>
-            </div>
-            <div id="grade12Playlists" class="glass-card hidden">
-                <h2>Recommended YouTube Playlists for Grade 12</h2>
-                <div class="playlist-card">
-                    <h3>Grade 12 Financial Maths</h3>
-                    <div class="video-thumbnail">
-                        <iframe src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyPZRWmE6MVzwuBlg2hfuvoT" loading="lazy" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div class="playlist-card">
-                    <h3>Series and Sequences Playlist Grade 12</h3>
-                    <div class="video-thumbnail">
-                        <iframe src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyPIXj7twby7-xtcs9hekRVn" loading="lazy" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div class="playlist-card">
-                    <h3>Factor and Remainder Theorem Grade 12</h3>
-                    <div class="video-thumbnail">
-                        <iframe src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyO5IkhNzfrA83ensZJ9eg1Y" loading="lazy" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-            <div class="glass-card">
-                <h2>Video Tutorials</h2>
-                <div id="videoGrid" class="video-grid">
-                    <div class="video-card">
-                        <div class="video-thumbnail">
-                            <iframe src="https://www.youtube.com/embed/HdU_rf7eMTI" loading="lazy" allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <div class="video-title">Long Division Tutorial - Complete Guide</div>
-                            <div class="video-duration">12:45</div>
-                        </div>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-thumbnail">
-                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" loading="lazy" allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <div class="video-title">Long Division with Remainders</div>
-                            <div class="video-duration">8:30</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="glass-card">
-                <h2>Practice Exercises & Workouts</h2>
-                <div id="exercisesContainer"></div>
-            </div>
-        </div>
+
+    <div class="hero">
+        <h2>Grade 12 Mathematics</h2>
+        <p style="font-size:1.3rem; margin:1.5rem 0;">CAPS Aligned • Videos + Notes + Past Papers</p>
+        <p class="creator">Created by Mawethu Mpande • Proudly Ugie, Eastern Cape</p>
     </div>
+
+    <div class="container">
+
+        <!-- Grade Selection -->
+        <h2 class="section-title">Select Your Grade</h2>
+        <div class="grade-grid">
+            <div class="grade-card" onclick="showGrade(4)"><div class="grade-number">4</div></div>
+            <div class="grade-card" onclick="showGrade(5)"><div class="grade-number">5</div></div>
+            <div class="grade-card" onclick="showGrade(6)"><div class="grade-number">6</div></div>
+            <div class="grade-card" onclick="showGrade(7)"><div class="grade-number">7</div></div>
+            <div class="grade-card" onclick="showGrade(8)"><div class="grade-number">8</div></div>
+            <div class="grade-card" onclick="showGrade(9)"><div class="grade-number">9</div></div>
+            <div class="grade-card" onclick="showGrade(10)"><div class="grade-number">10</div></div>
+            <div class="grade-card" onclick="showGrade(11)"><div class="grade-number">11</div></div>
+            <div class="grade-card" onclick="showGrade(12)"><div class="grade-number">12</div></div>
+        </div>
+
+        <!-- GRADE 12 CONTENT -->
+        <div id="grade12Content" class="hidden">
+
+            <!-- PAST EXAM PAPERS SECTION -->
+            <div class="papers-card">
+                <h2>Download Past Exam Papers & Memos</h2>
+                <p style="font-size:1.2rem; margin:1rem 0;">All NSC & IEB Papers • 2014–2025 • With Full Memoranda</p>
+                <a href="https://drive.google.com/embeddedfolderview?id=11hL_FbY417q-HTLmJuQ-8j5i4mCF5qrd#list" 
+                   target="_blank" class="btn-papers">
+                   Open Question Paper Folder
+                </a>
+            </div>
+
+            <!-- 1. Series and Sequences -->
+            <div class="topic-card">
+                <div class="topic-header">Series and Sequences • Full Playlist</div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyPIXj7twby7-xtcs9hekRVn" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="notes">
+                    <h3>Key Concepts from Everything Maths Grade 12</h3>
+                    <ul>
+                        <li><strong>Arithmetic Sequence:</strong> aₙ = a₁ + (n−1)d</li>
+                        <li><strong>Geometric Sequence:</strong> aₙ = a₁ · rⁿ⁻¹</li>
+                        <li><strong>Sum Arithmetic:</strong> Sₙ = n/2 [2a₁ + (n−1)d]</li>
+                        <li><strong>Sum Geometric:</strong> Sₙ = a₁ (rⁿ − 1)/(r − 1)</li>
+                        <li><strong>Infinite Series:</strong> S∞ = a₁/(1 − r)  only if |r| < 1</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2. Financial Mathematics -->
+            <div class="topic-card">
+                <div class="topic-header">Financial Mathematics • Complete Course</div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyP_hkCTbIgh6C4ZhklRk3VJ" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="notes">
+                    <h3>Key Concepts from Everything Maths Grade 12</h3>
+                    <ul>
+                        <li><strong>Future Value Annuity:</strong> F = x[(1+i)ⁿ − 1]/i</li>
+                        <li><strong>Present Value Annuity:</strong> P = x[1 − (1+i)⁻ⁿ]/i</li>
+                        <li><strong>Compound Interest:</strong> A = P(1 + i)ⁿ</li>
+                        <li><strong>Effective rate:</strong> (1 + i_eff) = (1 + i/m)^m</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 3. Polynomials, Factor & Remainder Theorem -->
+            <div class="topic-card">
+                <div class="topic-header">Polynomials, Factor & Remainder Theorem</div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyPZRWmE6MVzwuBlg2hfuvoT" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="notes">
+                    <h3>Key Concepts from Everything Maths Grade 12</h3>
+                    <ul>
+                        <li><strong>Remainder Theorem:</strong> f(c) = remainder when divided by (x−c)</li>
+                        <li><strong>Factor Theorem:</strong> (x−c) is a factor ⇔ f(c) = 0</li>
+                        <li>Cubic always has at least one real root</li>
+                        <li>Possible rational roots = ± factors of constant / leading coefficient</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Other grades message -->
+        <div id="otherGradeMessage" class="hidden" style="text-align:center; padding:6rem 1rem; font-size:1.4rem;">
+            <p>Grade <span id="selectedGradeNum"></span> content coming soon!</p>
+            <p style="margin-top:1.5rem; opacity:0.8; font-size:1.1rem;">Full Grade 12 hub is ready above</p>
+        </div>
+
+    </div>
+
     <footer>
-        <p>Sisonke EduTech - Education Division</p>
-        <p>Created by Mawethu Mpande | Proudly Ugie</p>
-        <p style="font-size: 0.8rem; opacity: 0.8;">Self-Paced Online Math Tutoring Hub | Grades 4-12</p>
+        <p><strong>Sisonke EduTech • Education Division</strong></p>
+        <p>Created by Mawethu Mpande • Proudly Ugie, Eastern Cape</p>
+        <p style="font-size:0.9rem; margin-top:1rem; opacity:0.8;">100% Free • Helping Matric Learners Pass • 2025 & Beyond</p>
     </footer>
+
     <script>
-        const topics = {
-            4: ['Addition & Subtraction', 'Multiplication Tables', 'Basic Division', 'Fractions Intro', 'Shapes & Geometry'],
-            5: ['Long Multiplication', 'Long Division', 'Decimals', 'Fractions Operations', 'Perimeter & Area'],
-            6: ['Ratios & Proportions', 'Percentages', 'Integers', 'Algebraic Expressions', 'Volume & Surface Area'],
-            7: ['Equations', 'Inequalities', 'Exponents', 'Geometry Theorems', 'Statistics'],
-            8: ['Linear Functions', 'Pythagorean Theorem', 'Probability', 'Systems of Equations', 'Polynomials'],
-            9: ['Quadratic Equations', 'Trigonometry Basics', 'Circle Geometry', 'Data Analysis', 'Financial Math'],
-            10: ['Advanced Algebra', 'Trigonometric Functions', 'Analytical Geometry', 'Sequences & Series', 'Calculus Intro'],
-            11: ['Differential Calculus', 'Functions & Graphs', 'Trigonometry Advanced', 'Statistics & Probability', 'Finance Growth'],
-            12: ['Integral Calculus', 'Complex Numbers', 'Matrices', 'Advanced Statistics', 'Optimization']
-        };
+        function showGrade(grade) {
+            document.getElementById('grade12Content').classList.add('hidden');
+            document.getElementById('otherGradeMessage').classList.add('hidden');
 
-        // Notes for Grade 12 topics
-        const notes = {
-            'Integral Calculus': `
-                <ul>
-                    <li>Integration is the inverse process of differentiation. The indefinite integral of f(x) is F(x) + C where F'(x) = f(x).</li>
-                    <li>Definite integral ∫ from a to b f(x) dx = F(b) - F(a), representing the net area under the curve.</li>
-                    <li>Common rules: ∫ x^n dx = (x^{n+1})/(n+1) + C for n ≠ -1; ∫ e^x dx = e^x + C.</li>
-                    <li>Applications: Finding areas, volumes, and solving differential equations.</li>
-                </ul>
-            `,
-            'Complex Numbers': `
-                <ul>
-                    <li>A complex number z = a + bi, where i = √(-1), a is real part, b is imaginary part.</li>
-                    <li>Addition: (a + bi) + (c + di) = (a+c) + (b+d)i.</li>
-                    <li>Modulus |z| = √(a² + b²); Argument arg(z) = tan⁻¹(b/a).</li>
-                    <li>De Moivre's theorem: (cos θ + i sin θ)^n = cos(nθ) + i sin(nθ).</li>
-                </ul>
-            `,
-            'Matrices': `
-                <ul>
-                    <li>A matrix is a rectangular array of numbers. Types: square, identity, zero.</li>
-                    <li>Operations: Addition (same size), Multiplication (AB if columns A = rows B).</li>
-                    <li>Determinant for 2x2: ad - bc; Inverse exists if det ≠ 0.</li>
-                    <li>Applications: Solving systems of equations, transformations.</li>
-                </ul>
-            `,
-            'Advanced Statistics': `
-                <ul>
-                    <li>Normal distribution: Bell curve, mean μ, std dev σ; 68-95-99.7 rule.</li>
-                    <li>Hypothesis testing: Null vs alternative, p-value, significance level α.</li>
-                    <li>Regression: Linear y = mx + c, correlation coefficient r (-1 to 1).</li>
-                    <li>Bayes' theorem: P(A|B) = [P(B|A) P(A)] / P(B).</li>
-                </ul>
-            `,
-            'Optimization': `
-                <ul>
-                    <li>Find max/min of f(x) using f'(x) = 0 and second derivative test.</li>
-                    <li>Constrained optimization: Lagrange multipliers ∇f = λ ∇g.</li>
-                    <li>Linear programming: Maximize cx subject to Ax ≤ b, graphical method for 2 vars.</li>
-                    <li>Applications: Resource allocation, cost minimization.</li>
-                </ul>
-            `
-        };
-
-        // Topic-specific exercises for Grade 12 (workouts with problems and answers)
-        const exercisesByTopic = {
-            'Integral Calculus': [
-                { id: 1, problem: '∫ (3x² + 2x) dx', answer: '(x³ + x²) + C', difficulty: 'easy' },
-                { id: 2, problem: '∫ from 0 to 1 x dx', answer: '0.5', difficulty: 'medium' },
-                { id: 3, problem: '∫ e^x dx', answer: 'e^x + C', difficulty: 'easy' },
-                { id: 4, problem: '∫ sin(x) dx', answer: '-cos(x) + C', difficulty: 'medium' },
-                { id: 5, problem: '∫ from 1 to 2 (1/x) dx', answer: 'ln(2)', difficulty: 'hard' }
-            ],
-            'Complex Numbers': [
-                { id: 1, problem: '(3 + 2i) + (1 - 4i)', answer: '4 - 2i', difficulty: 'easy' },
-                { id: 2, problem: 'Modulus of 3 + 4i', answer: '5', difficulty: 'easy' },
-                { id: 3, problem: '(1 + i)^2', answer: '2i', difficulty: 'medium' },
-                { id: 4, problem: 'Arg of -1 + i', answer: '3π/4', difficulty: 'medium' },
-                { id: 5, problem: '(cos θ + i sin θ)^3', answer: 'cos(3θ) + i sin(3θ)', difficulty: 'hard' }
-            ],
-            'Matrices': [
-                { id: 1, problem: 'Determinant of [[1,2],[3,4]]', answer: '-2', difficulty: 'easy' },
-                { id: 2, problem: '[[1,0],[0,1]] * [[a,b],[c,d]]', answer: '[[a,b],[c,d]]', difficulty: 'easy' },
-                { id: 3, problem: 'Inverse of [[2,1],[1,1]]', answer: '[[1,-1],[-1,2]]', difficulty: 'medium' },
-                { id: 4, problem: 'A * B where A=[[1,2], [3,4]], B=[[5,6],[7,8]]', answer: '[[19,22],[43,50]]', difficulty: 'medium' },
-                { id: 5, problem: 'Trace of [[1,2,3],[4,5,6]]', answer: '6', difficulty: 'hard' }
-            ],
-            'Advanced Statistics': [
-                { id: 1, problem: 'Mean of 1,2,3,4,5', answer: '3', difficulty: 'easy' },
-                { id: 2, problem: 'Standard deviation of 1,3,5 (pop)', answer: '1.633', difficulty: 'medium' },
-                { id: 3, problem: 'P(Z < 1.96) for standard normal', answer: '0.975', difficulty: 'medium' },
-                { id: 4, problem: 'Correlation if perfect positive', answer: '1', difficulty: 'easy' },
-                { id: 5, problem: 'Bayes: P(A)=0.4, P(B|A)=0.8, P(B|¬A)=0.3, find P(A|B)', answer: '0.727', difficulty: 'hard' }
-            ],
-            'Optimization': [
-                { id: 1, problem: 'Critical points of f(x)=x² - 4x + 3', answer: 'x=2', difficulty: 'easy' },
-                { id: 2, problem: 'f''(x) for f(x)=x³ - 3x', answer: '6x', difficulty: 'easy' },
-                { id: 3, problem: 'Max of xy s.t. x+y=10', answer: '25 at x=5,y=5', difficulty: 'medium' },
-                { id: 4, problem: 'Min cost: 2x + 3y s.t. x+y≥5, x≥0,y≥0', answer: '10 at x=5,y=0', difficulty: 'medium' },
-                { id: 5, problem: 'Lagrange for f=x²+y² s.t. x+y=1', answer: 'λ=2, x=y=0.5', difficulty: 'hard' }
-            ]
-        };
-
-        // General exercises for other grades
-        const generalExercises = [
-            { id: 1, problem: '456 ÷ 8', answer: '57', difficulty: 'easy' },
-            { id: 2, problem: '735 ÷ 5', answer: '147', difficulty: 'easy' },
-            { id: 3, problem: '892 ÷ 4', answer: '223', difficulty: 'medium' },
-            { id: 4, problem: '1,248 ÷ 12', answer: '104', difficulty: 'medium' },
-            { id: 5, problem: '2,835 ÷ 15', answer: '189', difficulty: 'hard' }
-        ];
-
-        let currentGrade = null;
-        let currentTopic = null;
-        let completedExercises = {};
-        function selectGrade(grade) {
-            currentGrade = grade;
-            document.getElementById('heroSection').classList.add('hidden');
-            document.getElementById('gradeSection').classList.add('hidden');
-            document.getElementById('topicsSection').classList.remove('hidden');
-            document.getElementById('topicsTitle').textContent = `Grade ${grade} - Mathematics Topics`;
-           
-            const topicsGrid = document.getElementById('topicsGrid');
-            topicsGrid.innerHTML = '';
-           
-            topics[grade].forEach(topic => {
-                const card = document.createElement('div');
-                card.className = 'topic-card';
-                card.onclick = () => selectTopic(topic);
-                card.innerHTML = `
-                    <div class="topic-title">${topic}</div>
-                    <div class="topic-desc">Click to explore notes, exercises & videos</div>
-                `;
-                topicsGrid.appendChild(card);
-            });
-        }
-        function selectTopic(topic) {
-            currentTopic = topic;
-            document.getElementById('topicsSection').classList.add('hidden');
-            document.getElementById('contentSection').classList.remove('hidden');
-            document.getElementById('currentTopic').textContent = topic;
-           
-            // Show playlists for Grade 12
-            const playlistsDiv = document.getElementById('grade12Playlists');
-            if (currentGrade === 12) {
-                playlistsDiv.classList.remove('hidden');
+            if (grade === 12) {
+                document.getElementById('grade12Content').classList.remove('hidden');
             } else {
-                playlistsDiv.classList.add('hidden');
+                document.getElementById('selectedGradeNum').textContent = grade;
+                document.getElementById('otherGradeMessage').classList.remove('hidden');
             }
-
-            // Set notes
-            const notesDiv = document.getElementById('notesContent');
-            if (currentGrade === 12 && notes[topic]) {
-                notesDiv.innerHTML = notes[topic];
-            } else {
-                notesDiv.innerHTML = '<p>Notes coming soon! Review the video tutorials for key concepts.</p>';
-            }
-           
-            renderExercises();
-            updateProgress();
-        }
-        function backToGrades() {
-            currentGrade = null;
-            document.getElementById('heroSection').classList.remove('hidden');
-            document.getElementById('gradeSection').classList.remove('hidden');
-            document.getElementById('topicsSection').classList.add('hidden');
-        }
-        function backToTopics() {
-            currentTopic = null;
-            document.getElementById('topicsSection').classList.remove('hidden');
-            document.getElementById('contentSection').classList.add('hidden');
-        }
-        function renderExercises() {
-            const container = document.getElementById('exercisesContainer');
-            container.innerHTML = '';
-            let exList = generalExercises;
-            if (currentGrade === 12 && exercisesByTopic[currentTopic]) {
-                exList = exercisesByTopic[currentTopic];
-            }
-           
-            exList.forEach(exercise => {
-                const card = document.createElement('div');
-                card.className = 'exercise-card';
-               
-                const difficultyClass = `difficulty-${exercise.difficulty}`;
-                const isComplete = completedExercises[exercise.id];
-               
-                card.innerHTML = `
-                    <div class="exercise-header">
-                        <div class="exercise-problem">${exercise.problem}</div>
-                        <div class="exercise-meta">
-                            <span class="difficulty-badge ${difficultyClass}">${exercise.difficulty.toUpperCase()}</span>
-                            ${isComplete ? '<span class="complete-check">✓</span>' : ''}
-                        </div>
-                    </div>
-                    <button class="btn" onclick="toggleSolution(${exercise.id})">
-                        <span id="solutionBtn${exercise.id}">Show Answer</span>
-                    </button>
-                    ${!isComplete ? `<button class="btn btn-success" onclick="markComplete(${exercise.id})">Mark Complete</button>` : ''}
-                    <div id="solution${exercise.id}" class="solution-card hidden">
-                        <p>Solution: ${exercise.answer}</p>
-                        <p>Work this out on paper to build your skills!</p>
-                    </div>
-                `;
-               
-                container.appendChild(card);
-            });
-        }
-        function toggleSolution(id) {
-            const solution = document.getElementById(`solution${id}`);
-            const btn = document.getElementById(`solutionBtn${id}`);
-           
-            if (solution.classList.contains('hidden')) {
-                solution.classList.remove('hidden');
-                btn.textContent = 'Hide Answer';
-            } else {
-                solution.classList.add('hidden');
-                btn.textContent = 'Show Answer';
-            }
-        }
-        function markComplete(id) {
-            completedExercises[id] = true;
-            renderExercises();
-            updateProgress();
-        }
-        function updateProgress() {
-            const completed = Object.keys(completedExercises).length;
-            const total = Object.keys(exercisesByTopic[currentTopic] || generalExercises).length;
-            const percentage = Math.round((completed / total) * 100);
-           
-            document.getElementById('progressBar').style.width = percentage + '%';
-            document.getElementById('progressText').textContent = percentage + '% Complete';
         }
     </script>
 </body>
