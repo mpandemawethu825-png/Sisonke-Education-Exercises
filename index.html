@@ -96,19 +96,29 @@
             text-align: center;
             font-size: 1.1rem;
         }
+        .notes img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 1rem 0;
+            display: block;
+        }
 
         /* Past Papers Section */
+        .papers-section {
+            margin: 3rem 0;
+        }
         .papers-card {
             background: linear-gradient(135deg, #1e3c72, #2a5298);
             border: 2px solid #1877F2;
             border-radius: 20px;
-            padding: 2.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
             text-align: center;
-            margin: 4rem 0;
             box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         }
-        .papers-card h2 {
-            font-size: 2rem;
+        .papers-card h3 {
+            font-size: 1.5rem;
             margin-bottom: 1rem;
             color: #00D4FF;
         }
@@ -116,20 +126,31 @@
             display: inline-block;
             background: #1877F2;
             color: white;
-            padding: 1rem 2.5rem;
-            margin-top: 1.5rem;
-            border-radius: 50px;
-            font-size: 1.3rem;
+            padding: 0.8rem 2rem;
+            margin: 0.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
             font-weight: bold;
             text-decoration: none;
-            box-shadow: 0 8px 20px rgba(24,119,242,0.6);
+            box-shadow: 0 5px 15px rgba(24,119,242,0.6);
             transition: all 0.3s;
         }
         .btn-papers:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             background: #4267B2;
-            box-shadow: 0 12px 30px rgba(24,119,242,0.8);
+            box-shadow: 0 8px 20px rgba(24,119,242,0.8);
         }
+
+        /* Textbook Overview */
+        .overview-card {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(24,119,242,0.4);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .overview-card h3 { color: #4CAF50; margin-bottom: 1rem; }
 
         footer {
             text-align: center; padding: 4rem 1rem;
@@ -139,8 +160,10 @@
         .hidden { display: none; }
         @media (max-width: 600px) {
             .grade-grid { grid-template-columns: repeat(3, 1fr); }
+            .btn-papers { display: block; margin: 0.5rem auto; width: 90%; }
         }
     </style>
+    <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
 
@@ -155,7 +178,7 @@
 
     <div class="hero">
         <h2>Grade 12 Mathematics</h2>
-        <p style="font-size:1.3rem; margin:1.5rem 0;">CAPS Aligned • Videos + Notes + Past Papers</p>
+        <p style="font-size:1.3rem; margin:1.5rem 0;">CAPS Aligned • Videos + Textbook Screenshots + Past Papers</p>
         <p class="creator">Created by Mawethu Mpande • Proudly Ugie, Eastern Cape</p>
     </div>
 
@@ -178,26 +201,55 @@
         <!-- GRADE 12 CONTENT -->
         <div id="grade12Content" class="hidden">
 
-            <!-- PAST EXAM PAPERS SECTION -->
-            <div class="papers-card">
-                <h2>Download Past Exam Papers & Memos</h2>
-                <p style="font-size:1.2rem; margin:1rem 0;">All NSC & IEB Papers • 2014–2025 • With Full Memoranda</p>
-                <a href="https://drive.google.com/embeddedfolderview?id=11hL_FbY417q-HTLmJuQ-8j5i4mCF5qrd#list" 
-                   target="_blank" class="btn-papers">
-                   Open Question Paper Folder
-                </a>
+            <!-- Textbook Overview with Screenshots -->
+            <div class="overview-card">
+                <h3>Everything Maths Grade 12 Textbook Overview</h3>
+                <img src="infographic.png" alt="Textbook Infographic: Stats on exercises, pages, and contributors">
+                <img src="title-page.png" alt="Title Page: Grade 12 Mathematics Version 1 CAPS">
+                <img src="copyright.png" alt="Copyright Notice: Creative Commons BY-ND 3.0">
+                <img src="authors.png" alt="Authors and Contributors: Siyavula Team and Volunteers">
+                <img src="intro.png" alt="Introduction: Why Mathematics Matters">
+                <img src="sponsor.png" alt="Sponsor: MMI Holdings">
+                <img src="series.png" alt="Everything Maths & Science Series Overview">
+                <p style="margin-top: 1rem; opacity: 0.8;">Screenshots from Siyavula's official CAPS-aligned textbook. Download full PDF from <a href="https://www.everythingmaths.co.za" style="color: #1877F2;">everythingmaths.co.za</a></p>
+            </div>
+
+            <!-- Past Papers Grouped -->
+            <div class="papers-section">
+                <h2 class="section-title">Past Exam Papers & Memos</h2>
+                
+                <!-- National & IEB -->
+                <div class="papers-card">
+                    <h3>National NSC & IEB Past Papers (2014–2025)</h3>
+                    <p>Full collection with memoranda for all years</p>
+                    <a href="https://drive.google.com/embeddedfolderview?id=11hL_FbY417q-HTLmJuQ-8j5i4mCF5qrd#list" target="_blank" class="btn-papers">Open National Folder</a>
+                </div>
+
+                <!-- KZN -->
+                <div class="papers-card">
+                    <h3>KZN Provincial Past Papers & Memos (2015–2024)</h3>
+                    <p>KwaZulu-Natal June & November exams, sorted by year</p>
+                    <a href="https://drive.google.com/embeddedfolderview?id=1409T54wpAF3x64JSu3KkC5KMUKqsVNYE#list" target="_blank" class="btn-papers">Open KZN Folder</a>
+                </div>
+
+                <!-- Mpumalanga -->
+                <div class="papers-card">
+                    <h3>Mpumalanga Provincial Past Papers & Memos (2015–2024)</h3>
+                    <p>Mpumalanga June & November exams, with solutions</p>
+                    <a href="https://drive.google.com/embeddedfolderview?id=1Pbj-bJ_woyZs42hZd2JVrr1HFo0vY7Nu#list" target="_blank" class="btn-papers">Open Mpumalanga Folder</a>
+                </div>
             </div>
 
             <!-- 1. Series and Sequences -->
             <div class="topic-card">
                 <div class="topic-header">Series and Sequences • Full Playlist</div>
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyPIXj7twby7-xtcs9hekRVn" 
+                    <iframe id="video1" src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyPIXj7twby7-xtcs9hekRVn&enablejsapi=1" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen loading="lazy"></iframe>
                 </div>
                 <div class="notes">
-                    <h3>Key Concepts from Everything Maths Grade 12</h3>
+                    <h3>Key Concepts</h3>
                     <ul>
                         <li><strong>Arithmetic Sequence:</strong> aₙ = a₁ + (n−1)d</li>
                         <li><strong>Geometric Sequence:</strong> aₙ = a₁ · rⁿ⁻¹</li>
@@ -205,6 +257,7 @@
                         <li><strong>Sum Geometric:</strong> Sₙ = a₁ (rⁿ − 1)/(r − 1)</li>
                         <li><strong>Infinite Series:</strong> S∞ = a₁/(1 − r)  only if |r| < 1</li>
                     </ul>
+                    <img src="series-screenshot.png" alt="Textbook Screenshot: Series and Sequences Formulas">
                 </div>
             </div>
 
@@ -212,18 +265,19 @@
             <div class="topic-card">
                 <div class="topic-header">Financial Mathematics • Complete Course</div>
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyP_hkCTbIgh6C4ZhklRk3VJ" 
+                    <iframe id="video2" src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyP_hkCTbIgh6C4ZhklRk3VJ&enablejsapi=1" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen loading="lazy"></iframe>
                 </div>
                 <div class="notes">
-                    <h3>Key Concepts from Everything Maths Grade 12</h3>
+                    <h3>Key Concepts</h3>
                     <ul>
                         <li><strong>Future Value Annuity:</strong> F = x[(1+i)ⁿ − 1]/i</li>
                         <li><strong>Present Value Annuity:</strong> P = x[1 − (1+i)⁻ⁿ]/i</li>
                         <li><strong>Compound Interest:</strong> A = P(1 + i)ⁿ</li>
                         <li><strong>Effective rate:</strong> (1 + i_eff) = (1 + i/m)^m</li>
                     </ul>
+                    <img src="financial-screenshot.png" alt="Textbook Screenshot: Financial Maths Examples">
                 </div>
             </div>
 
@@ -231,18 +285,19 @@
             <div class="topic-card">
                 <div class="topic-header">Polynomials, Factor & Remainder Theorem</div>
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyPZRWmE6MVzwuBlg2hfuvoT" 
+                    <iframe id="video3" src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyPZRWmE6MVzwuBlg2hfuvoT&enablejsapi=1" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen loading="lazy"></iframe>
                 </div>
                 <div class="notes">
-                    <h3>Key Concepts from Everything Maths Grade 12</h3>
+                    <h3>Key Concepts</h3>
                     <ul>
                         <li><strong>Remainder Theorem:</strong> f(c) = remainder when divided by (x−c)</li>
                         <li><strong>Factor Theorem:</strong> (x−c) is a factor ⇔ f(c) = 0</li>
                         <li>Cubic always has at least one real root</li>
                         <li>Possible rational roots = ± factors of constant / leading coefficient</li>
                     </ul>
+                    <img src="polynomials-screenshot.png" alt="Textbook Screenshot: Factor Theorem Proof">
                 </div>
             </div>
 
@@ -259,10 +314,40 @@
     <footer>
         <p><strong>Sisonke EduTech • Education Division</strong></p>
         <p>Created by Mawethu Mpande • Proudly Ugie, Eastern Cape</p>
-        <p style="font-size:0.9rem; margin-top:1rem; opacity:0.8;">100% Free • Helping Matric Learners Pass • 2025 & Beyond</p>
+        <p style="font-size:0.9rem; margin-top:1rem; opacity:0.8;">100% Free • Helping Matric Learners Pass • November 2025 Edition</p>
     </footer>
 
     <script>
+        let players = [];
+
+        function onYouTubeIframeAPIReady() {
+            players.push(new YT.Player('video1', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            }));
+            players.push(new YT.Player('video2', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            }));
+            players.push(new YT.Player('video3', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            }));
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                players.forEach(function(player) {
+                    if (player.getIframe().id !== event.target.getIframe().id) {
+                        player.pauseVideo();
+                    }
+                });
+            }
+        }
+
         function showGrade(grade) {
             document.getElementById('grade12Content').classList.add('hidden');
             document.getElementById('otherGradeMessage').classList.add('hidden');
