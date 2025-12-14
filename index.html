@@ -52,6 +52,11 @@
         .btn-paper { display: block; background: var(--blue); color: white; padding: 1.1rem; margin-top: 1rem; border-radius: 12px; text-decoration: none; font-weight: bold; }
         .btn-paper:hover { background: #0d47a1; transform: translateY(-4px); }
 
+        /* Style for the 'Coming Soon' section */
+        .coming-soon-box { text-align: center; padding: 4rem 2rem; background: rgba(255,255,255,0.05); border-radius: 20px; border: 2px dashed rgba(255,255,255,0.2); margin-top: 3rem; }
+        .coming-soon-box h3 { font-size: 2rem; margin-bottom: 1rem; color: #ccc; }
+        .coming-soon-box p { font-size: 1.2rem; opacity: 0.7; }
+
         footer { text-align: center; padding: 4rem 1rem; border-top: 1px solid rgba(24,119,242,0.3); margin-top: 5rem; opacity: 0.9; }
         .hidden { display: none; }
     </style>
@@ -62,7 +67,7 @@
 <header><div class="logo"><h1>Sisonke EduTech</h1><p>Education Division</p></div></header>
 
 <div class="hero">
-    <h2>Grade 12 Mathematics</h2>
+    <h2>Mathematics Portal</h2>
     <p>Videos • Full Step-by-Step Exercises • Past Papers • 100% Free</p>
     <p class="creator">Created by Mawethu Mpande • Ugie, Eastern Cape</p>
 </div>
@@ -86,8 +91,8 @@
     </div>
 
     <div id="grade12Content" class="hidden">
+        <h2 class="section-title">Grade 12 Resources</h2>
 
-        <!-- PAST PAPERS -->
         <h2 class="section-title">Past Exam Papers & Memos</h2>
         <div class="papers-grid">
             <div class="paper-box"><h3>National NSC & IEB</h3><p>2014–2025 • All Papers + Memos</p>
@@ -98,7 +103,6 @@
                 <a href="https://drive.google.com/embeddedfolderview?id=1Pbj-bJ_woyZs42hZd2JVrr1HFo0vY7Nu#list" target="_blank" class="btn-paper">Open Mpumalanga Folder</a></div>
         </div>
 
-        <!-- SERIES AND SEQUENCES – NOW 100% WORKING -->
         <div class="topic-card">
             <div class="topic-header">Series and Sequences • Full Playlist + Detailed Solutions</div>
             <div class="video-container">
@@ -109,7 +113,6 @@
                     <h3>Exercise 1 – Arithmetic Sequences</h3>
                     <p><strong>Find the common difference d and write down the next 3 terms of each sequence.</strong></p>
 
-                    <!-- Question 1 -->
                     <div class="question">1. 2 ; 6 ; 10 ; 14 ; 18 ; 22 ; …</div>
                     <button class="solution-btn" onclick="toggleSolution('sol1')">Show Solution</button>
                     <div id="sol1" class="solution">
@@ -122,7 +125,6 @@
                         <p class="final">∴ d = 4 ; next terms: 26, 30, 34</p>
                     </div>
 
-                    <!-- Question 2 -->
                     <div class="question">2. −1 ; −4 ; −7 ; −10 ; −13 ; −16 ; …</div>
                     <button class="solution-btn" onclick="toggleSolution('sol2')">Show Solution</button>
                     <div id="sol2" class="solution">
@@ -134,7 +136,6 @@
                         <p class="final">∴ d = −3 ; next terms: −19, −22, −25</p>
                     </div>
 
-                    <!-- Question 3 -->
                     <div class="question">3. −5 ; −3 ; −1 ; 1 ; 3 ; …</div>
                     <button class="solution-btn" onclick="toggleSolution('sol3')">Show Solution</button>
                     <div id="sol3" class="solution">
@@ -144,7 +145,6 @@
                         <p class="final">∴ d = 2 ; next terms: 5, 7, 9</p>
                     </div>
 
-                    <!-- Question 4 -->
                     <div class="question">4. −1 ; 10 ; 21 ; 32 ; 43 ; 54 ; …</div>
                     <button class="solution-btn" onclick="toggleSolution('sol4')">Show Solution</button>
                     <div id="sol4" class="solution">
@@ -154,7 +154,6 @@
                         <p class="final">∴ d = 11 ; next terms: 65, 76, 87</p>
                     </div>
 
-                    <!-- Question 5 -->
                     <div class="question">5. a ; 3b ; a + b ; a + 3b ; a + 5b ; …</div>
                     <button class="solution-btn" onclick="toggleSolution('sol5')">Show Solution</button>
                     <div id="sol5" class="solution">
@@ -167,7 +166,6 @@
                         <p class="final">∴ d = 2b ; next terms: a + 7b, a + 9b, a + 11b</p>
                     </div>
 
-                    <!-- Question 6 -->
                     <div class="question">6. −2 ; −½ ; 1 ; ½ ; 0 ; ½ ; 1 ; …</div>
                     <button class="solution-btn" onclick="toggleSolution('sol6')">Show Solution</button>
                     <div id="sol6" class="solution">
@@ -178,8 +176,16 @@
                 </div>
             </div>
         </div>
-
     </div>
+
+    <div id="comingSoon" class="hidden">
+        <div class="coming-soon-box">
+            <h3 id="comingSoonTitle">Coming Soon</h3>
+            <p>We are currently working on the materials for this grade.</p>
+            <p>Check back soon for videos, past papers, and exercises.</p>
+        </div>
+    </div>
+
 </div>
 
 <footer>
@@ -189,10 +195,10 @@
 </footer>
 
 <script>
-    // Fixed JavaScript – solutions now work perfectly
+    // 1. Toggle Solution Logic
     function toggleSolution(id) {
         const solution = document.getElementById(id);
-        const button = solution.previousElementSibling; // the button just above
+        const button = solution.previousElementSibling; 
         if (solution.style.display === "block") {
             solution.style.display = "none";
             button.textContent = "Show Solution";
@@ -202,23 +208,49 @@
         }
     }
 
-    // YouTube API – only one video plays at a time
+    // 2. YouTube API Logic (Corrected to pause other videos)
     let players = [];
+    
+    // This function creates the players and ATTACHES the event listener
     function onYouTubeIframeAPIReady() {
         document.querySelectorAll('iframe[id^="video"]').forEach(iframe => {
-            players.push(new YT.Player(iframe.id));
+            players.push(new YT.Player(iframe.id, {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            }));
         });
     }
-    // Pause other videos when one starts
+
+    // This function runs whenever a video state changes (e.g. Play, Pause)
     function onPlayerStateChange(event) {
-        if (event.data === YT.PlayerState.PLAYING) {
-            players.forEach(p => { if (p !== event.target) p.pauseVideo(); });
+        // "1" means the video is playing
+        if (event.data === 1) { 
+            players.forEach(p => {
+                // If this player is NOT the one that just started, pause it
+                if (p !== event.target) {
+                    p.pauseVideo();
+                }
+            });
         }
     }
 
-    // Show/hide grades
+    // 3. Grade Selection Logic (Updated with Coming Soon)
     function showGrade(g) {
-        document.getElementById('grade12Content').style.display = (g === 12) ? 'block' : 'none';
+        const grade12 = document.getElementById('grade12Content');
+        const comingSoon = document.getElementById('comingSoon');
+        const comingSoonTitle = document.getElementById('comingSoonTitle');
+
+        if (g === 12) {
+            // Show Grade 12
+            grade12.style.display = 'block';
+            comingSoon.style.display = 'none';
+        } else {
+            // Show Coming Soon
+            grade12.style.display = 'none';
+            comingSoon.style.display = 'block';
+            comingSoonTitle.innerText = `Grade ${g} Content Coming Soon`;
+        }
     }
 
     // Show Grade 12 by default on load
