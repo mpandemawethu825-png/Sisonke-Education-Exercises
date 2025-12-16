@@ -12,7 +12,6 @@
 
     <style>
         :root {
-            /* Google Material Colors */
             --g-blue: #4285F4;
             --g-red: #EA4335;
             --g-yellow: #FBBC05;
@@ -46,122 +45,60 @@
             align-items: center; 
             justify-content: center;
         }
-        .logo h1 { 
-            font-family: 'Product Sans', sans-serif; 
-            font-size: 1.5rem; 
-            color: var(--text-dark); 
-        }
+        .logo h1 { font-family: 'Product Sans', sans-serif; font-size: 1.5rem; color: var(--text-dark); }
         .logo span { color: var(--g-blue); font-weight: bold; }
 
         /* CONTAINER */
         .container { max-width: 800px; margin: 0 auto; padding: 1rem; }
 
-        /* GRADE GRID STYLES */
-        .grade-section-title {
-            text-align: center;
-            font-family: 'Product Sans', sans-serif;
-            color: var(--text-light);
-            margin: 1.5rem 0 1rem;
-            font-size: 1.1rem;
-        }
-
-        .grade-grid { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 10px; 
-            margin-bottom: 2rem;
-        }
-        .grade-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 1rem 0;
-            text-align: center;
-            box-shadow: var(--shadow);
-            border: 1px solid #e0e0e0;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+        /* GRADE GRID */
+        .grade-section-title { text-align: center; font-family: 'Product Sans', sans-serif; color: var(--text-light); margin: 1.5rem 0 1rem; font-size: 1.1rem; }
+        .grade-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 2rem; }
+        .grade-card { background: var(--white); border-radius: 12px; padding: 1rem 0; text-align: center; box-shadow: var(--shadow); border: 1px solid #e0e0e0; cursor: pointer; transition: transform 0.2s; }
         .grade-card:active { transform: scale(0.95); }
-        .grade-card.active-grade { 
-            border: 2px solid var(--g-blue); 
-            background: #e8f0fe;
-        }
-        
-        .grade-number { 
-            font-family: 'Product Sans', sans-serif;
-            font-size: 1.8rem; 
-            font-weight: bold; 
-        }
-
-        /* Cycling Colors for Grades */
+        .grade-card.active-grade { border: 2px solid var(--g-blue); background: #e8f0fe; }
+        .grade-number { font-family: 'Product Sans', sans-serif; font-size: 1.8rem; font-weight: bold; }
         .grade-card:nth-child(4n+1) .grade-number { color: var(--g-blue); }
         .grade-card:nth-child(4n+2) .grade-number { color: var(--g-red); }
         .grade-card:nth-child(4n+3) .grade-number { color: var(--g-yellow); }
         .grade-card:nth-child(4n+4) .grade-number { color: var(--g-green); }
 
-        /* CONTENT WRAPPERS */
+        /* TERM TABS */
+        .term-tabs-container { display: flex; justify-content: space-between; margin-bottom: 1.5rem; background: var(--white); padding: 0.5rem; border-radius: 50px; box-shadow: var(--shadow); }
+        .term-tab { flex: 1; text-align: center; padding: 0.8rem 0; border-radius: 40px; font-weight: 500; font-size: 0.9rem; color: var(--text-light); cursor: pointer; transition: 0.3s; }
+        .term-tab.active { background: var(--g-blue); color: var(--white); font-weight: bold; box-shadow: 0 4px 10px rgba(66, 133, 244, 0.3); }
+
+        /* TOPIC GRID (Menu) */
+        .topic-menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; animation: fadeIn 0.3s ease-in; }
+        .topic-menu-card { background: var(--white); padding: 1.5rem; border-radius: 16px; text-align: center; box-shadow: var(--shadow); cursor: pointer; border: 1px solid #eee; transition: 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; }
+        .topic-menu-card:active { transform: scale(0.98); background: #f8f9fa; }
+        .topic-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .topic-name { font-weight: bold; color: var(--text-dark); }
+        
+        /* CONTENT VIEWS */
         .content-wrapper { display: none; animation: fadeIn 0.4s ease-out; }
         .content-wrapper.visible { display: block; }
+        .module-section { display: none; animation: fadeIn 0.3s ease-in; }
+        .module-section.active-module { display: block; }
 
-        /* CARDS */
-        .card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: var(--shadow);
-            border: 1px solid #e0e0e0;
-        }
-
-        .section-title { 
-            font-family: 'Product Sans', sans-serif; 
-            font-size: 1.3rem; 
-            margin-bottom: 1rem; 
-            color: var(--g-blue); 
-            display: flex; 
-            align-items: center; 
-            gap: 0.5rem;
-        }
-
-        /* TABS (Google Play Style) */
-        .scroll-tabs {
-            display: flex;
-            overflow-x: auto;
-            gap: 0.8rem;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-            scrollbar-width: none; 
-        }
-        .scroll-tabs::-webkit-scrollbar { display: none; } 
-
-        .tab-btn {
-            background: var(--white);
-            border: 1px solid #dadce0;
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
-            white-space: nowrap;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-light);
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .tab-btn.active {
-            background: #e8f0fe;
-            color: var(--g-blue);
-            border-color: var(--g-blue);
-        }
-
-        /* FORMULAS, NOTES, EXERCISES */
+        /* CARDS & GENERAL */
+        .card { background: var(--white); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); border: 1px solid #e0e0e0; }
+        .section-title { font-family: 'Product Sans', sans-serif; font-size: 1.3rem; margin-bottom: 1rem; color: var(--g-blue); display: flex; align-items: center; gap: 0.5rem; }
+        
+        /* BUTTONS */
+        .tab-btn { background: var(--white); border: 1px solid #dadce0; padding: 0.6rem 1.2rem; border-radius: 20px; white-space: nowrap; font-size: 0.9rem; font-weight: 500; color: var(--text-light); cursor: pointer; transition: 0.2s; }
+        
+        /* MATH ELEMENTS */
         .formula-box { background: #f8f9fa; border-left: 4px solid var(--g-blue); padding: 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; }
         .math-display { font-size: 1.2rem; text-align: center; margin: 0.5rem 0; color: var(--text-dark); }
-        .alert-box { background: #fce8e6; color: #c5221f; padding: 1rem; border-radius: 8px; margin: 1rem 0; display: flex; align-items: start; gap: 0.8rem; }
-        .alert-box.green { background: #e6f4ea; color: #137333; }
-        .exercise-item { border-bottom: 1px solid #eee; padding: 1.2rem 0; }
-        .exercise-item:last-child { border-bottom: none; }
         
-        .solution-btn { display: block; width: 100%; padding: 0.8rem; margin-top: 0.8rem; background: var(--white); border: 1px solid #dadce0; color: var(--g-blue); font-weight: 600; border-radius: 8px; cursor: pointer; text-transform: uppercase; font-size: 0.85rem; }
-        .solution { display: none; background: #f1f3f4; padding: 1rem; border-radius: 8px; margin-top: 0.8rem; font-size: 0.95rem; }
+        /* SUMMARY NOTE STYLES */
+        .summary-block { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
+        .summary-block:last-child { border: none; }
+        .summary-title { font-weight: bold; color: var(--g-blue); margin-bottom: 0.5rem; display: block; }
+        .summary-list { list-style: none; padding-left: 0.5rem; }
+        .summary-list li { margin-bottom: 0.5rem; position: relative; padding-left: 1rem; font-size: 0.95rem; color: #444; }
+        .summary-list li::before { content: "•"; color: var(--g-blue); position: absolute; left: 0; font-weight: bold; }
 
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; background: #000; margin-bottom: 1.5rem; }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
@@ -171,10 +108,10 @@
         .coming-soon h3 { color: var(--text-light); margin-top: 1rem; }
         .coming-soon-icon { font-size: 3rem; color: #dadce0; }
 
-        /* BOTTOM NAVIGATION */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); box-shadow: 0 -2px 10px rgba(0,0,0,0.1); display: flex; justify-content: space-around; padding: 0.5rem 0; z-index: 200; }
-        .nav-item { text-align: center; font-size: 0.75rem; color: var(--text-light); padding: 0.5rem; cursor: pointer; width: 100%; }
-        .nav-item.active { color: var(--g-blue); }
+        /* BOTTOM NAVIGATION (Hidden by default) */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); box-shadow: 0 -2px 10px rgba(0,0,0,0.1); display: none; justify-content: space-around; padding: 0.5rem 0; z-index: 200; }
+        .nav-item { text-align: center; font-size: 0.75rem; color: var(--text-light); padding: 0.5rem; cursor: pointer; width: 100%; opacity: 0.6; transition: 0.3s; }
+        .nav-item.active { color: var(--g-blue); opacity: 1; font-weight: bold; }
         .nav-icon { display: block; font-size: 1.5rem; margin-bottom: 2px; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -204,218 +141,200 @@
 
     <div id="grade-12-content" class="content-wrapper visible">
         
-        <div class="scroll-tabs">
-            <button class="tab-btn active" onclick="switchTopic('1.1', this)">1.1 Arithmetic</button>
-            <button class="tab-btn" onclick="switchTopic('1.2', this)">1.2 Geometric</button>
-            <button class="tab-btn" onclick="switchTopic('1.3', this)">1.3 Sigma</button>
-            <button class="tab-btn" onclick="switchTopic('1.4', this)">1.4 Arith. Series</button>
-            <button class="tab-btn" onclick="switchTopic('1.5', this)">1.5 Geo. Series</button>
-            <button class="tab-btn" onclick="switchTopic('1.6', this)">1.6 Infinite</button>
-            <button class="tab-btn" onclick="switchTopic('1.7', this)">1.7 Summary</button>
+        <div class="term-tabs-container">
+            <div class="term-tab active" onclick="switchTerm(1, this)">Term 1</div>
+            <div class="term-tab" onclick="switchTerm(2, this)">Term 2</div>
+            <div class="term-tab" onclick="switchTerm(3, this)">Term 3</div>
+            <div class="term-tab" onclick="switchTerm(4, this)">Term 4</div>
         </div>
 
-        <div id="topic-1.1" class="topic-content fade-in">
-            <div class="card">
-                <h2 class="section-title">Arithmetic Sequences</h2>
-                <div class="video-wrapper">
-                    <iframe id="vid1" src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyPIXj7twby7-xtcs9hekRVn&enablejsapi=1" allowfullscreen></iframe>
-                </div>
+        <div id="term-1-menu" class="topic-menu-grid">
+            <div class="topic-menu-card" onclick="openTopic('sequences', 'term1')">
+                <div class="topic-icon">📊</div>
+                <div class="topic-name">Sequences</div>
+            </div>
+            <div class="topic-menu-card" onclick="openTopic('functions', 'term1')">
+                <div class="topic-icon">📈</div>
+                <div class="topic-name">Functions</div>
+            </div>
+            <div class="topic-menu-card" onclick="openTopic('finance', 'term1')">
+                <div class="topic-icon">💰</div>
+                <div class="topic-name">Finance</div>
+            </div>
+            <div class="topic-menu-card" onclick="openTopic('trig', 'term1')">
+                <div class="topic-icon">📐</div>
+                <div class="topic-name">Trigonometry</div>
+            </div>
+        </div>
+
+        <div id="term-other-menu" class="card coming-soon hidden">
+            <div class="coming-soon-icon">📆</div>
+            <h3>Select Term 1</h3>
+            <p>Content for Terms 2, 3, and 4 is coming later in the year.</p>
+        </div>
+
+        <div id="content-container" class="hidden">
+            
+            <div id="module-sequences" class="module-section">
                 
-                <p>A sequence where you add a constant number to get the next term.</p>
+                <button class="tab-btn" style="margin-bottom:1rem;" onclick="goBackToMenu()">← Back to Term 1</button>
                 
-                <div class="formula-box">
-                    <strong>General Formula:</strong>
-                    <div class="math-display">\( T_n = a + (n - 1)d \)</div>
-                    <small>a = first term, d = difference</small>
+                <div class="card">
+                    <h2 class="section-title">Sequences & Series Playlist</h2>
+                    <div class="video-wrapper">
+                        <iframe id="vid1" src="https://www.youtube.com/embed/videoseries?list=PLU_DCVXL8MyPIXj7twby7-xtcs9hekRVn&enablejsapi=1" allowfullscreen></iframe>
+                    </div>
                 </div>
 
-                <div class="alert-box">
-                    <div style="font-size:1.5rem">⚠️</div>
-                    <div><strong>The Test:</strong> To prove a sequence is arithmetic, show that: <br>\( T_2 - T_1 = T_3 - T_2 \).</div>
-                </div>
+                <div class="card">
+                    <h2 class="section-title">Summary</h2>
+                    
+                    <div class="summary-block">
+                        <span class="summary-title">Arithmetic Sequence</span>
+                        <ul class="summary-list">
+                            <li>Common difference (\(d\)) between any two consecutive terms: \( d = T_n - T_{n-1} \)</li>
+                            <li>General form: \( a + (a+d) + (a+2d) + \dots \)</li>
+                            <li>General formula: \( T_n = a + (n-1)d \)</li>
+                            <li>Graph of the sequence lies on a straight line.</li>
+                        </ul>
+                    </div>
 
-                <div class="exercise-item">
-                    <p><strong>Example:</strong> Determine the 50th term of: 3 ; 7 ; 11 ; ...</p>
-                    <button class="solution-btn" onclick="toggleSolution('sol1_1')">View Solution</button>
-                    <div id="sol1_1" class="solution">
-                        <p>1. Identify variables: \(a = 3\), \(d = 4\)</p>
-                        <p>2. Substitute: \( T_{50} = 3 + (49)(4) \)</p>
-                        <p>3. Calculate: \( T_{50} = 199 \)</p>
+                    <div class="summary-block">
+                        <span class="summary-title">Quadratic Sequence</span>
+                        <ul class="summary-list">
+                            <li>Common second difference between any two consecutive terms.</li>
+                            <li>General formula: \( T_n = an^2 + bn + c \)</li>
+                            <li>Graph of the sequence lies on a parabola.</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-block">
+                        <span class="summary-title">Geometric Sequence</span>
+                        <ul class="summary-list">
+                            <li>Constant ratio (\(r\)) between any two consecutive terms: \( r = \frac{T_n}{T_{n-1}} \)</li>
+                            <li>General form: \( a + ar + ar^2 + \dots \)</li>
+                            <li>General formula: \( T_n = ar^{n-1} \)</li>
+                            <li>Graph of the sequence lies on an exponential curve.</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-block">
+                        <span class="summary-title">Sigma Notation</span>
+                        <div class="math-display">\( \sum_{k=1}^{n} T_k \)</div>
+                        <p style="font-size:0.9rem; color:#444;">Sigma notation is used to indicate the sum of the terms given by \(T_k\), starting from \(k=1\) and ending at \(k=n\).</p>
+                    </div>
+
+                    <div class="summary-block">
+                        <span class="summary-title">Series</span>
+                        <p style="font-size:0.9rem; margin-bottom:0.5rem;">The sum of certain numbers of terms in a sequence.</p>
+                        
+                        <strong>Arithmetic Series:</strong>
+                        <div style="margin: 0.5rem 0; font-size:0.95rem;">
+                            \( S_n = \frac{n}{2}[a+l] \) <br>
+                            \( S_n = \frac{n}{2}[2a+(n-1)d] \)
+                        </div>
+
+                        <strong>Geometric Series:</strong>
+                        <div style="margin: 0.5rem 0; font-size:0.95rem;">
+                            \( S_n = \frac{a(1-r^n)}{1-r} \) if \( r < 1 \) <br>
+                            \( S_n = \frac{a(r^n-1)}{r-1} \) if \( r > 1 \)
+                        </div>
+                    </div>
+
+                    <div class="summary-block">
+                        <span class="summary-title">Sum to Infinity</span>
+                        <p style="font-size:0.9rem; margin-bottom:0.5rem;">A convergent geometric series, with \( -1 < r < 1 \), tends to a certain fixed number as the number of terms in the sum tends to infinity.</p>
+                        <div class="formula-box" style="margin-top:0;">
+                            <div class="math-display">\( S_\infty = \sum_{n=1}^{\infty} T_n = \frac{a}{1-r} \)</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="module-functions" class="module-section">
+                <button class="tab-btn" style="margin-bottom:1rem;" onclick="goBackToMenu()">← Back to Term 1</button>
+                <div class="card">
+                    <h2 class="section-title">Functions</h2>
+                    <p>Mastering functions for Grade 12.</p>
+                    <div class="video-wrapper">
+                        <iframe id="vid-func" src="https://www.youtube.com/embed/videoseries?si=JY8HZAWnxTZfrOYq&list=PLU_DCVXL8MyP_hkCTbIgh6C4ZhklRk3VJ&enablejsapi=1" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div id="topic-1.2" class="topic-content hidden fade-in">
-            <div class="card">
-                <h2 class="section-title">Geometric Sequences</h2>
-                <p>A sequence where you multiply by a constant number (ratio) to get the next term.</p>
-                <div class="formula-box">
-                    <strong>General Formula:</strong>
-                    <div class="math-display">\( T_n = a \cdot r^{n-1} \)</div>
-                    <small>r = constant ratio</small>
-                </div>
-                <div class="alert-box">
-                    <div style="font-size:1.5rem">⚠️</div>
-                    <div><strong>The Test:</strong> To prove a sequence is geometric, show that: <br>\( \frac{T_2}{T_1} = \frac{T_3}{T_2} \).</div>
-                </div>
-                <div class="exercise-item">
-                    <p><strong>Question:</strong> Find \(T_n\) for: 2 ; 6 ; 18 ; ...</p>
-                    <button class="solution-btn" onclick="toggleSolution('sol1_2')">View Solution</button>
-                    <div id="sol1_2" class="solution">
-                        <p>\(a = 2\), \(r = 3\)</p>
-                        <p>Answer: \( T_n = 2 \cdot (3)^{n-1} \)</p>
+            <div id="module-finance" class="module-section">
+                <button class="tab-btn" style="margin-bottom:1rem;" onclick="goBackToMenu()">← Back to Term 1</button>
+                <div class="card">
+                    <h2 class="section-title">Finance</h2>
+                    <div class="coming-soon">
+                        <div class="coming-soon-icon">💰</div>
+                        <p>Financial Maths content loading...</p>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div id="topic-1.3" class="topic-content hidden fade-in">
-            <div class="card">
-                <h2 class="section-title">Sigma Notation (Σ)</h2>
-                <div class="formula-box">
-                    <div class="math-display">\( \sum_{k=1}^{n} T_k \)</div>
-                    <small>Sum from term k=1 up to term n</small>
-                </div>
-                <div class="exercise-item">
-                    <p><strong>Example:</strong> Expand and solve \( \sum_{k=1}^{3} (2k) \)</p>
-                    <button class="solution-btn" onclick="toggleSolution('sol1_3')">View Solution</button>
-                    <div id="sol1_3" class="solution">
-                        <p>Total: \( 2(1) + 2(2) + 2(3) = 12 \)</p>
+            <div id="module-trig" class="module-section">
+                <button class="tab-btn" style="margin-bottom:1rem;" onclick="goBackToMenu()">← Back to Term 1</button>
+                <div class="card">
+                    <h2 class="section-title">Trigonometry</h2>
+                    <div class="coming-soon">
+                        <div class="coming-soon-icon">📐</div>
+                        <p>Trig content loading...</p>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div id="topic-1.4" class="topic-content hidden fade-in">
-            <div class="card">
-                <h2 class="section-title">Sum of Arithmetic Series</h2>
-                <div class="formula-box">
-                    <div class="math-display">\( S_n = \frac{n}{2}[2a + (n-1)d] \)</div>
-                </div>
-                <div class="alert-box green">
-                    <div style="font-size:1.5rem">📝</div>
-                    <div><strong>Exam Proof:</strong> You are often asked to prove this formula.</div>
-                </div>
-                <button class="solution-btn" onclick="toggleSolution('proof1')">Show Proof Steps</button>
-                <div id="proof1" class="solution">
-                    <p>1. Write sum forwards: \(S_n = a + ... + l\)</p>
-                    <p>2. Write sum backwards: \(S_n = l + ... + a\)</p>
-                    <p>3. Add equations: \(2S_n = n(a+l)\)</p>
-                    <p>4. Substitute \(l\): \(S_n = \frac{n}{2}[2a + (n-1)d]\)</p>
-                </div>
-            </div>
         </div>
-
-        <div id="topic-1.5" class="topic-content hidden fade-in">
-            <div class="card">
-                <h2 class="section-title">Sum of Geometric Series</h2>
-                <div class="formula-box">
-                    <div class="math-display">\( S_n = \frac{a(r^n - 1)}{r - 1} \)</div>
-                    <small>Use when r > 1</small>
-                </div>
-                <div class="exercise-item">
-                    <p><strong>Question:</strong> Sum of 8 terms: 3 + 6 + 12 + ...</p>
-                    <button class="solution-btn" onclick="toggleSolution('sol1_5')">View Solution</button>
-                    <div id="sol1_5" class="solution">
-                        <p>\(S_8 = \frac{3(2^8 - 1)}{1} = 765\)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="topic-1.6" class="topic-content hidden fade-in">
-            <div class="card">
-                <h2 class="section-title">Sum to Infinity</h2>
-                <div class="alert-box">
-                    <div style="font-size:1.5rem">🛑</div>
-                    <div><strong>Condition:</strong> Ratio must be \(-1 < r < 1\).</div>
-                </div>
-                <div class="formula-box">
-                    <div class="math-display">\( S_\infty = \frac{a}{1 - r} \)</div>
-                </div>
-                <div class="exercise-item">
-                    <p><strong>Example:</strong> Calculate \( 1 + 0.5 + 0.25 + ... \)</p>
-                    <button class="solution-btn" onclick="toggleSolution('sol1_6')">View Solution</button>
-                    <div id="sol1_6" class="solution">
-                        <p>\(S_\infty = \frac{1}{1 - 0.5} = 2\)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="topic-1.7" class="topic-content hidden fade-in">
-            <div class="card">
-                <h2 class="section-title">Chapter Summary</h2>
-                <table style="width:100%; border-collapse: collapse; margin-top:1rem; font-size:0.9rem;">
-                    <thead>
-                        <tr style="background:#f1f3f4; text-align:left;">
-                            <th style="padding:10px; border-bottom:2px solid #ddd;">Type</th>
-                            <th style="padding:10px; border-bottom:2px solid #ddd;">General Term</th>
-                            <th style="padding:10px; border-bottom:2px solid #ddd;">Sum Formula</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="padding:10px; border-bottom:1px solid #eee;"><strong>Arithmetic</strong></td>
-                            <td style="padding:10px; border-bottom:1px solid #eee;">\(a + (n-1)d\)</td>
-                            <td style="padding:10px; border-bottom:1px solid #eee;">\(\frac{n}{2}[2a + (n-1)d]\)</td>
-                        </tr>
-                        <tr>
-                            <td style="padding:10px; border-bottom:1px solid #eee;"><strong>Geometric</strong></td>
-                            <td style="padding:10px; border-bottom:1px solid #eee;">\(a \cdot r^{n-1}\)</td>
-                            <td style="padding:10px; border-bottom:1px solid #eee;">\(\frac{a(r^n - 1)}{r - 1}\)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
     </div>
+
     <div id="coming-soon-content" class="content-wrapper">
         <div class="card coming-soon">
             <div class="coming-soon-icon">🚧</div>
             <h2 id="coming-soon-title">Grade Content</h2>
             <h3>Coming Soon</h3>
-            <p>We are currently uploading materials for this grade. Please check back later.</p>
+            <p>We are currently uploading materials for this grade.</p>
         </div>
     </div>
 
 </div>
 
-<div class="bottom-nav">
-    <div class="nav-item active">
+<div id="bottom-nav" class="bottom-nav">
+    <div class="nav-item active" onclick="openTopic('sequences', 'term1', this)">
         <span class="nav-icon">📊</span>
         Sequences
     </div>
-    <div class="nav-item" style="opacity:0.5">
+    <div class="nav-item" onclick="openTopic('functions', 'term1', this)">
         <span class="nav-icon">📈</span>
         Functions
     </div>
-    <div class="nav-item" style="opacity:0.5">
+    <div class="nav-item" onclick="openTopic('finance', 'term1', this)">
         <span class="nav-icon">💰</span>
         Finance
     </div>
-    <div class="nav-item" style="opacity:0.5">
+    <div class="nav-item" onclick="openTopic('trig', 'term1', this)">
         <span class="nav-icon">📐</span>
         Trig
     </div>
 </div>
 
 <script>
-    // 1. Grade Selection Logic
+    // 1. Grade Selection
     function selectGrade(grade, btn) {
-        // Update active state on grid
         document.querySelectorAll('.grade-card').forEach(c => c.classList.remove('active-grade'));
         btn.classList.add('active-grade');
 
         const grade12Content = document.getElementById('grade-12-content');
         const comingSoonContent = document.getElementById('coming-soon-content');
         const comingSoonTitle = document.getElementById('coming-soon-title');
+        
+        // Reset View
+        document.getElementById('bottom-nav').style.display = 'none';
 
         if (grade === 12) {
             grade12Content.classList.add('visible');
             comingSoonContent.classList.remove('visible');
+            goBackToMenu();
         } else {
             grade12Content.classList.remove('visible');
             comingSoonContent.classList.add('visible');
@@ -423,10 +342,65 @@
         }
     }
 
-    // 2. YouTube API
+    // 2. Term Switching
+    function switchTerm(term, btn) {
+        document.querySelectorAll('.term-tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+
+        if(term === 1) {
+            document.getElementById('term-1-menu').classList.remove('hidden');
+            document.getElementById('term-1-menu').style.display = 'grid';
+            document.getElementById('term-other-menu').classList.add('hidden');
+        } else {
+            document.getElementById('term-1-menu').classList.add('hidden');
+            document.getElementById('term-1-menu').style.display = 'none';
+            document.getElementById('term-other-menu').classList.remove('hidden');
+        }
+        
+        document.getElementById('content-container').classList.add('hidden');
+        document.getElementById('bottom-nav').style.display = 'none';
+    }
+
+    // 3. Opening a Topic
+    function openTopic(topicId, term, navBtn) {
+        document.getElementById('term-1-menu').classList.add('hidden');
+        document.getElementById('term-1-menu').style.display = 'none';
+        document.getElementById('content-container').classList.remove('hidden');
+        document.querySelectorAll('.module-section').forEach(m => m.classList.remove('active-module'));
+        document.getElementById('module-' + topicId).classList.add('active-module');
+        document.getElementById('bottom-nav').style.display = 'flex';
+        document.querySelectorAll('.bottom-nav .nav-item').forEach(item => item.classList.remove('active'));
+        
+        if(navBtn) {
+            navBtn.classList.add('active');
+        } else {
+            const items = document.querySelectorAll('.bottom-nav .nav-item');
+            if(topicId === 'sequences') items[0].classList.add('active');
+            if(topicId === 'functions') items[1].classList.add('active');
+            if(topicId === 'finance') items[2].classList.add('active');
+            if(topicId === 'trig') items[3].classList.add('active');
+        }
+
+        if(typeof players !== 'undefined') {
+            players.forEach(p => p.pauseVideo());
+        }
+    }
+
+    // 4. Back to Menu
+    function goBackToMenu() {
+        document.getElementById('content-container').classList.add('hidden');
+        document.getElementById('term-1-menu').classList.remove('hidden');
+        document.getElementById('term-1-menu').style.display = 'grid';
+        document.getElementById('bottom-nav').style.display = 'none';
+        if(typeof players !== 'undefined') {
+            players.forEach(p => p.pauseVideo());
+        }
+    }
+
+    // 5. YouTube API
     let players = [];
     function onYouTubeIframeAPIReady() {
-        document.querySelectorAll('iframe[id^="vid"]').forEach(iframe => {
+        document.querySelectorAll('iframe').forEach(iframe => {
             players.push(new YT.Player(iframe.id, {
                 events: { 'onStateChange': onPlayerStateChange }
             }));
@@ -435,28 +409,6 @@
     function onPlayerStateChange(event) {
         if (event.data === 1) { 
             players.forEach(p => { if (p !== event.target) p.pauseVideo(); });
-        }
-    }
-
-    // 3. Tab Switching Logic
-    function switchTopic(id, btn) {
-        document.querySelectorAll('.topic-content').forEach(div => div.classList.add('hidden'));
-        document.getElementById('topic-' + id).classList.remove('hidden');
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    }
-
-    // 4. Solution Toggle
-    function toggleSolution(id) {
-        const sol = document.getElementById(id);
-        const btn = sol.previousElementSibling;
-        if(sol.style.display === 'block') {
-            sol.style.display = 'none';
-            btn.textContent = 'View Solution';
-        } else {
-            sol.style.display = 'block';
-            btn.textContent = 'Hide Solution';
         }
     }
 </script>
