@@ -182,6 +182,58 @@ header{
 .t3 .cfill{background:linear-gradient(90deg,var(--gg),#6ed68a)}
 .t4 .cfill{background:linear-gradient(90deg,var(--gy),#ffd84d)}
 
+/* ── EMBEDDED RESOURCE ── */
+.res-box {
+  border-radius: var(--r2);
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 1.1rem;
+  margin-top: 1.5rem;
+  text-align: center;
+  animation: up .3s both; /* Added your smooth animation to this box! */
+  animation-delay: 0.25s;
+}
+.res-hdr {
+  font-size: .87rem;
+  font-weight: 700;
+  margin-bottom: .8rem;
+  color: var(--text);
+  text-align: left;
+}
+.res-iframe {
+  width: 100%;
+  height: 250px;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  margin-bottom: 1rem;
+  background: #fff;
+}
+.dl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--gg), #4dc76a);
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: inherit;
+  box-shadow: 0 4px 15px rgba(52,168,83,.4);
+  transition: transform .2s, opacity .2s;
+}
+.dl-btn:hover {
+  opacity: .9;
+  transform: translateY(-2px);
+}
+.dl-btn:active {
+  transform: scale(.97);
+}
+
 /* ── CONTENT VIEW ── */
 .cview{display:none}
 .back{
@@ -290,7 +342,6 @@ header{
 <div class="wrap">
 <div id="menu">
 
-  <!-- HERO -->
   <div class="hero">
     <div class="g-dots">
       <div class="g-dot" style="background:#4285F4;color:#4285F4"></div>
@@ -307,7 +358,6 @@ header{
     </div>
   </div>
 
-  <!-- TABS -->
   <div class="tabs">
     <div class="tab active" data-t="1" onclick="showTerm(1,this)">Term 1</div>
     <div class="tab" data-t="2" onclick="showTerm(2,this)">Term 2</div>
@@ -315,7 +365,6 @@ header{
     <div class="tab" data-t="4" onclick="showTerm(4,this)">Term 4</div>
   </div>
 
-  <!-- TERM 1 -->
   <div id="g1" class="grid t1">
     <div class="card" onclick="openT('sequences')">
       <div class="ctop"><div class="ico">📊</div><span class="cpill">108</span></div>
@@ -343,7 +392,6 @@ header{
     </div>
   </div>
 
-  <!-- TERM 2 -->
   <div id="g2" class="grid t2 hidden">
     <div class="card" onclick="openT('calculus')">
       <div class="ctop"><div class="ico">📉</div><span class="cpill">72</span></div>
@@ -371,7 +419,6 @@ header{
     </div>
   </div>
 
-  <!-- TERM 3 -->
   <div id="g3" class="grid t3 hidden">
     <div class="card" onclick="openT('stats')">
       <div class="ctop"><div class="ico">📋</div><span class="cpill">6</span></div>
@@ -393,7 +440,6 @@ header{
     </div>
   </div>
 
-  <!-- TERM 4 -->
   <div id="g4" class="grid t4 hidden">
     <div class="card" onclick="openT('exams')" style="grid-column:span 2">
       <div class="ctop"><div class="ico">📝</div><span class="cpill">20</span></div>
@@ -403,10 +449,20 @@ header{
     </div>
   </div>
 
-</div><!-- /menu -->
+  <div class="res-box">
+    <div class="res-hdr">📚 Grade 12 Master Study Guide</div>
+    <iframe class="res-iframe" src="https://drive.google.com/file/d/1bbcNJH6OhVrGf8LZFzBPR6yuWDhTv7zg/preview" allow="autoplay"></iframe>
+    <a href="https://drive.google.com/uc?export=download&id=1bbcNJH6OhVrGf8LZFzBPR6yuWDhTv7zg" class="dl-btn" download>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      Download Resource
+    </a>
+  </div>
 
-<!-- CONTENT VIEW -->
-<div id="cview" class="cview">
+</div><div id="cview" class="cview">
   <button class="back" onclick="goBack()">
     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
       <path d="M8 2L4 6L8 10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
@@ -422,72 +478,4 @@ header{
     </div>
   </div>
   <div class="vbox">
-    <div class="vwrap">
-      <iframe id="yt" allowfullscreen allow="autoplay;encrypted-media"></iframe>
-    </div>
-    <div class="vfoot">
-      <span>▶ Use playlist controls</span>
-      <a id="ytlink" class="ytbtn" target="_blank" rel="noopener">▶ Open YouTube</a>
-    </div>
-  </div>
-  <div class="tips">
-    <div class="tips-lbl">✦ Study Tips</div>
-    <ul id="tips-ul"></ul>
-  </div>
-</div>
-</div><!-- /wrap -->
-
-<script>
-const P={
-  sequences:{icon:'📊',title:'Sequences & Series',desc:'Arithmetic & geometric progressions, sigma notation, sum to infinity',count:108,id:'PLU_DCVXL8MyPIXj7twby7-xtcs9hekRVn',tips:['Learn both explicit and recursive forms of each sequence type.','Sigma notation is frequently tested — practice both directions.','For geometric series, always check |r| < 1 before sum to infinity.']},
-  functions:{icon:'📈',title:'Functions & Graphs',desc:'Exponential, logarithmic, hyperbola, and inverse functions',count:24,id:'PLU_DCVXL8MyP_hkCTbIgh6C4ZhklRk3VJ',tips:['Always state domain and range when sketching — easy marks lost here.','Know how a, p, q affect each graph type.','Inverse: swap x and y, then make y the subject.']},
-  finance:{icon:'💰',title:'Financial Maths',desc:'Compound interest, annuities, loans, and future value',count:23,id:'PLU_DCVXL8MyPZRWmE6MVzwuBlg2hfuvoT',tips:['Draw a timeline before choosing a formula.','Distinguish future value vs present value annuities.','Annual rate ÷ 12 for monthly payment calculations.']},
-  trig:{icon:'📐',title:'Trigonometry',desc:'Compound angles, sin/cos rules, area rule, and identities',count:69,id:'PLU_DCVXL8MyNp2vqZjZvDTRDxf6oCuf7l',tips:['CAST: know which ratios are positive in each quadrant.','Proofs: start from the more complex side.','Compound angle formulae — internalise them to save exam time.']},
-  calculus:{icon:'📉',title:'Differential Calculus',desc:'Limits, derivatives, cubic graphs, and optimisation',count:72,id:'PLU_DCVXL8MyP_xzgHLGl89rWRiS2jLHNk',tips:["Simplify before differentiating — never differentiate a fraction directly.",'Optimisation: set f\'(x) = 0, then verify with f\'\'(x).','Cubic: find stationary points then test concavity to classify.']},
-  analytical:{icon:'📍',title:'Analytical Geometry',desc:'Circles, tangent lines, collinearity, and coordinate proofs',count:17,id:'PLU_DCVXL8MyPiQexgRohpf0G0o_DEHpQH',tips:['Tangent to circle → radius ⊥ tangent.','Midpoint and distance formulae build most proofs.','Complete the square to get standard circle form.']},
-  euclidean:{icon:'📏',title:'Euclidean Geometry',desc:'Circle theorems, proportionality, and formal proofs',count:31,id:'PLU_DCVXL8MyMfSj1cUq05oB6enr8aVRGg',tips:['State ALL reasons in proofs, even obvious ones.','Proportionality: identify parallel lines first.','Cyclic quads: opposite angles sum to 180°.']},
-  factor:{icon:'➗',title:'Factor Theorem',desc:'Polynomial division, roots, factor and remainder theorem',count:5,id:'PLU_DCVXL8MyO5IkhNzfrA83ensZJ9eg1Y',tips:['If f(a) = 0, then (x − a) is a factor.','After one factor by trial, use long division or inspection.','Remainder theorem gives f(a) without full polynomial division.']},
-  stats:{icon:'📋',title:'Statistics',desc:'Regression, correlation, ogives, and data interpretation',count:6,id:'PLU_DCVXL8MyPUhwqhNcdwUxXCG7_BSZMw',tips:['Regression line always passes through (x̄, ȳ).','r is between −1 and 1 — know what values mean.','Ogives: plot cumulative frequency at the upper class bound.']},
-  probability:{icon:'🎲',title:'Probability',desc:'Counting principles, Venn diagrams, conditional probability',count:17,id:'PLU_DCVXL8MyPJINt5go5JRtKhcEGc2bz5',tips:['Mutually exclusive: P(A or B) = P(A) + P(B).','Independent: P(A and B) = P(A) × P(B).','Always draw a Venn or tree diagram before any formula.']},
-  'trig-graphs':{icon:'🌊',title:'Trig Functions (Graphs)',desc:'Transformations of sin, cos, and tan — period and amplitude',count:9,id:'PLU_DCVXL8MyMoKckv-JzJs0A8oWyT3K4O',tips:['State amplitude, period, and shift for every graph.','tan has no amplitude; period = 180°/k.','y = sin(x + p): positive p shifts the graph LEFT.']},
-  exams:{icon:'📝',title:'Final Exam Revision',desc:'Past paper walkthroughs and full topic consolidation',count:20,id:'PLU_DCVXL8MyON4s4Dp5tby7-GtLz_p4C5',tips:['Attempt past papers under real timed conditions.','Aim for roughly 1.5 minutes per mark.','Paper 1 is algebra-heavy; Paper 2 is geometry-heavy.']}
-};
-
-function showTerm(n,btn){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  btn.classList.add('active');
-  [1,2,3,4].forEach(i=>{
-    const g=document.getElementById('g'+i);
-    if(g)g.classList.toggle('hidden',i!==n);
-  });
-  const g=document.getElementById('g'+n);
-  if(g)g.querySelectorAll('.card').forEach((c,i)=>{
-    c.style.animation='none';void c.offsetHeight;
-    c.style.animation=`up .3s ${i*.055}s both`;
-  });
-}
-
-function openT(key){
-  const d=P[key];if(!d)return;
-  document.getElementById('vh-ico').textContent=d.icon;
-  document.getElementById('vh-title').textContent=d.title;
-  document.getElementById('vh-desc').textContent=d.desc;
-  document.getElementById('vh-cnt').textContent=d.count+' Lessons';
-  document.getElementById('yt').src=`https://www.youtube.com/embed/videoseries?list=${d.id}`;
-  document.getElementById('ytlink').href=`https://www.youtube.com/playlist?list=${d.id}`;
-  document.getElementById('tips-ul').innerHTML=d.tips.map(t=>`<li>${t}</li>`).join('');
-  document.getElementById('menu').classList.add('hidden');
-  const cv=document.getElementById('cview');
-  cv.style.cssText='display:block;animation:up .3s both';
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-function goBack(){
-  document.getElementById('yt').src='';
-  document.getElementById('cview').style.display='none';
-  document.getElementById('menu').classList.remove('hidden');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-</script>
-</body>
-</html>
+    <div class="vwrap
