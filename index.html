@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Sisonke EduTech — Grade 12 Maths</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <style>
 :root{
   --gb:#4285F4;--gr:#EA4335;--gy:#FBBC05;--gg:#34A853;
@@ -14,10 +17,11 @@
   --border2:rgba(255,255,255,0.22);
   --text:#f0f4ff;--sub:#8a95b8;
   --r:14px;--r2:20px;
+  --qz:#7b2ff7;--qz2:#bc6bff;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-family:'DM Sans',sans-serif;
   background:var(--bg);color:var(--text);
   min-height:100vh;overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
@@ -34,8 +38,8 @@ body::before{
 
 /* ── HEADER ── */
 header{
-  position:sticky;top:0;z-index:100;
-  background:rgba(10,15,30,.75);
+  position:sticky;top:0;z-index:200;
+  background:rgba(10,15,30,.82);
   backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
   border-bottom:1px solid var(--border);
 }
@@ -45,14 +49,14 @@ header{
   padding:0 1rem;height:56px;
 }
 .logo{display:flex;align-items:center;gap:7px}
-.g-letters{display:flex;font-size:1.25rem;font-weight:800;letter-spacing:-.02em}
+.g-letters{display:flex;font-size:1.25rem;font-weight:800;letter-spacing:-.02em;font-family:'DM Serif Display',serif}
 .g-letters span:nth-child(1){color:var(--gb)}
 .g-letters span:nth-child(2){color:var(--gr)}
 .g-letters span:nth-child(3){color:var(--gy)}
 .g-letters span:nth-child(4){color:var(--gb)}
 .g-letters span:nth-child(5){color:var(--gg)}
 .g-letters span:nth-child(6){color:var(--gr)}
-.logo-sub{font-size:.95rem;font-weight:600;color:var(--text);opacity:.85}
+.logo-sub{font-size:.95rem;font-weight:500;color:var(--text);opacity:.85}
 .badge{
   background:linear-gradient(135deg,var(--gb),#6baeff);
   color:#fff;font-size:.62rem;font-weight:700;letter-spacing:.07em;
@@ -62,7 +66,7 @@ header{
 .hdr-r{font-size:.73rem;color:var(--sub)}
 
 /* ── WRAP ── */
-.wrap{max-width:680px;margin:0 auto;padding:1rem 1rem 5rem;position:relative;z-index:1}
+.wrap{max-width:680px;margin:0 auto;padding:1rem 1rem 6rem;position:relative;z-index:1}
 
 /* ── HERO ── */
 .hero{
@@ -82,23 +86,21 @@ header{
   content:'12';position:absolute;right:10px;top:50%;
   transform:translateY(-50%);font-size:7.5rem;font-weight:900;
   color:rgba(255,255,255,.04);letter-spacing:-.04em;pointer-events:none;
+  font-family:'DM Serif Display',serif;
 }
 .g-dots{display:flex;gap:6px;margin-bottom:.7rem}
 .g-dot{width:10px;height:10px;border-radius:50%;box-shadow:0 0 8px currentColor;}
-.hero h2{font-size:1.2rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.35rem}
+.hero h2{font-size:1.2rem;font-weight:700;letter-spacing:-.01em;margin-bottom:.35rem;font-family:'DM Serif Display',serif;}
 .hero p{font-size:.8rem;color:var(--sub);line-height:1.65;max-width:340px}
 .hero-stats{display:flex;gap:1.4rem;margin-top:.9rem}
-.hs .v{font-size:1.45rem;font-weight:700;line-height:1}
+.hs .v{font-size:1.45rem;font-weight:700;line-height:1;font-family:'DM Serif Display',serif;}
 .hs .l{font-size:.65rem;color:var(--sub);text-transform:uppercase;letter-spacing:.07em;margin-top:2px}
 .hs:nth-child(1) .v{color:var(--gb)}
 .hs:nth-child(2) .v{color:var(--gr)}
 .hs:nth-child(3) .v{color:var(--gg)}
 
 /* ── TABS ── */
-.tabs{
-  display:flex;gap:7px;margin-bottom:1rem;
-  overflow-x:auto;padding-bottom:2px;scrollbar-width:none;
-}
+.tabs{display:flex;gap:7px;margin-bottom:1rem;overflow-x:auto;padding-bottom:2px;scrollbar-width:none;}
 .tabs::-webkit-scrollbar{display:none}
 .tab{
   flex-shrink:0;padding:7px 18px;border-radius:30px;
@@ -122,12 +124,9 @@ header{
 
 /* ── CARD ── */
 .card{
-  border-radius:var(--r);
-  background:var(--glass);
-  border:1px solid var(--border);
+  border-radius:var(--r);background:var(--glass);border:1px solid var(--border);
   backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  padding:1.1rem 1rem;
-  cursor:pointer;position:relative;overflow:hidden;
+  padding:1.1rem 1rem;cursor:pointer;position:relative;overflow:hidden;
   transition:transform .22s cubic-bezier(.34,1.56,.64,1),border-color .22s,box-shadow .22s;
   transform:translateZ(0);
 }
@@ -138,8 +137,7 @@ header{
 }
 .card::after{
   content:'';position:absolute;bottom:0;left:10%;right:10%;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);
-  pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);pointer-events:none;
 }
 .card:hover{transform:translateY(-4px) scale(1.015);border-color:var(--border2)}
 .card:active{transform:scale(.97)}
@@ -147,25 +145,17 @@ header{
 .t2 .card:hover{box-shadow:0 8px 28px rgba(234,67,53,.3)}
 .t3 .card:hover{box-shadow:0 8px 28px rgba(52,168,83,.3)}
 .t4 .card:hover{box-shadow:0 8px 28px rgba(251,188,5,.25)}
-
 .ctop{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.6rem}
 .ico{
-  width:40px;height:40px;border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.15rem;flex-shrink:0;
-  border:1px solid rgba(255,255,255,.15);
+  width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:1.15rem;flex-shrink:0;border:1px solid rgba(255,255,255,.15);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -1px 0 rgba(0,0,0,.15);
 }
 .t1 .ico{background:rgba(66,133,244,.2)}
 .t2 .ico{background:rgba(234,67,53,.2)}
 .t3 .ico{background:rgba(52,168,83,.2)}
 .t4 .ico{background:rgba(251,188,5,.2)}
-
-.cpill{
-  font-size:.63rem;font-weight:600;color:var(--sub);
-  background:rgba(255,255,255,.07);border:1px solid var(--border);
-  padding:2px 8px;border-radius:20px;
-}
+.cpill{font-size:.63rem;font-weight:600;color:var(--sub);background:rgba(255,255,255,.07);border:1px solid var(--border);padding:2px 8px;border-radius:20px;}
 .ctitle{font-size:.87rem;font-weight:700;margin-bottom:3px;line-height:1.3}
 .cdesc{font-size:.73rem;color:var(--sub);line-height:1.55}
 .cbar{height:3px;border-radius:2px;background:rgba(255,255,255,.07);margin-top:.7rem;overflow:hidden}
@@ -187,260 +177,379 @@ header{
 }
 .back:hover{color:var(--text);border-color:var(--border2)}
 .vhdr{
-  border-radius:var(--r2);
-  background:var(--glass);border:1px solid var(--border2);
+  border-radius:var(--r2);background:var(--glass);border:1px solid var(--border2);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   padding:1.1rem;margin-bottom:.75rem;
-  display:flex;gap:.9rem;align-items:flex-start;
-  position:relative;overflow:hidden;
+  display:flex;gap:.9rem;align-items:flex-start;position:relative;overflow:hidden;
 }
-.vhdr::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:50%;
-  background:linear-gradient(180deg,rgba(255,255,255,.09) 0%,transparent 100%);
-  pointer-events:none;
-}
+.vhdr::before{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(180deg,rgba(255,255,255,.09) 0%,transparent 100%);pointer-events:none;}
 .vh-ico{
   width:48px;height:48px;border-radius:12px;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;font-size:1.4rem;
-  background:var(--glass2);
-  border:1px solid var(--border2);
+  background:var(--glass2);border:1px solid var(--border2);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 16px rgba(0,0,0,.2);
 }
-.vhdr h2{font-size:1rem;font-weight:700;margin-bottom:3px}
+.vhdr h2{font-size:1rem;font-weight:700;margin-bottom:3px;font-family:'DM Serif Display',serif;}
 .vhdr p{font-size:.76rem;color:var(--sub);line-height:1.5}
-.vpill{
-  display:inline-block;margin-top:6px;
-  font-size:.65rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  padding:3px 9px;border-radius:20px;
-  background:rgba(66,133,244,.15);border:1px solid rgba(66,133,244,.3);color:#7ab4ff;
-}
-.vbox{
-  border-radius:var(--r2);overflow:hidden;
-  border:1px solid var(--border);
-  box-shadow:0 10px 40px rgba(0,0,0,.5);
-}
+.vpill{display:inline-block;margin-top:6px;font-size:.65rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:20px;background:rgba(66,133,244,.15);border:1px solid rgba(66,133,244,.3);color:#7ab4ff;}
+.vbox{border-radius:var(--r2);overflow:hidden;border:1px solid var(--border);box-shadow:0 10px 40px rgba(0,0,0,.5);}
 .vwrap{position:relative;padding-bottom:56.25%;height:0;background:#000}
 .vwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.vfoot{
-  background:rgba(255,255,255,.05);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border-top:1px solid var(--border);
-  padding:.75rem 1rem;
-  display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex-wrap:wrap;
-}
+.vfoot{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--border);padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex-wrap:wrap;}
 .vfoot span{font-size:.73rem;color:var(--sub)}
-.ytbtn{
-  display:inline-flex;align-items:center;gap:5px;
-  background:linear-gradient(135deg,#f00,#cc0000);
-  color:#fff;font-size:.73rem;font-weight:700;
-  padding:6px 13px;border-radius:20px;border:none;cursor:pointer;
-  text-decoration:none;font-family:inherit;white-space:nowrap;
-  box-shadow:0 2px 10px rgba(255,0,0,.4);transition:opacity .2s;
-}
+.ytbtn{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#f00,#cc0000);color:#fff;font-size:.73rem;font-weight:700;padding:6px 13px;border-radius:20px;border:none;cursor:pointer;text-decoration:none;font-family:inherit;white-space:nowrap;box-shadow:0 2px 10px rgba(255,0,0,.4);transition:opacity .2s;}
 .ytbtn:hover{opacity:.85}
-.tips{
-  margin-top:.75rem;border-radius:var(--r);
-  background:var(--glass);border:1px solid var(--border);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  padding:1rem 1.1rem;
-}
+.tips{margin-top:.75rem;border-radius:var(--r);background:var(--glass);border:1px solid var(--border);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:1rem 1.1rem;}
 .tips-lbl{font-size:.66rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:.55rem;color:var(--gy);}
 .tips ul{list-style:none;display:flex;flex-direction:column;gap:6px}
 .tips li{font-size:.77rem;color:var(--sub);padding-left:14px;position:relative;line-height:1.55}
 .tips li::before{content:'›';position:absolute;left:0;color:var(--gy);font-weight:700}
 
-/* ══════════════════════════════════════════
-   FLIPBOOK SECTION
-══════════════════════════════════════════ */
-#flipbook-section{display:none}
+/* ═══════════════════════════════════════════════
+   QUIZ SYSTEM
+═══════════════════════════════════════════════ */
 
-.flipbook-hero{
-  border-radius:var(--r2);
+/* Quiz launcher banner */
+.quiz-banner{
+  margin-top:.9rem;border-radius:var(--r2);overflow:hidden;
   background:linear-gradient(135deg,rgba(123,47,247,.18),rgba(188,107,255,.1));
   border:1px solid rgba(123,47,247,.35);
-  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
-  padding:1.4rem 1.4rem 1rem;margin-bottom:1.1rem;
+  position:relative;
+}
+.quiz-banner::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:50%;
+  background:linear-gradient(180deg,rgba(188,107,255,.1) 0%,transparent 100%);
+  pointer-events:none;
+}
+.qb-inner{
+  padding:1.1rem;display:flex;align-items:center;justify-content:space-between;gap:.7rem;
+  flex-wrap:wrap;position:relative;z-index:1;
+}
+.qb-left{}
+.qb-tag{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c88fff;margin-bottom:.3rem;}
+.qb-title{font-size:.92rem;font-weight:700;font-family:'DM Serif Display',serif;margin-bottom:.15rem;}
+.qb-sub{font-size:.72rem;color:var(--sub);}
+.qb-btn{
+  flex-shrink:0;
+  padding:10px 20px;border-radius:30px;
+  background:linear-gradient(135deg,var(--qz),var(--qz2));
+  border:none;color:#fff;font-size:.8rem;font-weight:700;
+  cursor:pointer;font-family:inherit;white-space:nowrap;
+  box-shadow:0 4px 18px rgba(123,47,247,.55);
+  transition:transform .2s,box-shadow .2s;
+}
+.qb-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(123,47,247,.7)}
+.qb-btn:active{transform:scale(.96)}
+
+/* ── QUIZ MODAL ── */
+#quizModal{
+  display:none;
+  position:fixed;inset:0;z-index:500;
+  background:rgba(8,12,28,.96);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+#quizModal.open{display:block;animation:slideUp .38s cubic-bezier(.34,1.1,.64,1) both;}
+@keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+
+.qm-wrap{max-width:640px;margin:0 auto;padding:1rem 1rem 5rem;}
+
+/* Modal header */
+.qm-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.75rem 0 .9rem;
+  border-bottom:1px solid var(--border);
+  margin-bottom:1rem;
+}
+.qm-brand{display:flex;align-items:center;gap:.5rem}
+.qm-brand-ico{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,var(--qz),var(--qz2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;
+  box-shadow:0 3px 14px rgba(123,47,247,.5);
+}
+.qm-brand-txt{font-size:.85rem;font-weight:700;font-family:'DM Serif Display',serif;}
+.qm-brand-sub{font-size:.65rem;color:var(--sub)}
+.close-btn{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--glass);border:1px solid var(--border);
+  color:var(--sub);font-size:1.1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;flex-shrink:0;
+}
+.close-btn:hover{color:var(--text);background:var(--glass2)}
+
+/* Quiz selector screen */
+#quizSelect{animation:up .3s both}
+.qs-title{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);margin-bottom:.7rem;}
+.quiz-cards{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;}
+@media(max-width:380px){.quiz-cards{grid-template-columns:1fr}}
+.qcard{
+  border-radius:var(--r);padding:1rem;cursor:pointer;
+  background:var(--glass);border:1px solid var(--border);
+  position:relative;overflow:hidden;
+  transition:transform .2s cubic-bezier(.34,1.4,.64,1),border-color .2s,box-shadow .2s;
+}
+.qcard::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:45%;
+  background:linear-gradient(180deg,rgba(255,255,255,.1) 0%,transparent 100%);
+  pointer-events:none;
+}
+.qcard:hover{transform:translateY(-3px);border-color:rgba(123,47,247,.5);box-shadow:0 8px 24px rgba(123,47,247,.25)}
+.qcard:active{transform:scale(.97)}
+.qc-num{font-family:'DM Serif Display',serif;font-size:2rem;font-weight:400;line-height:1;margin-bottom:.25rem;color:rgba(255,255,255,.15)}
+.qc-label{font-size:.82rem;font-weight:700;margin-bottom:.15rem;}
+.qc-diff{font-size:.67rem;color:var(--sub);}
+.qc-badge{
+  display:inline-block;margin-top:.4rem;
+  font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:2px 7px;border-radius:20px;
+}
+.diff-1{background:rgba(52,168,83,.18);border:1px solid rgba(52,168,83,.35);color:#4dc76a}
+.diff-2{background:rgba(66,133,244,.18);border:1px solid rgba(66,133,244,.35);color:#7ab4ff}
+.diff-3{background:rgba(251,188,5,.18);border:1px solid rgba(251,188,5,.35);color:#ffd040}
+.diff-4{background:rgba(234,67,53,.18);border:1px solid rgba(234,67,53,.35);color:#f5847a}
+.diff-5{background:rgba(123,47,247,.18);border:1px solid rgba(123,47,247,.4);color:#c88fff}
+.diff-6{background:linear-gradient(135deg,rgba(234,67,53,.25),rgba(123,47,247,.25));border:1px solid rgba(180,80,200,.4);color:#f0a0ff}
+.qc-score{font-size:.67rem;color:var(--sub);margin-top:.3rem;}
+.qc-score .sval{font-weight:700;color:var(--gg);}
+
+/* ── ACTIVE QUIZ ── */
+#quizActive{display:none;animation:up .3s both}
+
+/* Progress */
+.qz-progress{
+  background:var(--glass);border-radius:var(--r2);padding:.85rem 1rem;
+  margin-bottom:.9rem;border:1px solid var(--border);
+}
+.qz-prog-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem;}
+.qz-prog-label{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
+.qz-prog-num{font-size:.72rem;color:var(--sub);}
+.qz-prog-bar{height:5px;border-radius:3px;background:rgba(255,255,255,.07);overflow:hidden}
+.qz-prog-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--qz),var(--qz2));transition:width .4s ease;}
+.qz-prog-dots{display:flex;gap:6px;margin-top:.6rem;flex-wrap:wrap;}
+.prog-dot{
+  width:26px;height:26px;border-radius:50%;
+  font-size:.65rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  border:1.5px solid var(--border);color:var(--sub);
+  transition:all .25s;flex-shrink:0;
+}
+.prog-dot.cur{border-color:var(--qz2);color:#fff;background:rgba(123,47,247,.25);}
+.prog-dot.correct{border-color:var(--gg);background:rgba(52,168,83,.22);color:var(--gg);}
+.prog-dot.wrong{border-color:var(--gr);background:rgba(234,67,53,.22);color:var(--gr);}
+
+/* Difficulty badge */
+.q-diff-row{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem;}
+.q-diff-badge{
+  font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  padding:3px 9px;border-radius:20px;
+}
+.q-num-badge{font-size:.72rem;color:var(--sub);}
+
+/* Question card */
+.q-card{
+  border-radius:var(--r2);
+  background:var(--glass);border:1px solid var(--border2);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  padding:1.2rem 1.1rem;margin-bottom:.8rem;
   position:relative;overflow:hidden;
 }
-.flipbook-hero::before{
+.q-card::before{content:'';position:absolute;top:0;left:0;right:0;height:40%;background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,transparent 100%);pointer-events:none;}
+
+/* Math sequence display */
+.q-seq{
+  font-family:'DM Serif Display',serif;
+  font-size:1.05rem;color:var(--gy);
+  margin-bottom:.5rem;letter-spacing:.02em;
+  line-height:1.5;
+}
+.q-seq .sep{color:rgba(255,255,255,.35);font-size:.9em}
+.q-seq .ellip{color:rgba(255,255,255,.4)}
+
+.q-stem{font-size:.88rem;font-weight:500;line-height:1.55;color:var(--text);}
+.q-sub{font-size:.75rem;color:var(--sub);margin-top:.25rem;line-height:1.4;}
+
+/* Math notation helpers */
+.mth{font-family:'DM Serif Display',serif;font-style:italic;}
+sub,sup{font-family:'DM Sans',sans-serif;font-style:normal;font-size:.65em;}
+
+/* Options */
+.q-options{display:flex;flex-direction:column;gap:.55rem;}
+.q-opt{
+  display:flex;align-items:center;gap:.8rem;
+  border-radius:var(--r);
+  background:var(--glass);border:1.5px solid var(--border);
+  padding:.85rem 1rem;cursor:pointer;
+  transition:all .22s cubic-bezier(.34,1.2,.64,1);
+  position:relative;overflow:hidden;
+  -webkit-tap-highlight-color:transparent;
+}
+.q-opt::before{
   content:'';position:absolute;top:0;left:0;right:0;height:50%;
-  background:linear-gradient(180deg,rgba(188,107,255,.12) 0%,transparent 100%);
-  pointer-events:none;border-radius:var(--r2) var(--r2) 0 0;
+  background:linear-gradient(180deg,rgba(255,255,255,.07) 0%,transparent 100%);
+  pointer-events:none;
 }
-.flipbook-hero::after{
-  content:'📚';position:absolute;right:16px;top:50%;
-  transform:translateY(-50%);font-size:5rem;opacity:.09;pointer-events:none;
+.q-opt:hover:not(.disabled){
+  border-color:rgba(123,47,247,.5);
+  background:rgba(123,47,247,.1);
+  transform:translateX(3px);
 }
-.fbh-tag{
-  display:inline-block;margin-bottom:.6rem;
-  font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  padding:3px 10px;border-radius:20px;
-  background:rgba(123,47,247,.25);border:1px solid rgba(188,107,255,.4);color:#c88fff;
-}
-.flipbook-hero h2{font-size:1.15rem;font-weight:700;margin-bottom:.3rem}
-.flipbook-hero p{font-size:.78rem;color:var(--sub);line-height:1.6;max-width:330px}
+.q-opt:active:not(.disabled){transform:scale(.98)}
+.q-opt.disabled{cursor:default}
+.q-opt.selected-correct{border-color:var(--gg)!important;background:rgba(52,168,83,.14)!important;transform:none!important}
+.q-opt.selected-wrong{border-color:var(--gr)!important;background:rgba(234,67,53,.14)!important;transform:none!important}
+.q-opt.reveal-correct{border-color:rgba(52,168,83,.5)!important;background:rgba(52,168,83,.07)!important}
 
-/* Book wrapper with 3-D shadow */
-.book-stage{
-  perspective:1200px;
-  margin:0 auto 1rem;
-  max-width:640px;
-}
-.book-cover{
-  position:relative;
-  border-radius:3px 16px 16px 3px;
-  overflow:visible;
-  transform-style:preserve-3d;
-  transform:rotateY(-6deg) rotateX(2deg);
-  transition:transform .5s cubic-bezier(.34,1.2,.64,1);
-  filter:drop-shadow(-14px 20px 40px rgba(0,0,0,.7));
-  cursor:default;
-}
-.book-cover:hover{transform:rotateY(-2deg) rotateX(1deg)}
-
-/* Spine */
-.book-spine{
-  position:absolute;left:0;top:0;bottom:0;width:22px;
-  background:linear-gradient(135deg,#1a0d3a,#2d1260);
-  border-radius:3px 0 0 3px;
-  transform:rotateY(-90deg) translateZ(-11px) translateX(-11px);
-  transform-origin:left;
+.opt-letter{
+  width:32px;height:32px;border-radius:8px;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
-  writing-mode:vertical-rl;
-  font-size:.55rem;font-weight:700;color:rgba(200,143,255,.6);
-  letter-spacing:.12em;text-transform:uppercase;padding:8px 2px;
+  font-size:.78rem;font-weight:700;
+  background:rgba(255,255,255,.06);border:1px solid var(--border);
+  transition:all .22s;
 }
+.q-opt.selected-correct .opt-letter{background:rgba(52,168,83,.3);border-color:var(--gg);color:var(--gg)}
+.q-opt.selected-wrong .opt-letter{background:rgba(234,67,53,.3);border-color:var(--gr);color:var(--gr)}
+.q-opt.reveal-correct .opt-letter{background:rgba(52,168,83,.2);border-color:rgba(52,168,83,.5);color:#6ed68a}
 
-/* Main book face */
-.book-face{
-  border-radius:3px 16px 16px 3px;
-  overflow:hidden;
-  background:#0d081e;
-  border:1px solid rgba(123,47,247,.4);
-  box-shadow:
-    inset 4px 0 12px rgba(0,0,0,.5),
-    inset 0 0 0 1px rgba(255,255,255,.04);
-}
+.opt-text{font-size:.84rem;line-height:1.4;flex:1;font-family:'DM Serif Display',serif;}
+.opt-icon{font-size:1rem;margin-left:auto;flex-shrink:0;opacity:0;transition:opacity .2s;}
+.q-opt.selected-correct .opt-icon,.q-opt.selected-wrong .opt-icon,.q-opt.reveal-correct .opt-icon{opacity:1}
 
-/* Page-line texture on left edge */
-.book-face::before{
-  content:'';position:absolute;left:20px;top:0;bottom:0;width:1px;
-  background:linear-gradient(180deg,transparent,rgba(123,47,247,.3) 20%,rgba(123,47,247,.3) 80%,transparent);
-  z-index:2;pointer-events:none;
+/* Explanation box */
+.q-explain{
+  border-radius:var(--r);padding:.85rem 1rem;margin-top:.5rem;
+  display:none;
+  animation:up .3s both;
 }
+.q-explain.show{display:block}
+.q-explain.correct{background:rgba(52,168,83,.1);border:1px solid rgba(52,168,83,.3);}
+.q-explain.wrong{background:rgba(234,67,53,.1);border:1px solid rgba(234,67,53,.25);}
+.qe-head{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.3rem;}
+.q-explain.correct .qe-head{color:var(--gg)}
+.q-explain.wrong .qe-head{color:var(--gr)}
+.qe-body{font-size:.78rem;color:var(--sub);line-height:1.55;}
+.qe-math{font-family:'DM Serif Display',serif;color:var(--text);font-size:.85rem;margin:.3rem 0;}
 
-/* PDF iframe */
-.pdf-frame-wrap{
-  position:relative;width:100%;
-  padding-bottom:141.4%; /* A4 ratio */
-  height:0;background:#0d081e;
+/* Next button */
+.q-next{
+  width:100%;padding:14px;border-radius:var(--r2);
+  background:linear-gradient(135deg,var(--qz),var(--qz2));
+  border:none;color:#fff;font-size:.88rem;font-weight:700;
+  cursor:pointer;font-family:inherit;
+  box-shadow:0 4px 20px rgba(123,47,247,.5);
+  transition:transform .2s,box-shadow .2s,opacity .2s;
+  display:none;margin-top:.7rem;
 }
-.pdf-frame-wrap iframe{
-  position:absolute;inset:0;width:100%;height:100%;border:0;
-  border-radius:0 14px 14px 0;
-}
+.q-next.show{display:block;animation:up .3s both}
+.q-next:hover{transform:translateY(-2px);box-shadow:0 7px 26px rgba(123,47,247,.65)}
+.q-next:active{transform:scale(.98)}
 
-/* Page curl decorative */
-.page-curl{
-  position:absolute;bottom:0;right:0;
-  width:0;height:0;
-  border-style:solid;
-  border-width:0 0 42px 42px;
-  border-color:transparent transparent rgba(123,47,247,.45) transparent;
-  border-radius:0 0 14px 0;
-  z-index:10;pointer-events:none;
-  filter:drop-shadow(-3px -3px 8px rgba(0,0,0,.5));
-  transition:border-width .3s;
-}
-.book-cover:hover .page-curl{border-width:0 0 60px 60px}
-.curl-shine{
-  position:absolute;bottom:0;right:0;width:42px;height:42px;
-  background:linear-gradient(135deg,rgba(255,255,255,.06),transparent 60%);
-  z-index:11;pointer-events:none;
-}
-
-/* Controls bar */
-.pdf-controls{
-  border-radius:var(--r2);
-  background:var(--glass);
-  border:1px solid var(--border);
-  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  padding:.85rem 1rem;
+/* ── RESULTS SCREEN ── */
+#quizResult{display:none;animation:up .4s both}
+.res-card{
+  border-radius:var(--r2);overflow:hidden;
+  background:var(--glass);border:1px solid var(--border2);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
   margin-bottom:.8rem;
-  display:flex;align-items:center;justify-content:space-between;gap:.6rem;flex-wrap:wrap;
 }
+.res-top{
+  padding:2rem 1.2rem;text-align:center;position:relative;overflow:hidden;
+}
+.res-top::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:60%;
+  background:linear-gradient(180deg,rgba(255,255,255,.07) 0%,transparent 100%);
+  pointer-events:none;
+}
+.res-emoji{font-size:3.5rem;margin-bottom:.6rem;display:block;animation:pop .5s cubic-bezier(.34,1.7,.64,1) both;}
+@keyframes pop{from{transform:scale(0) rotate(-20deg)}to{transform:scale(1) rotate(0)}}
+.res-score-big{
+  font-size:3rem;font-weight:700;line-height:1;
+  font-family:'DM Serif Display',serif;
+  background:linear-gradient(135deg,var(--qz2),#e8a0ff);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.res-of{font-size:.85rem;color:var(--sub);margin-top:.15rem;}
+.res-label{font-size:1.1rem;font-weight:700;margin-top:.5rem;font-family:'DM Serif Display',serif;}
+.res-sub{font-size:.78rem;color:var(--sub);margin-top:.2rem;}
+
+/* Result stats row */
+.res-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--border);
+}
+.rs{padding:.8rem;text-align:center;border-right:1px solid var(--border);}
+.rs:last-child{border-right:none}
+.rs .rv{font-size:1.25rem;font-weight:700;font-family:'DM Serif Display',serif;}
+.rs .rl{font-size:.6rem;color:var(--sub);text-transform:uppercase;letter-spacing:.07em;margin-top:2px;}
+.rs:nth-child(1) .rv{color:var(--gg)}
+.rs:nth-child(2) .rv{color:var(--gr)}
+.rs:nth-child(3) .rv{color:var(--gy)}
+
+/* Answer review */
+.res-review{border-radius:var(--r);background:var(--glass);border:1px solid var(--border);padding:.9rem;margin-bottom:.8rem;}
+.rr-title{font-size:.66rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--sub);margin-bottom:.6rem;}
+.rr-item{display:flex;align-items:flex-start;gap:.6rem;padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.rr-item:last-child{border-bottom:none}
+.rr-dot{width:22px;height:22px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;margin-top:1px;}
+.rr-dot.c{background:rgba(52,168,83,.2);color:var(--gg)}
+.rr-dot.w{background:rgba(234,67,53,.2);color:var(--gr)}
+.rr-q{font-size:.75rem;color:var(--sub);line-height:1.45;flex:1;}
+.rr-q strong{color:var(--text);display:block;margin-bottom:1px;font-size:.78rem;}
+
+/* Result buttons */
+.res-btns{display:flex;gap:.6rem;flex-wrap:wrap;}
+.res-btn{
+  flex:1;min-width:120px;padding:12px;border-radius:30px;
+  font-size:.8rem;font-weight:700;cursor:pointer;font-family:inherit;
+  border:none;transition:transform .2s,box-shadow .2s;
+}
+.res-btn.primary{background:linear-gradient(135deg,var(--qz),var(--qz2));color:#fff;box-shadow:0 4px 18px rgba(123,47,247,.5);}
+.res-btn.primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(123,47,247,.65)}
+.res-btn.secondary{background:var(--glass);border:1px solid var(--border);color:var(--text);}
+.res-btn.secondary:hover{border-color:var(--border2)}
+
+/* ── FLIPBOOK SECTION ── */
+#flipbook-section{display:none}
+.flipbook-hero{border-radius:var(--r2);background:linear-gradient(135deg,rgba(123,47,247,.18),rgba(188,107,255,.1));border:1px solid rgba(123,47,247,.35);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);padding:1.4rem 1.4rem 1rem;margin-bottom:1.1rem;position:relative;overflow:hidden;}
+.flipbook-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(180deg,rgba(188,107,255,.12) 0%,transparent 100%);pointer-events:none;border-radius:var(--r2) var(--r2) 0 0;}
+.flipbook-hero::after{content:'📚';position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:5rem;opacity:.09;pointer-events:none;}
+.fbh-tag{display:inline-block;margin-bottom:.6rem;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:rgba(123,47,247,.25);border:1px solid rgba(188,107,255,.4);color:#c88fff;}
+.flipbook-hero h2{font-size:1.15rem;font-weight:700;margin-bottom:.3rem;font-family:'DM Serif Display',serif;}
+.flipbook-hero p{font-size:.78rem;color:var(--sub);line-height:1.6;max-width:330px}
+.book-stage{perspective:1200px;margin:0 auto 1rem;max-width:640px;}
+.book-cover{position:relative;border-radius:3px 16px 16px 3px;overflow:visible;transform-style:preserve-3d;transform:rotateY(-6deg) rotateX(2deg);transition:transform .5s cubic-bezier(.34,1.2,.64,1);filter:drop-shadow(-14px 20px 40px rgba(0,0,0,.7));cursor:default;}
+.book-cover:hover{transform:rotateY(-2deg) rotateX(1deg)}
+.book-spine{position:absolute;left:0;top:0;bottom:0;width:22px;background:linear-gradient(135deg,#1a0d3a,#2d1260);border-radius:3px 0 0 3px;transform:rotateY(-90deg) translateZ(-11px) translateX(-11px);transform-origin:left;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;font-size:.55rem;font-weight:700;color:rgba(200,143,255,.6);letter-spacing:.12em;text-transform:uppercase;padding:8px 2px;}
+.book-face{border-radius:3px 16px 16px 3px;overflow:hidden;background:#0d081e;border:1px solid rgba(123,47,247,.4);box-shadow:inset 4px 0 12px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.04);}
+.book-face::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,rgba(123,47,247,.3) 20%,rgba(123,47,247,.3) 80%,transparent);z-index:2;pointer-events:none;}
+.pdf-frame-wrap{position:relative;width:100%;padding-bottom:141.4%;height:0;background:#0d081e;}
+.pdf-frame-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0 14px 14px 0;}
+.page-curl{position:absolute;bottom:0;right:0;width:0;height:0;border-style:solid;border-width:0 0 42px 42px;border-color:transparent transparent rgba(123,47,247,.45) transparent;border-radius:0 0 14px 0;z-index:10;pointer-events:none;filter:drop-shadow(-3px -3px 8px rgba(0,0,0,.5));transition:border-width .3s;}
+.book-cover:hover .page-curl{border-width:0 0 60px 60px}
+.curl-shine{position:absolute;bottom:0;right:0;width:42px;height:42px;background:linear-gradient(135deg,rgba(255,255,255,.06),transparent 60%);z-index:11;pointer-events:none;}
+.pdf-controls{border-radius:var(--r2);background:var(--glass);border:1px solid var(--border);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);padding:.85rem 1rem;margin-bottom:.8rem;display:flex;align-items:center;justify-content:space-between;gap:.6rem;flex-wrap:wrap;}
 .pdf-info{display:flex;align-items:center;gap:.6rem;flex:1;min-width:0}
-.pdf-ico{
-  width:36px;height:36px;border-radius:9px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;font-size:1rem;
-  background:rgba(123,47,247,.2);border:1px solid rgba(123,47,247,.35);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.15);
-}
+.pdf-ico{width:36px;height:36px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1rem;background:rgba(123,47,247,.2);border:1px solid rgba(123,47,247,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.15);}
 .pdf-meta h4{font-size:.82rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pdf-meta p{font-size:.67rem;color:var(--sub)}
 .pdf-btns{display:flex;gap:.5rem;flex-shrink:0;flex-wrap:wrap}
-
-.btn-dl{
-  display:inline-flex;align-items:center;gap:5px;
-  background:linear-gradient(135deg,#7b2ff7,#bc6bff);
-  color:#fff;font-size:.73rem;font-weight:700;
-  padding:8px 16px;border-radius:20px;border:none;cursor:pointer;
-  text-decoration:none;font-family:inherit;white-space:nowrap;
-  box-shadow:0 3px 14px rgba(123,47,247,.5);transition:opacity .2s,transform .15s;
-}
+.btn-dl{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#7b2ff7,#bc6bff);color:#fff;font-size:.73rem;font-weight:700;padding:8px 16px;border-radius:20px;border:none;cursor:pointer;text-decoration:none;font-family:inherit;white-space:nowrap;box-shadow:0 3px 14px rgba(123,47,247,.5);transition:opacity .2s,transform .15s;}
 .btn-dl:hover{opacity:.88;transform:translateY(-1px)}
-.btn-dl:active{transform:scale(.96)}
-
-.btn-open{
-  display:inline-flex;align-items:center;gap:5px;
-  background:var(--glass2);
-  color:var(--text);font-size:.73rem;font-weight:600;
-  padding:8px 14px;border-radius:20px;border:1px solid var(--border2);cursor:pointer;
-  text-decoration:none;font-family:inherit;white-space:nowrap;
-  transition:opacity .2s,border-color .2s;
-}
+.btn-open{display:inline-flex;align-items:center;gap:5px;background:var(--glass2);color:var(--text);font-size:.73rem;font-weight:600;padding:8px 14px;border-radius:20px;border:1px solid var(--border2);cursor:pointer;text-decoration:none;font-family:inherit;white-space:nowrap;transition:opacity .2s,border-color .2s;}
 .btn-open:hover{border-color:rgba(123,47,247,.5);opacity:.9}
-
-/* Flip animation hint bar */
-.flip-hint{
-  display:flex;align-items:center;justify-content:center;gap:.6rem;
-  padding:.55rem 1rem;
-  border-radius:30px;
-  background:rgba(123,47,247,.1);
-  border:1px solid rgba(123,47,247,.25);
-  margin-bottom:.85rem;
-  font-size:.7rem;color:rgba(200,143,255,.8);
-}
+.flip-hint{display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.55rem 1rem;border-radius:30px;background:rgba(123,47,247,.1);border:1px solid rgba(123,47,247,.25);margin-bottom:.85rem;font-size:.7rem;color:rgba(200,143,255,.8);}
 .flip-hint .dot{width:6px;height:6px;border-radius:50%;background:#bc6bff;animation:pulse 1.6s infinite}
 @keyframes pulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:1;transform:scale(1.35)}}
-
-/* Page turn animation overlay (decorative) */
-.page-flip-btn{
-  display:none; /* only shown on desktop */
-  position:absolute;top:50%;right:-18px;transform:translateY(-50%);
-  width:36px;height:36px;border-radius:50%;
-  background:linear-gradient(135deg,#7b2ff7,#bc6bff);
-  border:none;cursor:pointer;color:#fff;font-size:1.1rem;
-  box-shadow:0 4px 18px rgba(123,47,247,.55);
-  transition:transform .2s,box-shadow .2s;z-index:20;
-}
-@media(min-width:480px){.page-flip-btn{display:flex;align-items:center;justify-content:center}}
-.page-flip-btn:hover{transform:translateY(-50%) scale(1.12);box-shadow:0 6px 22px rgba(123,47,247,.7)}
-
-/* Features row */
-.fb-features{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:.8rem;
-}
+.fb-features{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:.8rem;}
 @media(max-width:400px){.fb-features{grid-template-columns:1fr}}
-.fb-feat{
-  border-radius:var(--r);
-  background:var(--glass);border:1px solid var(--border);
-  padding:.7rem .8rem;text-align:center;
-}
+.fb-feat{border-radius:var(--r);background:var(--glass);border:1px solid var(--border);padding:.7rem .8rem;text-align:center;}
 .fb-feat .fi{font-size:1.2rem;margin-bottom:.3rem}
 .fb-feat .ft{font-size:.68rem;font-weight:600;color:var(--sub)}
 
-/* ── ANIM ── */
+/* ── ANIMATIONS ── */
 @keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .card{animation:up .3s both}
 .card:nth-child(1){animation-delay:.04s}
@@ -449,8 +558,12 @@ header{
 .card:nth-child(4){animation-delay:.19s}
 @keyframes bookIn{from{opacity:0;transform:rotateY(-18deg) rotateX(4deg) scale(.92)}to{opacity:1;transform:rotateY(-6deg) rotateX(2deg) scale(1)}}
 .book-stage.visible .book-cover{animation:bookIn .6s .1s both cubic-bezier(.34,1.1,.64,1)}
-
 .hidden{display:none!important}
+
+/* ── Confetti (CSS only particles) ── */
+.confetti-wrap{position:fixed;inset:0;pointer-events:none;z-index:600;overflow:hidden;}
+.cf{position:absolute;width:8px;height:8px;border-radius:2px;animation:fall 1.6s forwards ease-in;}
+@keyframes fall{0%{transform:translateY(-20px) rotate(0);opacity:1}100%{transform:translateY(105vh) rotate(720deg);opacity:0}}
 </style>
 </head>
 <body>
@@ -458,9 +571,7 @@ header{
 <header>
   <div class="hdr">
     <div class="logo">
-      <div class="g-letters">
-        <span>S</span><span>i</span><span>s</span><span>o</span><span>n</span><span>k</span>
-      </div>
+      <div class="g-letters"><span>S</span><span>i</span><span>s</span><span>o</span><span>n</span><span>k</span></div>
       <div class="logo-sub">EduTech</div>
       <div class="badge">Gr 12</div>
     </div>
@@ -470,8 +581,6 @@ header{
 
 <div class="wrap">
 <div id="menu">
-
-  <!-- HERO -->
   <div class="hero">
     <div class="g-dots">
       <div class="g-dot" style="background:#4285F4;color:#4285F4"></div>
@@ -488,7 +597,6 @@ header{
     </div>
   </div>
 
-  <!-- TABS -->
   <div class="tabs">
     <div class="tab active" data-t="1" onclick="showTerm(1,this)">Term 1</div>
     <div class="tab" data-t="2" onclick="showTerm(2,this)">Term 2</div>
@@ -585,22 +693,17 @@ header{
     </div>
   </div>
 
-  <!-- FLIPBOOK TAB CONTENT -->
+  <!-- FLIPBOOK CONTENT -->
   <div id="flipbook-section">
-
     <div class="flipbook-hero">
       <div class="fbh-tag">📖 Study Material</div>
       <h2>Grade 12 Maths Flipbook</h2>
       <p>Read the full study document below in flipbook mode — or download it to study offline anytime.</p>
     </div>
-
-    <!-- hint bar -->
     <div class="flip-hint">
       <span class="dot"></span>
       Scroll within the book to navigate pages &nbsp;·&nbsp; Tap ↗ to open full screen
     </div>
-
-    <!-- controls / download bar -->
     <div class="pdf-controls">
       <div class="pdf-info">
         <div class="pdf-ico">📄</div>
@@ -610,72 +713,35 @@ header{
         </div>
       </div>
       <div class="pdf-btns">
-        <a class="btn-dl"
-           href="https://drive.google.com/uc?export=download&id=1bbcNJH6OhVrGf8LZFzBPR6yuWDhTv7zg"
-           download target="_blank" rel="noopener">
-          ⬇ Download
-        </a>
-        <a class="btn-open"
-           href="https://drive.google.com/file/d/1bbcNJH6OhVrGf8LZFzBPR6yuWDhTv7zg/view"
-           target="_blank" rel="noopener">
-          ↗ Full screen
-        </a>
+        <a class="btn-dl" href="https://drive.google.com/uc?export=download&id=1bbcNJH6OhVrGf8LZFzBPR6yuWDhTv7zg" download target="_blank" rel="noopener">⬇ Download</a>
+        <a class="btn-open" href="https://drive.google.com/file/d/1bbcNJH6OhVrGf8LZFzBPR6yuWDhTv7zg/view" target="_blank" rel="noopener">↗ Full screen</a>
       </div>
     </div>
-
-    <!-- 3-D Book Stage -->
     <div class="book-stage" id="bookStage">
       <div class="book-cover">
-
-        <!-- Decorative spine -->
         <div class="book-spine">Sisonke EduTech · Gr 12 Maths</div>
-
-        <!-- Book face with PDF -->
         <div class="book-face">
           <div class="pdf-frame-wrap">
-            <iframe
-              id="pdfFrame"
-              src="https://drive.google.com/file/d/1bbcNJH6OhVrGf8LZFzBPR6yuWDhTv7zg/preview"
-              allow="autoplay"
-              loading="lazy"
-              title="Grade 12 Maths Study Guide">
-            </iframe>
+            <iframe id="pdfFrame" src="https://drive.google.com/file/d/1bbcNJH6OhVrGf8LZFzBPR6yuWDhTv7zg/preview" allow="autoplay" loading="lazy" title="Grade 12 Maths Study Guide"></iframe>
           </div>
         </div>
-
-        <!-- Page curl effect -->
         <div class="page-curl"></div>
         <div class="curl-shine"></div>
-
       </div>
     </div>
-
-    <!-- Feature chips -->
     <div class="fb-features">
-      <div class="fb-feat">
-        <div class="fi">🔍</div>
-        <div class="ft">Search inside</div>
-      </div>
-      <div class="fb-feat">
-        <div class="fi">⬇</div>
-        <div class="ft">Offline download</div>
-      </div>
-      <div class="fb-feat">
-        <div class="fi">📱</div>
-        <div class="ft">Mobile friendly</div>
-      </div>
+      <div class="fb-feat"><div class="fi">🔍</div><div class="ft">Search inside</div></div>
+      <div class="fb-feat"><div class="fi">⬇</div><div class="ft">Offline download</div></div>
+      <div class="fb-feat"><div class="fi">📱</div><div class="ft">Mobile friendly</div></div>
     </div>
-
-  </div><!-- /flipbook-section -->
+  </div>
 
 </div><!-- /menu -->
 
 <!-- VIDEO CONTENT VIEW -->
 <div id="cview" class="cview">
   <button class="back" onclick="goBack()">
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-      <path d="M8 2L4 6L8 10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6L8 10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
     Back
   </button>
   <div class="vhdr">
@@ -699,29 +765,422 @@ header{
     <div class="tips-lbl">✦ Study Tips</div>
     <ul id="tips-ul"></ul>
   </div>
+
+  <!-- QUIZ BANNER (only shown for sequences) -->
+  <div class="quiz-banner" id="quizBanner" style="display:none">
+    <div class="qb-inner">
+      <div class="qb-left">
+        <div class="qb-tag">✦ Test Your Knowledge</div>
+        <div class="qb-title">Arithmetic Sequences Quiz Bank</div>
+        <div class="qb-sub">6 quizzes · 36 questions · Very Easy → Extremely Hard</div>
+      </div>
+      <button class="qb-btn" onclick="openQuiz()">Start Quiz →</button>
+    </div>
+  </div>
 </div>
 </div><!-- /wrap -->
 
+<!-- ════════════════════════════════════════
+     QUIZ MODAL
+════════════════════════════════════════ -->
+<div id="quizModal">
+  <div class="qm-wrap">
+
+    <!-- Modal Header -->
+    <div class="qm-head">
+      <div class="qm-brand">
+        <div class="qm-brand-ico">∑</div>
+        <div>
+          <div class="qm-brand-txt">Arithmetic Sequences</div>
+          <div class="qm-brand-sub">Grade 12 CAPS · MCQ Quiz Bank</div>
+        </div>
+      </div>
+      <button class="close-btn" onclick="closeQuiz()">✕</button>
+    </div>
+
+    <!-- Screen 1: Quiz Selector -->
+    <div id="quizSelect">
+      <div class="qs-title">Choose a Quiz</div>
+      <div class="quiz-cards" id="quizCards"></div>
+    </div>
+
+    <!-- Screen 2: Active Quiz -->
+    <div id="quizActive">
+      <div class="qz-progress">
+        <div class="qz-prog-top">
+          <span class="qz-prog-label" id="progLabel">Quiz 1</span>
+          <span class="qz-prog-num" id="progNum">1 / 6</span>
+        </div>
+        <div class="qz-prog-bar"><div class="qz-prog-fill" id="progFill"></div></div>
+        <div class="qz-prog-dots" id="progDots"></div>
+      </div>
+
+      <div class="q-diff-row">
+        <span class="q-diff-badge" id="qDiffBadge"></span>
+        <span class="q-num-badge" id="qNumBadge"></span>
+      </div>
+
+      <div class="q-card">
+        <div class="q-seq" id="qSeq"></div>
+        <div class="q-stem" id="qStem"></div>
+        <div class="q-sub" id="qSub"></div>
+      </div>
+
+      <div class="q-options" id="qOptions"></div>
+      <div class="q-explain" id="qExplain">
+        <div class="qe-head" id="qeHead"></div>
+        <div class="qe-math" id="qeMath"></div>
+        <div class="qe-body" id="qeBody"></div>
+      </div>
+      <button class="q-next" id="qNext" onclick="nextQuestion()">Next Question →</button>
+    </div>
+
+    <!-- Screen 3: Results -->
+    <div id="quizResult">
+      <div class="res-card">
+        <div class="res-top">
+          <span class="res-emoji" id="resEmoji"></span>
+          <div class="res-score-big" id="resScore"></div>
+          <div class="res-of" id="resOf"></div>
+          <div class="res-label" id="resLabel"></div>
+          <div class="res-sub" id="resSub"></div>
+        </div>
+        <div class="res-stats">
+          <div class="rs"><div class="rv" id="rsCorrect"></div><div class="rl">Correct</div></div>
+          <div class="rs"><div class="rv" id="rsWrong"></div><div class="rl">Wrong</div></div>
+          <div class="rs"><div class="rv" id="rsPct"></div><div class="rl">Score</div></div>
+        </div>
+      </div>
+      <div class="res-review">
+        <div class="rr-title">Question Review</div>
+        <div id="rrItems"></div>
+      </div>
+      <div class="res-btns">
+        <button class="res-btn secondary" onclick="showQuizSelect()">← All Quizzes</button>
+        <button class="res-btn primary" id="retryBtn" onclick="retryQuiz()">Retry Quiz ↺</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Confetti container -->
+<div class="confetti-wrap" id="confettiWrap"></div>
+
 <script>
-const P={
-  sequences:{icon:'📊',title:'Sequences & Series',desc:'Arithmetic & geometric progressions, sigma notation, sum to infinity',count:108,id:'PLU_DCVXL8MyPIXj7twby7-xtcs9hekRVn',tips:['Learn both explicit and recursive forms of each sequence type.','Sigma notation is frequently tested — practice both directions.','For geometric series, always check |r| < 1 before sum to infinity.']},
-  functions:{icon:'📈',title:'Functions & Graphs',desc:'Exponential, logarithmic, hyperbola, and inverse functions',count:24,id:'PLU_DCVXL8MyP_hkCTbIgh6C4ZhklRk3VJ',tips:['Always state domain and range when sketching — easy marks lost here.','Know how a, p, q affect each graph type.','Inverse: swap x and y, then make y the subject.']},
-  finance:{icon:'💰',title:'Financial Maths',desc:'Compound interest, annuities, loans, and future value',count:23,id:'PLU_DCVXL8MyPZRWmE6MVzwuBlg2hfuvoT',tips:['Draw a timeline before choosing a formula.','Distinguish future value vs present value annuities.','Annual rate ÷ 12 for monthly payment calculations.']},
-  trig:{icon:'📐',title:'Trigonometry',desc:'Compound angles, sin/cos rules, area rule, and identities',count:69,id:'PLU_DCVXL8MyNp2vqZjZvDTRDxf6oCuf7l',tips:['CAST: know which ratios are positive in each quadrant.','Proofs: start from the more complex side.','Compound angle formulae — internalise them to save exam time.']},
-  calculus:{icon:'📉',title:'Differential Calculus',desc:'Limits, derivatives, cubic graphs, and optimisation',count:72,id:'PLU_DCVXL8MyP_xzgHLGl89rWRiS2jLHNk',tips:["Simplify before differentiating — never differentiate a fraction directly.",'Optimisation: set f\'(x) = 0, then verify with f\'\'(x).','Cubic: find stationary points then test concavity to classify.']},
-  analytical:{icon:'📍',title:'Analytical Geometry',desc:'Circles, tangent lines, collinearity, and coordinate proofs',count:17,id:'PLU_DCVXL8MyPiQexgRohpf0G0o_DEHpQH',tips:['Tangent to circle → radius ⊥ tangent.','Midpoint and distance formulae build most proofs.','Complete the square to get standard circle form.']},
-  euclidean:{icon:'📏',title:'Euclidean Geometry',desc:'Circle theorems, proportionality, and formal proofs',count:31,id:'PLU_DCVXL8MyMfSj1cUq05oB6enr8aVRGg',tips:['State ALL reasons in proofs, even obvious ones.','Proportionality: identify parallel lines first.','Cyclic quads: opposite angles sum to 180°.']},
-  factor:{icon:'➗',title:'Factor Theorem',desc:'Polynomial division, roots, factor and remainder theorem',count:5,id:'PLU_DCVXL8MyO5IkhNzfrA83ensZJ9eg1Y',tips:['If f(a) = 0, then (x − a) is a factor.','After one factor by trial, use long division or inspection.','Remainder theorem gives f(a) without full polynomial division.']},
-  stats:{icon:'📋',title:'Statistics',desc:'Regression, correlation, ogives, and data interpretation',count:6,id:'PLU_DCVXL8MyPUhwqhNcdwUxXCG7_BSZMw',tips:['Regression line always passes through (x̄, ȳ).','r is between −1 and 1 — know what values mean.','Ogives: plot cumulative frequency at the upper class bound.']},
-  probability:{icon:'🎲',title:'Probability',desc:'Counting principles, Venn diagrams, conditional probability',count:17,id:'PLU_DCVXL8MyPJINt5go5JRtKhcEGc2bz5',tips:['Mutually exclusive: P(A or B) = P(A) + P(B).','Independent: P(A and B) = P(A) × P(B).','Always draw a Venn or tree diagram before any formula.']},
-  'trig-graphs':{icon:'🌊',title:'Trig Functions (Graphs)',desc:'Transformations of sin, cos, and tan — period and amplitude',count:9,id:'PLU_DCVXL8MyMoKckv-JzJs0A8oWyT3K4O',tips:['State amplitude, period, and shift for every graph.','tan has no amplitude; period = 180°/k.','y = sin(x + p): positive p shifts the graph LEFT.']},
-  exams:{icon:'📝',title:'Final Exam Revision',desc:'Past paper walkthroughs and full topic consolidation',count:20,id:'PLU_DCVXL8MyON4s4Dp5tby7-GtLz_p4C5',tips:['Attempt past papers under real timed conditions.','Aim for roughly 1.5 minutes per mark.','Paper 1 is algebra-heavy; Paper 2 is geometry-heavy.']}
+/* ════════════════════════════════════════
+   DATA
+════════════════════════════════════════ */
+const DIFFICULTIES = ['Very Easy','Easy','Medium','Hard','Very Hard','Extremely Hard'];
+const DIFF_CLASS   = ['diff-1','diff-2','diff-3','diff-4','diff-5','diff-6'];
+const DIFF_BADGE   = ['diff-1','diff-2','diff-3','diff-4','diff-5','diff-6'];
+
+/* Each question: seq, stem, sub, opts[4], answer index (0-based), explain{math,body} */
+const QUIZZES = [
+  /* ─── QUIZ 1 ─── */
+  {label:'Quiz 1', diff:'Standard', quizDiff:1, questions:[
+    {
+      seq:'3 ; 6 ; 9 ; 12 ; …',
+      stem:'Find the common difference.',
+      sub:'',
+      opts:['2','3','4','5'], ans:1,
+      explain:{math:'d = T₂ − T₁ = 6 − 3 = 3',body:'Subtract any consecutive term from the next. Each term increases by 3.'}
+    },
+    {
+      seq:'−4 ; 1 ; 6 ; 11 ; …',
+      stem:'Find the next term.',
+      sub:'',
+      opts:['14','15','16','17'], ans:2,
+      explain:{math:'d = 1 − (−4) = 5  →  T₅ = 11 + 5 = 16',body:'The common difference is 5. Add 5 to the last term given.'}
+    },
+    {
+      seq:'5 ; 8 ; 11 ; …',
+      stem:'Find the 12th term (T₁₂).',
+      sub:'Use: Tₙ = a + (n − 1)d',
+      opts:['35','36','38','41'], ans:2,
+      explain:{math:'a = 5, d = 3  →  T₁₂ = 5 + 11 × 3 = 5 + 33 = 38',body:'Substitute a = 5, d = 3, n = 12 into the general term formula.'}
+    },
+    {
+      seq:'4 ; 9 ; 14 ; 19 ; …',
+      stem:'Find the general term (Tₙ).',
+      sub:'',
+      opts:['5n − 1','5n − 4','4n + 5','5n + 4'], ans:0,
+      explain:{math:'a = 4, d = 5  →  Tₙ = 4 + (n−1)·5 = 5n − 1',body:'Expand: 4 + 5n − 5 = 5n − 1. Verify: T₁ = 5(1)−1 = 4 ✓'}
+    },
+    {
+      seq:'4 ; 7 ; 10 ; …',
+      stem:'Which term equals 124?',
+      sub:'Set Tₙ = 124 and solve for n.',
+      opts:['39th','40th','41st','42nd'], ans:2,
+      explain:{math:'4 + (n−1)·3 = 124  →  3n − 3 = 120  →  3n = 123  →  n = 41',body:'Always solve the equation step by step and verify your answer.'}
+    },
+    {
+      seq:'',
+      stem:'T₄ = 13 and T₁₀ = 31. Find the first term a.',
+      sub:'Hint: find d first using d = (Tₘ − Tₙ) ÷ (m − n)',
+      opts:['1','2','3','4'], ans:3,
+      explain:{math:'d = (31−13)÷(10−4) = 18÷6 = 3  →  T₄ = a + 3d = 13  →  a = 13 − 9 = 4',body:'Find d from the two given terms, then back-substitute to find a.'}
+    },
+  ]},
+
+  /* ─── QUIZ 2 ─── */
+  {label:'Quiz 2', diff:'Moderate', quizDiff:2, questions:[
+    {
+      seq:'8 ; 12 ; 16 ; 20 ; …',
+      stem:'Find the common difference.',
+      sub:'',
+      opts:['2','3','4','5'], ans:2,
+      explain:{math:'d = 12 − 8 = 4',body:'The sequence increases by 4 each time — these are multiples of 4 shifted by 8.'}
+    },
+    {
+      seq:'10 ; 7 ; 4 ; 1 ; …',
+      stem:'Find the next term.',
+      sub:'',
+      opts:['−1','−2','−3','−4'], ans:1,
+      explain:{math:'d = 7 − 10 = −3  →  T₅ = 1 + (−3) = −2',body:'This is a decreasing arithmetic sequence with d = −3.'}
+    },
+    {
+      seq:'2 ; 6 ; 10 ; …',
+      stem:'Find T₁₅.',
+      sub:'Use: Tₙ = a + (n − 1)d',
+      opts:['54','56','58','60'], ans:2,
+      explain:{math:'a = 2, d = 4  →  T₁₅ = 2 + 14 × 4 = 2 + 56 = 58',body:'Substitute n = 15 into the formula. Check: T₂ = 2 + 4 = 6 ✓'}
+    },
+    {
+      seq:'6 ; 11 ; 16 ; …',
+      stem:'Find the general term (Tₙ).',
+      sub:'',
+      opts:['5n + 1','5n − 1','6n − 5','5n + 6'], ans:0,
+      explain:{math:'a = 6, d = 5  →  Tₙ = 6 + (n−1)·5 = 5n + 1',body:'Verify: T₁ = 5(1)+1 = 6 ✓  T₂ = 5(2)+1 = 11 ✓'}
+    },
+    {
+      seq:'1 ; 5 ; 9 ; …',
+      stem:'Which term equals 401?',
+      sub:'Set Tₙ = 401 and solve for n.',
+      opts:['99th','100th','101st','102nd'], ans:2,
+      explain:{math:'1 + (n−1)·4 = 401  →  4n − 3 = 401  →  4n = 404  →  n = 101',body:'d = 4. Solve the equation carefully and always verify your answer.'}
+    },
+    {
+      seq:'',
+      stem:'T₃ = 12 and d = 4. Find the first term a.',
+      sub:'T₃ = a + 2d',
+      opts:['2','3','4','5'], ans:2,
+      explain:{math:'T₃ = a + 2(4) = 12  →  a + 8 = 12  →  a = 4',body:'Substitute n = 3 into the general term formula and solve for a.'}
+    },
+  ]},
+
+  /* ─── QUIZ 3 ─── */
+  {label:'Quiz 3', diff:'Challenging', quizDiff:3, questions:[
+    {
+      seq:'0 ; 5 ; 10 ; 15 ; …',
+      stem:'Find the common difference.',
+      sub:'',
+      opts:['3','4','5','6'], ans:2,
+      explain:{math:'d = 5 − 0 = 5',body:'This sequence lists multiples of 5. Each term is 5 more than the previous.'}
+    },
+    {
+      seq:'20 ; 18 ; 16 ; 14 ; …',
+      stem:'Find the next term.',
+      sub:'',
+      opts:['11','12','13','10'], ans:1,
+      explain:{math:'d = 18 − 20 = −2  →  T₅ = 14 + (−2) = 12',body:'The sequence decreases by 2 each time. Subtract 2 from 14.'}
+    },
+    {
+      seq:'1 ; 4 ; 7 ; …',
+      stem:'Find T₂₀.',
+      sub:'Use: Tₙ = a + (n − 1)d',
+      opts:['55','56','57','58'], ans:3,
+      explain:{math:'a = 1, d = 3  →  T₂₀ = 1 + 19 × 3 = 1 + 57 = 58',body:'Always use n − 1 (not n) as the multiplier for d in the formula.'}
+    },
+    {
+      seq:'−2 ; 3 ; 8 ; …',
+      stem:'Find the general term (Tₙ).',
+      sub:'',
+      opts:['5n − 7','5n − 2','5n − 5','3n + 2'], ans:0,
+      explain:{math:'a = −2, d = 5  →  Tₙ = −2 + (n−1)·5 = 5n − 7',body:'Expand: −2 + 5n − 5 = 5n − 7. Verify: T₁ = 5(1)−7 = −2 ✓'}
+    },
+    {
+      seq:'3 ; 8 ; 13 ; …',
+      stem:'Which term equals 498?',
+      sub:'Set Tₙ = 498 and solve for n.',
+      opts:['98th','99th','100th','101st'], ans:2,
+      explain:{math:'3 + (n−1)·5 = 498  →  5n − 2 = 498  →  5n = 500  →  n = 100',body:'d = 5. The 100th term is 498.'}
+    },
+    {
+      seq:'',
+      stem:'Given Tₙ = 7n − 3, find T₂₅.',
+      sub:'Direct substitution — no need to find a or d first.',
+      opts:['170','172','174','176'], ans:1,
+      explain:{math:'T₂₅ = 7(25) − 3 = 175 − 3 = 172',body:'When the general term is given, substitute n directly. No extra steps needed.'}
+    },
+  ]},
+
+  /* ─── QUIZ 4 ─── */
+  {label:'Quiz 4', diff:'Advanced', quizDiff:4, questions:[
+    {
+      seq:'7 ; 14 ; 21 ; …',
+      stem:'Find the common difference.',
+      sub:'',
+      opts:['5','6','7','8'], ans:2,
+      explain:{math:'d = 14 − 7 = 7',body:'This is the 7 times table — each term is a multiple of 7.'}
+    },
+    {
+      seq:'2 ; 1 ; 0 ; −1 ; …',
+      stem:'Find the next term.',
+      sub:'',
+      opts:['−2','−3','−4','−5'], ans:0,
+      explain:{math:'d = 1 − 2 = −1  →  T₅ = −1 + (−1) = −2',body:'The sequence decreases by 1. Subtract 1 from the last term.'}
+    },
+    {
+      seq:'3 ; 6 ; 9 ; …',
+      stem:'Find T₁₈.',
+      sub:'Use: Tₙ = a + (n − 1)d',
+      opts:['51','54','57','60'], ans:1,
+      explain:{math:'a = 3, d = 3  →  T₁₈ = 3 + 17 × 3 = 3 + 51 = 54',body:'Multiples of 3: T₁₈ = 3 × 18 = 54. ✓ Confirms the formula.'}
+    },
+    {
+      seq:'1 ; 6 ; 11 ; …',
+      stem:'Find the general term (Tₙ).',
+      sub:'',
+      opts:['5n − 4','5n − 5','5n + 1','6n − 5'], ans:0,
+      explain:{math:'a = 1, d = 5  →  Tₙ = 1 + (n−1)·5 = 5n − 4',body:'Verify: T₁ = 5−4 = 1 ✓  T₂ = 10−4 = 6 ✓  T₃ = 15−4 = 11 ✓'}
+    },
+    {
+      seq:'1 ; 7 ; 13 ; …',
+      stem:'Find the term number of 601.',
+      sub:'Set Tₙ = 601 and solve for n.',
+      opts:['100th','101st','102nd','103rd'], ans:1,
+      explain:{math:'1 + (n−1)·6 = 601  →  6n − 5 = 601  →  6n = 606  →  n = 101',body:'d = 6. The 101st term equals 601.'}
+    },
+    {
+      seq:'',
+      stem:'T₇ = 45 and d = 6. Find the first term a.',
+      sub:'T₇ = a + 6d',
+      opts:['3','5','7','9'], ans:3,
+      explain:{math:'T₇ = a + 6(6) = 45  →  a + 36 = 45  →  a = 9',body:'Substitute n = 7 into Tₙ = a + (n−1)d and solve for a.'}
+    },
+  ]},
+
+  /* ─── QUIZ 5 ─── */
+  {label:'Quiz 5', diff:'Expert', quizDiff:5, questions:[
+    {
+      seq:'9 ; 11 ; 13 ; …',
+      stem:'Find the common difference.',
+      sub:'',
+      opts:['1','2','3','4'], ans:1,
+      explain:{math:'d = 11 − 9 = 2',body:'The sequence increases by 2. These are consecutive odd numbers starting from 9.'}
+    },
+    {
+      seq:'4 ; 2 ; 0 ; −2 ; …',
+      stem:'Find the next term.',
+      sub:'',
+      opts:['−3','−4','−5','−6'], ans:1,
+      explain:{math:'d = 2 − 4 = −2  →  T₅ = −2 + (−2) = −4',body:'The sequence decreases by 2 each step.'}
+    },
+    {
+      seq:'2 ; 5 ; 8 ; …',
+      stem:'Find T₃₀.',
+      sub:'Use: Tₙ = a + (n − 1)d',
+      opts:['87','88','89','90'], ans:2,
+      explain:{math:'a = 2, d = 3  →  T₃₀ = 2 + 29 × 3 = 2 + 87 = 89',body:'Substitute n = 30. Be careful: it is 29 × 3, not 30 × 3.'}
+    },
+    {
+      seq:'5 ; 12 ; 19 ; …',
+      stem:'Find the general term (Tₙ).',
+      sub:'',
+      opts:['7n − 2','7n − 7','7n + 5','5n + 7'], ans:0,
+      explain:{math:'a = 5, d = 7  →  Tₙ = 5 + (n−1)·7 = 7n − 2',body:'Expand: 5 + 7n − 7 = 7n − 2. Verify: T₁ = 7−2 = 5 ✓'}
+    },
+    {
+      seq:'1 ; 6 ; 11 ; …',
+      stem:'Find the term number of 1 001.',
+      sub:'Set Tₙ = 1 001 and solve for n.',
+      opts:['200th','201st','202nd','203rd'], ans:1,
+      explain:{math:'1 + (n−1)·5 = 1001  →  5n − 4 = 1001  →  5n = 1005  →  n = 201',body:'d = 5. The 201st term equals 1 001.'}
+    },
+    {
+      seq:'',
+      stem:'Given Tₙ = 4n + 3, find n when Tₙ = 203.',
+      sub:'Set 4n + 3 = 203 and solve for n.',
+      opts:['49','50','51','52'], ans:1,
+      explain:{math:'4n + 3 = 203  →  4n = 200  →  n = 50',body:'Treat the formula as an equation in n and isolate the variable.'}
+    },
+  ]},
+
+  /* ─── QUIZ 6 (BOSS) ─── */
+  {label:'Quiz 6', diff:'Boss Level 🔥', quizDiff:6, questions:[
+    {
+      seq:'1 ; 3 ; 5 ; …',
+      stem:'Find the common difference.',
+      sub:'',
+      opts:['1','2','3','4'], ans:1,
+      explain:{math:'d = 3 − 1 = 2',body:'This is the sequence of positive odd numbers. Common difference = 2.'}
+    },
+    {
+      seq:'15 ; 12 ; 9 ; …',
+      stem:'Find the next term.',
+      sub:'',
+      opts:['6','7','8','5'], ans:0,
+      explain:{math:'d = 12 − 15 = −3  →  T₄ = 9 + (−3) = 6',body:'Decreasing by 3 each time. The 4th term is 6.'}
+    },
+    {
+      seq:'1 ; 4 ; 7 ; …',
+      stem:'Find T₅₀.',
+      sub:'Use: Tₙ = a + (n − 1)d',
+      opts:['145','146','147','148'], ans:3,
+      explain:{math:'a = 1, d = 3  →  T₅₀ = 1 + 49 × 3 = 1 + 147 = 148',body:'d = 3. Multiply 49 (not 50) by 3 and add 1.'}
+    },
+    {
+      seq:'−1 ; 4 ; 9 ; …',
+      stem:'Find the general term (Tₙ).',
+      sub:'',
+      opts:['5n − 6','5n − 1','5n − 5','4n − 1'], ans:0,
+      explain:{math:'a = −1, d = 5  →  Tₙ = −1 + (n−1)·5 = 5n − 6',body:'Expand: −1 + 5n − 5 = 5n − 6. Verify: T₁ = 5−6 = −1 ✓'}
+    },
+    {
+      seq:'1 ; 5 ; 9 ; …',
+      stem:'Find the term number of 2 001.',
+      sub:'Set Tₙ = 2 001 and solve for n.',
+      opts:['499th','500th','501st','502nd'], ans:2,
+      explain:{math:'1 + (n−1)·4 = 2001  →  4n − 3 = 2001  →  4n = 2004  →  n = 501',body:'d = 4. The 501st term equals 2 001.'}
+    },
+    {
+      seq:'',
+      stem:'The sum of the first two terms is 10 and the common difference is 2. Find the first term a.',
+      sub:'T₁ + T₂ = a + (a + d) = 10',
+      opts:['2','3','4','5'], ans:2,
+      explain:{math:'a + (a + 2) = 10  →  2a + 2 = 10  →  2a = 8  →  a = 4',body:'Write both terms in terms of a and d, then solve simultaneously. T₁ = 4, T₂ = 6.'}
+    },
+  ]},
+];
+
+/* ════════════════════════════════════════
+   STATE
+════════════════════════════════════════ */
+let curQuizIdx = 0;
+let curQ = 0;
+let answers = [];   // true/false per question
+let bestScores = JSON.parse(localStorage.getItem('sisonke_scores') || '{}');
+
+/* ════════════════════════════════════════
+   NAVIGATION (existing)
+════════════════════════════════════════ */
+const TOPICS={
+  sequences:{icon:'📊',title:'Sequences & Series',desc:'Arithmetic & geometric progressions, sigma notation, sum to infinity',count:108,id:'PLU_DCVXL8MyPIXj7twby7-xtcs9hekRVn',tips:['Learn both explicit and recursive forms of each sequence type.','Sigma notation is frequently tested — practice both directions.','For geometric series, always check |r| < 1 before sum to infinity.'],hasQuiz:true},
+  functions:{icon:'📈',title:'Functions & Graphs',desc:'Exponential, logarithmic, hyperbola, and inverse functions',count:24,id:'PLU_DCVXL8MyP_hkCTbIgh6C4ZhklRk3VJ',tips:['Always state domain and range when sketching — easy marks lost here.','Know how a, p, q affect each graph type.','Inverse: swap x and y, then make y the subject.'],hasQuiz:false},
+  finance:{icon:'💰',title:'Financial Maths',desc:'Compound interest, annuities, loans, and future value',count:23,id:'PLU_DCVXL8MyPZRWmE6MVzwuBlg2hfuvoT',tips:['Draw a timeline before choosing a formula.','Distinguish future value vs present value annuities.','Annual rate ÷ 12 for monthly payment calculations.'],hasQuiz:false},
+  trig:{icon:'📐',title:'Trigonometry',desc:'Compound angles, sin/cos rules, area rule, and identities',count:69,id:'PLU_DCVXL8MyNp2vqZjZvDTRDxf6oCuf7l',tips:['CAST: know which ratios are positive in each quadrant.','Proofs: start from the more complex side.','Compound angle formulae — internalise them to save exam time.'],hasQuiz:false},
+  calculus:{icon:'📉',title:'Differential Calculus',desc:'Limits, derivatives, cubic graphs, and optimisation',count:72,id:'PLU_DCVXL8MyP_xzgHLGl89rWRiS2jLHNk',tips:["Simplify before differentiating — never differentiate a fraction directly.",'Optimisation: set f\'(x) = 0, then verify with f\'\'(x).','Cubic: find stationary points then test concavity to classify.'],hasQuiz:false},
+  analytical:{icon:'📍',title:'Analytical Geometry',desc:'Circles, tangent lines, collinearity, and coordinate proofs',count:17,id:'PLU_DCVXL8MyPiQexgRohpf0G0o_DEHpQH',tips:['Tangent to circle → radius ⊥ tangent.','Midpoint and distance formulae build most proofs.','Complete the square to get standard circle form.'],hasQuiz:false},
+  euclidean:{icon:'📏',title:'Euclidean Geometry',desc:'Circle theorems, proportionality, and formal proofs',count:31,id:'PLU_DCVXL8MyMfSj1cUq05oB6enr8aVRGg',tips:['State ALL reasons in proofs, even obvious ones.','Proportionality: identify parallel lines first.','Cyclic quads: opposite angles sum to 180°.'],hasQuiz:false},
+  factor:{icon:'➗',title:'Factor Theorem',desc:'Polynomial division, roots, factor and remainder theorem',count:5,id:'PLU_DCVXL8MyO5IkhNzfrA83ensZJ9eg1Y',tips:['If f(a) = 0, then (x − a) is a factor.','After one factor by trial, use long division or inspection.','Remainder theorem gives f(a) without full polynomial division.'],hasQuiz:false},
+  stats:{icon:'📋',title:'Statistics',desc:'Regression, correlation, ogives, and data interpretation',count:6,id:'PLU_DCVXL8MyPUhwqhNcdwUxXCG7_BSZMw',tips:['Regression line always passes through (x̄, ȳ).','r is between −1 and 1 — know what values mean.','Ogives: plot cumulative frequency at the upper class bound.'],hasQuiz:false},
+  probability:{icon:'🎲',title:'Probability',desc:'Counting principles, Venn diagrams, conditional probability',count:17,id:'PLU_DCVXL8MyPJINt5go5JRtKhcEGc2bz5',tips:['Mutually exclusive: P(A or B) = P(A) + P(B).','Independent: P(A and B) = P(A) × P(B).','Always draw a Venn or tree diagram before any formula.'],hasQuiz:false},
+  'trig-graphs':{icon:'🌊',title:'Trig Functions (Graphs)',desc:'Transformations of sin, cos, and tan — period and amplitude',count:9,id:'PLU_DCVXL8MyMoKckv-JzJs0A8oWyT3K4O',tips:['State amplitude, period, and shift for every graph.','tan has no amplitude; period = 180°/k.','y = sin(x + p): positive p shifts the graph LEFT.'],hasQuiz:false},
+  exams:{icon:'📝',title:'Final Exam Revision',desc:'Past paper walkthroughs and full topic consolidation',count:20,id:'PLU_DCVXL8MyON4s4Dp5tby7-GtLz_p4C5',tips:['Attempt past papers under real timed conditions.','Aim for roughly 1.5 minutes per mark.','Paper 1 is algebra-heavy; Paper 2 is geometry-heavy.'],hasQuiz:false},
 };
 
-let activeTermGrids=['g1'];
-
 function showTerm(n,btn){
-  // hide flipbook
   document.getElementById('flipbook-section').style.display='none';
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
@@ -739,23 +1198,16 @@ function showTerm(n,btn){
 function showFlipbook(btn){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
-  [1,2,3,4].forEach(i=>{
-    const g=document.getElementById('g'+i);
-    if(g)g.classList.add('hidden');
-  });
+  [1,2,3,4].forEach(i=>{const g=document.getElementById('g'+i);if(g)g.classList.add('hidden');});
   const fb=document.getElementById('flipbook-section');
-  fb.style.display='block';
-  fb.style.animation='up .35s both';
-  // trigger book animation
+  fb.style.display='block';fb.style.animation='up .35s both';
   const stage=document.getElementById('bookStage');
-  stage.classList.remove('visible');
-  void stage.offsetHeight;
-  stage.classList.add('visible');
+  stage.classList.remove('visible');void stage.offsetHeight;stage.classList.add('visible');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function openT(key){
-  const d=P[key];if(!d)return;
+  const d=TOPICS[key];if(!d)return;
   document.getElementById('vh-ico').textContent=d.icon;
   document.getElementById('vh-title').textContent=d.title;
   document.getElementById('vh-desc').textContent=d.desc;
@@ -763,6 +1215,7 @@ function openT(key){
   document.getElementById('yt').src=`https://www.youtube.com/embed/videoseries?list=${d.id}`;
   document.getElementById('ytlink').href=`https://www.youtube.com/playlist?list=${d.id}`;
   document.getElementById('tips-ul').innerHTML=d.tips.map(t=>`<li>${t}</li>`).join('');
+  document.getElementById('quizBanner').style.display=d.hasQuiz?'block':'none';
   document.getElementById('menu').classList.add('hidden');
   const cv=document.getElementById('cview');
   cv.style.cssText='display:block;animation:up .3s both';
@@ -775,6 +1228,269 @@ function goBack(){
   document.getElementById('menu').classList.remove('hidden');
   window.scrollTo({top:0,behavior:'smooth'});
 }
+
+/* ════════════════════════════════════════
+   QUIZ SYSTEM
+════════════════════════════════════════ */
+
+function openQuiz(){
+  buildQuizCards();
+  showQuizSelect();
+  document.getElementById('quizModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeQuiz(){
+  document.getElementById('quizModal').classList.remove('open');
+  document.getElementById('quizModal').style.display='none';
+  setTimeout(()=>{document.getElementById('quizModal').style.display='';},10);
+  document.body.style.overflow='';
+}
+
+function buildQuizCards(){
+  const el=document.getElementById('quizCards');
+  el.innerHTML=QUIZZES.map((q,i)=>{
+    const best=bestScores[i];
+    const scoreHtml=best!==undefined
+      ? `<div class="qc-score">Best: <span class="sval">${best}/6</span></div>`
+      : `<div class="qc-score" style="color:rgba(255,255,255,.2)">Not attempted</div>`;
+    return `<div class="qcard" onclick="startQuiz(${i})">
+      <div class="qc-num">${String(i+1).padStart(2,'0')}</div>
+      <div class="qc-label">${q.label}</div>
+      <div class="qc-diff">${q.diff}</div>
+      <span class="qc-badge ${DIFF_CLASS[i]}">${['Starter','Moderate','Challenging','Advanced','Expert','Boss Level 🔥'][i]}</span>
+      ${scoreHtml}
+    </div>`;
+  }).join('');
+}
+
+function showQuizSelect(){
+  document.getElementById('quizSelect').style.display='block';
+  document.getElementById('quizActive').style.display='none';
+  document.getElementById('quizResult').style.display='none';
+  buildQuizCards();
+  document.getElementById('quizModal').scrollTop=0;
+}
+
+function startQuiz(idx){
+  curQuizIdx=idx;
+  curQ=0;
+  answers=[];
+  const quiz=QUIZZES[idx];
+
+  document.getElementById('quizSelect').style.display='none';
+  document.getElementById('quizActive').style.display='block';
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('progLabel').textContent=quiz.label;
+
+  renderQuestion();
+  document.getElementById('quizModal').scrollTop=0;
+}
+
+function retryQuiz(){startQuiz(curQuizIdx)}
+
+function renderQuestion(){
+  const quiz=QUIZZES[curQuizIdx];
+  const q=quiz.questions[curQ];
+  const total=quiz.questions.length;
+
+  /* Progress */
+  document.getElementById('progNum').textContent=`${curQ+1} / ${total}`;
+  document.getElementById('progFill').style.width=`${((curQ)/total)*100}%`;
+
+  /* Dots */
+  const dotsEl=document.getElementById('progDots');
+  dotsEl.innerHTML=quiz.questions.map((_,i)=>{
+    let cls='prog-dot';
+    if(i===curQ)cls+=' cur';
+    else if(i<curQ)cls+=answers[i]?' correct':' wrong';
+    return `<div class="${cls}">${i+1}</div>`;
+  }).join('');
+
+  /* Difficulty badge */
+  document.getElementById('qDiffBadge').textContent=DIFFICULTIES[curQ];
+  document.getElementById('qDiffBadge').className='q-diff-badge '+DIFF_BADGE[curQ];
+  document.getElementById('qNumBadge').textContent=`Question ${curQ+1}`;
+
+  /* Sequence */
+  document.getElementById('qSeq').innerHTML=q.seq ? formatSeq(q.seq) : '';
+  document.getElementById('qSeq').style.display=q.seq?'block':'none';
+
+  /* Stem + sub */
+  document.getElementById('qStem').innerHTML=formatMath(q.stem);
+  document.getElementById('qSub').innerHTML=q.sub?formatMath(q.sub):'';
+  document.getElementById('qSub').style.display=q.sub?'block':'none';
+
+  /* Options */
+  const optsEl=document.getElementById('qOptions');
+  optsEl.innerHTML=q.opts.map((o,i)=>`
+    <div class="q-opt" onclick="selectOpt(this,${i})" data-idx="${i}">
+      <div class="opt-letter">${['A','B','C','D'][i]}</div>
+      <div class="opt-text">${formatMath(o)}</div>
+      <span class="opt-icon"></span>
+    </div>`).join('');
+
+  /* Hide explain + next */
+  const exp=document.getElementById('qExplain');
+  exp.className='q-explain';exp.style.display='none';
+  document.getElementById('qNext').className='q-next';
+
+  document.getElementById('quizModal').scrollTop=0;
+}
+
+function formatSeq(s){
+  /* Render sequence with styled separators */
+  const parts=s.split(';').map(p=>p.trim());
+  return parts.map(p=>`<span>${formatMath(p)}</span>`).join('<span class="sep"> ; </span>');
+}
+
+function formatMath(s){
+  /* Convert subscripts: T₄, Tₙ patterns + basic formatting */
+  return s
+    .replace(/T_(\w+)/g,'<span class="mth">T</span><sub>$1</sub>')
+    .replace(/T([₀₁₂₃₄₅₆₇₈₉]+)/g,'<span class="mth">T</span><sub>$1</sub>')
+    .replace(/T(\d+)/g,'<span class="mth">T</span><sub>$1</sub>')
+    .replace(/Tₙ/g,'<span class="mth">T</span><sub>n</sub>')
+    .replace(/T₁₀/g,'<span class="mth">T</span><sub>10</sub>')
+    .replace(/T₂₅/g,'<span class="mth">T</span><sub>25</sub>')
+    .replace(/T₅₀/g,'<span class="mth">T</span><sub>50</sub>')
+    .replace(/T₂₀/g,'<span class="mth">T</span><sub>20</sub>')
+    .replace(/T₁₅/g,'<span class="mth">T</span><sub>15</sub>')
+    .replace(/T₃₀/g,'<span class="mth">T</span><sub>30</sub>')
+    .replace(/T₁₂/g,'<span class="mth">T</span><sub>12</sub>')
+    .replace(/T₁₈/g,'<span class="mth">T</span><sub>18</sub>')
+    .replace(/T₇/g,'<span class="mth">T</span><sub>7</sub>')
+    .replace(/T₃/g,'<span class="mth">T</span><sub>3</sub>')
+    .replace(/T₄/g,'<span class="mth">T</span><sub>4</sub>')
+    .replace(/T₁/g,'<span class="mth">T</span><sub>1</sub>')
+    .replace(/T₂/g,'<span class="mth">T</span><sub>2</sub>')
+    .replace(/T₅/g,'<span class="mth">T</span><sub>5</sub>')
+    .replace(/\|r\|/g,'|<span class="mth">r</span>|')
+    .replace(/\b([a-z])\b(?=[^<])/g,'<span class="mth">$1</span>');
+}
+
+function selectOpt(el,idx){
+  const allOpts=document.querySelectorAll('.q-opt');
+  /* Prevent re-selection */
+  if(allOpts[0].classList.contains('disabled'))return;
+
+  const q=QUIZZES[curQuizIdx].questions[curQ];
+  const correct=q.ans===idx;
+  answers[curQ]=correct;
+
+  /* Disable all options */
+  allOpts.forEach(o=>o.classList.add('disabled'));
+
+  /* Mark selected */
+  el.classList.add(correct?'selected-correct':'selected-wrong');
+  el.querySelector('.opt-icon').textContent=correct?'✓':'✗';
+
+  /* Reveal correct if wrong */
+  if(!correct){
+    allOpts[q.ans].classList.add('reveal-correct');
+    allOpts[q.ans].querySelector('.opt-icon').textContent='✓';
+  }
+
+  /* Explanation */
+  const exp=document.getElementById('qExplain');
+  exp.style.display='block';
+  exp.className=`q-explain show ${correct?'correct':'wrong'}`;
+  document.getElementById('qeHead').textContent=correct?'✓ Correct!':'✗ Not quite — here\'s the solution:';
+  document.getElementById('qeMath').innerHTML=formatMath(q.explain.math);
+  document.getElementById('qeBody').textContent=q.explain.body;
+
+  /* Next / Finish button */
+  const nextBtn=document.getElementById('qNext');
+  const isLast=curQ===QUIZZES[curQuizIdx].questions.length-1;
+  nextBtn.textContent=isLast?'See Results →':'Next Question →';
+  nextBtn.className='q-next show';
+
+  /* Scroll to see explanation */
+  setTimeout(()=>{
+    exp.scrollIntoView({behavior:'smooth',block:'nearest'});
+  },150);
+}
+
+function nextQuestion(){
+  const total=QUIZZES[curQuizIdx].questions.length;
+  curQ++;
+  if(curQ>=total){
+    showResult();
+  } else {
+    renderQuestion();
+    document.getElementById('quizModal').scrollTop=0;
+  }
+}
+
+function showResult(){
+  document.getElementById('quizActive').style.display='none';
+  document.getElementById('quizResult').style.display='block';
+
+  const correct=answers.filter(Boolean).length;
+  const total=answers.length;
+  const pct=Math.round((correct/total)*100);
+
+  /* Save best score */
+  const prev=bestScores[curQuizIdx];
+  if(prev===undefined||correct>prev){
+    bestScores[curQuizIdx]=correct;
+    try{localStorage.setItem('sisonke_scores',JSON.stringify(bestScores));}catch(e){}
+  }
+
+  /* Emoji + label */
+  let emoji,label,sub;
+  if(pct===100){emoji='🏆';label='Perfect Score!';sub='Outstanding — you\'ve mastered arithmetic sequences!';}
+  else if(pct>=83){emoji='🎯';label='Excellent!';sub='Almost perfect. Review any mistakes carefully.';}
+  else if(pct>=66){emoji='⭐';label='Well Done!';sub='Good understanding. Revise the tricky questions.';}
+  else if(pct>=50){emoji='📚';label='Keep Practising';sub='More revision needed — try the quiz again.';}
+  else{emoji='💪';label='Don\'t Give Up!';sub='Review the theory, then retry this quiz.';}
+
+  document.getElementById('resEmoji').textContent=emoji;
+  document.getElementById('resScore').textContent=`${correct}`;
+  document.getElementById('resOf').textContent=`out of ${total}`;
+  document.getElementById('resLabel').textContent=label;
+  document.getElementById('resSub').textContent=sub;
+  document.getElementById('rsCorrect').textContent=correct;
+  document.getElementById('rsWrong').textContent=total-correct;
+  document.getElementById('rsPct').textContent=pct+'%';
+
+  /* Review items */
+  const quiz=QUIZZES[curQuizIdx];
+  document.getElementById('rrItems').innerHTML=quiz.questions.map((q,i)=>`
+    <div class="rr-item">
+      <div class="rr-dot ${answers[i]?'c':'w'}">${answers[i]?'✓':'✗'}</div>
+      <div class="rr-q">
+        <strong>Q${i+1} (${DIFFICULTIES[i]})</strong>
+        ${q.stem.replace(/(<([^>]+)>)/gi,'')} — Correct: <span style="color:var(--${answers[i]?'gg':'gb'})">${q.opts[q.ans]}</span>
+      </div>
+    </div>`).join('');
+
+  if(pct===100)launchConfetti();
+  document.getElementById('quizModal').scrollTop=0;
+}
+
+function launchConfetti(){
+  const wrap=document.getElementById('confettiWrap');
+  wrap.innerHTML='';
+  const colors=['#4285F4','#EA4335','#FBBC05','#34A853','#bc6bff','#ff6b6b'];
+  for(let i=0;i<60;i++){
+    const el=document.createElement('div');
+    el.className='cf';
+    el.style.cssText=`
+      left:${Math.random()*100}%;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      animation-delay:${Math.random()*0.8}s;
+      animation-duration:${1.2+Math.random()*0.8}s;
+      border-radius:${Math.random()>0.5?'50%':'2px'};
+      width:${6+Math.random()*6}px;height:${6+Math.random()*6}px;
+    `;
+    wrap.appendChild(el);
+  }
+  setTimeout(()=>wrap.innerHTML='',3000);
+}
+
+/* Prevent background scroll when modal open on iOS */
+document.getElementById('quizModal').addEventListener('touchmove',e=>{e.stopPropagation()},{passive:true});
 </script>
 </body>
 </html>
